@@ -49,6 +49,29 @@ class ConversationRepository(
         }
     }
 
+    fun getAllConversations(): Flow<List<Conversation>> {
+        return conversationDAO
+            .getAll()
+            .map { flow ->
+                flow.map { entity ->
+                    conversationEntityToConversation(entity, emptyList())
+                }
+            }
+    }
+
+    fun getAllConversationsPaging(): Flow<PagingData<Conversation>> = Pager(
+        config = PagingConfig(
+            pageSize = PAGE_SIZE,
+            initialLoadSize = INITIAL_LOAD_SIZE,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { conversationDAO.getAllLightPaging() }
+    ).flow.map { pagingData ->
+        pagingData.map { entity ->
+            conversationSummaryToConversation(entity)
+        }
+    }
+
     fun getConversationsOfAssistant(assistantId: Uuid): Flow<List<Conversation>> {
         return conversationDAO
             .getConversationsOfAssistant(assistantId.toString())

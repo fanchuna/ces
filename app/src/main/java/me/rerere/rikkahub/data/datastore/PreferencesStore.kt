@@ -55,6 +55,27 @@ import kotlin.uuid.Uuid
 
 private const val TAG = "PreferencesStore"
 
+private val REMOVED_DEFAULT_PROVIDER_IDS = setOf(
+    Uuid.parse("a8d2d463-e8c0-41f2-b89e-f5eb8e716cce"),
+    Uuid.parse("1b1395ed-b702-4aeb-8bc1-b681c4456953"),
+    Uuid.parse("56a94d29-c88b-41c5-8e09-38a7612d6cf8"),
+    Uuid.parse("d5734028-d39b-4d41-9841-fd648d65440e"),
+    Uuid.parse("386e0f29-8228-4512-affe-8fd8add82d88"),
+    Uuid.parse("da020a90-f7b3-4c29-b90e-c511a0630630"),
+    Uuid.parse("f76cae46-069a-4334-ab8e-224e4979e58c"),
+    Uuid.parse("3dfd6f9b-f9d9-417f-80c1-ff8d77184191"),
+    Uuid.parse("d6c4d8c6-3f62-4ca9-a6f3-7ade6b15ecc3"),
+    Uuid.parse("3bc40dc1-b11a-46fa-863b-6306971223be"),
+    Uuid.parse("f4f8870e-82d3-495b-9b64-d58e508b3b2c"),
+    Uuid.parse("da93779f-3956-48cc-82ef-67bb482eaaf7"),
+    Uuid.parse("ef5d149b-8e34-404b-818c-6ec242e5c3c5"),
+    Uuid.parse("ff3cde7e-0f65-43d7-8fb2-6475c99f5990"),
+    Uuid.parse("53027b08-1b58-43d5-90ed-29173203e3d8"),
+)
+
+private val REMOVED_DEFAULT_TTS_PROVIDER_IDS = setOf(
+    Uuid.parse("e36b22ef-ca82-40ab-9e70-60cad861911c"),
+)
 private val Context.settingsStore by preferencesDataStore(
     name = "settings",
     produceMigrations = { context ->
@@ -130,12 +151,6 @@ class SettingsStore(
         val ASR_PROVIDERS = stringPreferencesKey("asr_providers")
         val SELECTED_ASR_PROVIDER = stringPreferencesKey("selected_asr_provider")
 
-        // Web Server
-        val WEB_SERVER_ENABLED = booleanPreferencesKey("web_server_enabled")
-        val WEB_SERVER_PORT = intPreferencesKey("web_server_port")
-        val WEB_SERVER_JWT_ENABLED = booleanPreferencesKey("web_server_jwt_enabled")
-        val WEB_SERVER_ACCESS_PASSWORD = stringPreferencesKey("web_server_access_password")
-        val WEB_SERVER_LOCALHOST_ONLY = booleanPreferencesKey("web_server_localhost_only")
 
         // 提示词注入
         val MODE_INJECTIONS = stringPreferencesKey("mode_injections")
@@ -147,9 +162,6 @@ class SettingsStore(
 
         // 统计
         val LAUNCH_COUNT = intPreferencesKey("launch_count")
-
-        // 赞助提醒
-        val SPONSOR_ALERT_DISMISSED_AT = intPreferencesKey("sponsor_alert_dismissed_at")
     }
 
     private val dataStore = context.settingsStore
@@ -233,20 +245,17 @@ class SettingsStore(
                 quickMessages = preferences[QUICK_MESSAGES]?.let {
                     JsonInstant.decodeFromString(it)
                 } ?: emptyList(),
-                webServerEnabled = preferences[WEB_SERVER_ENABLED] == true,
-                webServerPort = preferences[WEB_SERVER_PORT] ?: 8080,
-                webServerJwtEnabled = preferences[WEB_SERVER_JWT_ENABLED] == true,
-                webServerAccessPassword = preferences[WEB_SERVER_ACCESS_PASSWORD] ?: "",
-                webServerLocalhostOnly = preferences[WEB_SERVER_LOCALHOST_ONLY] == true,
                 backupReminderConfig = preferences[BACKUP_REMINDER_CONFIG]?.let {
                     JsonInstant.decodeFromString(it)
                 } ?: BackupReminderConfig(),
                 launchCount = preferences[LAUNCH_COUNT] ?: 0,
-                sponsorAlertDismissedAt = preferences[SPONSOR_ALERT_DISMISSED_AT] ?: 0,
             )
         }
         .map {
-            var providers = it.providers.ifEmpty { DEFAULT_PROVIDERS }.toMutableList()
+            var providers = it.providers
+                .filterNot { provider -> provider.id in REMOVED_DEFAULT_PROVIDER_IDS }
+                .ifEmpty { DEFAULT_PROVIDERS }
+                .toMutableList()
             DEFAULT_PROVIDERS.forEach { defaultProvider ->
                 if (providers.none { it.id == defaultProvider.id }) {
                     providers.add(defaultProvider.copyProvider())
@@ -268,7 +277,13 @@ class SettingsStore(
                     assistants.add(defaultAssistant.copy())
                 }
             }
-            val ttsProviders = it.ttsProviders.ifEmpty { DEFAULT_TTS_PROVIDERS }.toMutableList()
+            val searchServices = it.searchServices
+                .filterNot { service -> service is SearchServiceOptions.RemovedSearchOptions }
+                .ifEmpty { listOf(SearchServiceOptions.DEFAULT) }
+            val ttsProviders = it.ttsProviders
+                .filterNot { provider -> provider.id in REMOVED_DEFAULT_TTS_PROVIDER_IDS }
+                .ifEmpty { DEFAULT_TTS_PROVIDERS }
+                .toMutableList()
             DEFAULT_TTS_PROVIDERS.forEach { defaultTTSProvider ->
                 if (ttsProviders.none { provider -> provider.id == defaultTTSProvider.id }) {
                     ttsProviders.add(defaultTTSProvider.copyProvider())
@@ -277,6 +292,8 @@ class SettingsStore(
             it.copy(
                 providers = providers,
                 assistants = assistants,
+                searchServices = searchServices,
+                searchServiceSelected = it.searchServiceSelected.coerceIn(0, searchServices.lastIndex),
                 ttsProviders = ttsProviders,
             )
         }
@@ -286,7 +303,11 @@ class SettingsStore(
             val validModeInjectionIds = settings.modeInjections.map { it.id }.toSet()
             val validLorebookIds = settings.lorebooks.map { it.id }.toSet()
             val validQuickMessageIds = settings.quickMessages.map { it.id }.toSet()
+            val ttsProviders = settings.ttsProviders.distinctBy { it.id }
             val asrProviders = settings.asrProviders.distinctBy { it.id }
+            val validModelIds = settings.providers.flatMap { it.models }.map { it.id }.toSet()
+            val fallbackModelId = DEFAULT_AUTO_MODEL_ID.takeIf { it in validModelIds }
+                ?: validModelIds.firstOrNull()
             settings.copy(
                 providers = settings.providers.distinctBy { it.id }.map { provider ->
                     when (provider) {
@@ -323,14 +344,32 @@ class SettingsStore(
                         }.toSet()
                     )
                 },
-                ttsProviders = settings.ttsProviders.distinctBy { it.id },
+                searchServiceSelected = settings.searchServiceSelected.coerceIn(0, settings.searchServices.lastIndex),
+                ttsProviders = ttsProviders,
+                selectedTTSProviderId = settings.selectedTTSProviderId
+                    ?.takeIf { id -> ttsProviders.any { provider -> provider.id == id } }
+                    ?: DEFAULT_SYSTEM_TTS_ID,
+                chatModelId = settings.chatModelId.takeIf { it in validModelIds }
+                    ?: fallbackModelId
+                    ?: settings.chatModelId,
+                fastModelId = settings.fastModelId.takeIf { it in validModelIds }
+                    ?: fallbackModelId
+                    ?: settings.fastModelId,
+                translateModeId = settings.translateModeId.takeIf { it in validModelIds }
+                    ?: fallbackModelId
+                    ?: settings.translateModeId,
+                compressModelId = settings.compressModelId.takeIf { it in validModelIds }
+                    ?: fallbackModelId
+                    ?: settings.compressModelId,
+                titleModelId = settings.titleModelId?.takeIf { it in validModelIds },
+                suggestionModelId = settings.suggestionModelId?.takeIf { it in validModelIds },
+                favoriteModels = settings.favoriteModels.filter { uuid ->
+                    uuid in validModelIds
+                },
                 asrProviders = asrProviders,
                 selectedASRProviderId = settings.selectedASRProviderId
                     ?.takeIf { id -> asrProviders.any { provider -> provider.id == id } }
                     ?: asrProviders.firstOrNull()?.id,
-                favoriteModels = settings.favoriteModels.filter { uuid ->
-                    settings.providers.flatMap { it.models }.any { it.id == uuid }
-                },
                 modeInjections = settings.modeInjections.distinctBy { it.id },
                 lorebooks = settings.lorebooks.distinctBy { it.id },
                 quickMessages = settings.quickMessages.distinctBy { it.id },
@@ -403,14 +442,8 @@ class SettingsStore(
             preferences[MODE_INJECTIONS] = JsonInstant.encodeToString(settings.modeInjections)
             preferences[LOREBOOKS] = JsonInstant.encodeToString(settings.lorebooks)
             preferences[QUICK_MESSAGES] = JsonInstant.encodeToString(settings.quickMessages)
-            preferences[WEB_SERVER_ENABLED] = settings.webServerEnabled
-            preferences[WEB_SERVER_PORT] = settings.webServerPort
-            preferences[WEB_SERVER_JWT_ENABLED] = settings.webServerJwtEnabled
-            preferences[WEB_SERVER_ACCESS_PASSWORD] = settings.webServerAccessPassword
-            preferences[WEB_SERVER_LOCALHOST_ONLY] = settings.webServerLocalhostOnly
             preferences[BACKUP_REMINDER_CONFIG] = JsonInstant.encodeToString(settings.backupReminderConfig)
             preferences[LAUNCH_COUNT] = settings.launchCount
-            preferences[SPONSOR_ALERT_DISMISSED_AT] = settings.sponsorAlertDismissedAt
         }
     }
 
@@ -533,14 +566,8 @@ data class Settings(
     val modeInjections: List<PromptInjection.ModeInjection> = DEFAULT_MODE_INJECTIONS,
     val lorebooks: List<Lorebook> = emptyList(),
     val quickMessages: List<QuickMessage> = emptyList(),
-    val webServerEnabled: Boolean = false,
-    val webServerPort: Int = 8080,
-    val webServerJwtEnabled: Boolean = false,
-    val webServerAccessPassword: String = "",
-    val webServerLocalhostOnly: Boolean = false,
     val backupReminderConfig: BackupReminderConfig = BackupReminderConfig(),
     val launchCount: Int = 0,
-    val sponsorAlertDismissedAt: Int = 0,
 ) {
     companion object {
         // 构造一个用于初始化的settings, 但它不能用于保存，防止使用初始值存储
@@ -575,7 +602,6 @@ data class DisplaySetting(
     val showTokenUsage: Boolean = true,
     val showThinkingContent: Boolean = true,
     val autoCloseThinking: Boolean = true,
-    val showUpdates: Boolean = true,
     val showMessageJumper: Boolean = true,
     val messageJumperOnLeft: Boolean = false,
     val fontSizeRatio: Float = 1.0f,
@@ -699,25 +725,6 @@ internal val DEFAULT_ASSISTANTS = listOf(
         name = "",
         systemPrompt = ""
     ),
-    Assistant(
-        id = Uuid.parse("3d47790c-c415-4b90-9388-751128adb0a0"),
-        name = "",
-        systemPrompt = """
-            You are a helpful assistant, called {{char}}, based on model {{model_name}}.
-
-            ## Info
-            - Time: {{cur_datetime}}
-            - Locale: {{locale}}
-            - Timezone: {{timezone}}
-            - Device Info: {{device_info}}
-            - System Version: {{system_version}}
-            - User Nickname: {{user}}
-
-            ## Hint
-            - If the user does not specify a language, reply in the user's primary language.
-            - Remember to use Markdown syntax for formatting, and use latex for mathematical expressions.
-        """.trimIndent()
-    ),
 )
 
 val DEFAULT_SYSTEM_TTS_ID = Uuid.parse("026a01a2-c3a0-4fd5-8075-80e03bdef200")
@@ -726,13 +733,6 @@ private val DEFAULT_TTS_PROVIDERS = listOf(
         id = DEFAULT_SYSTEM_TTS_ID,
         name = "",
     ),
-    TTSProviderSetting.OpenAI(
-        id = Uuid.parse("e36b22ef-ca82-40ab-9e70-60cad861911c"),
-        name = "AiHubMix",
-        baseUrl = "https://aihubmix.com/v1",
-        model = "gpt-4o-mini-tts",
-        voice = "alloy",
-    )
 )
 
 internal val DEFAULT_ASSISTANTS_IDS = DEFAULT_ASSISTANTS.map { it.id }

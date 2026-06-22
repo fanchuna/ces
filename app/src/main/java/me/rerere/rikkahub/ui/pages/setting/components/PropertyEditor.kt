@@ -1,8 +1,5 @@
-package me.rerere.rikkahub.ui.pages.assistant.detail
+package me.rerere.rikkahub.ui.pages.setting.components
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Delete01
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,9 +28,12 @@ import kotlinx.serialization.json.JsonPrimitive
 import me.rerere.ai.provider.CustomBody
 import me.rerere.ai.provider.CustomHeader
 import me.rerere.highlight.LocalHighlighter
+import me.rerere.hugeicons.HugeIcons
+import me.rerere.hugeicons.stroke.Add01
+import me.rerere.hugeicons.stroke.Delete01
 import me.rerere.rikkahub.R
-import me.rerere.rikkahub.ui.components.ui.CardGroup
 import me.rerere.rikkahub.ui.components.richtext.HighlightCodeVisualTransformation
+import me.rerere.rikkahub.ui.components.ui.CardGroup
 import me.rerere.rikkahub.ui.theme.JetbrainsMono
 import me.rerere.rikkahub.ui.theme.LocalDarkMode
 
@@ -79,8 +79,7 @@ fun CustomHeaders(headers: List<CustomHeader>, onUpdate: (List<CustomHeader>) ->
                                 onValueChange = {
                                     headerValue = it
                                     val updatedHeaders = headers.toMutableList()
-                                    updatedHeaders[index] =
-                                        updatedHeaders[index].copy(value = it.trim())
+                                    updatedHeaders[index] = updatedHeaders[index].copy(value = it.trim())
                                     onUpdate(updatedHeaders)
                                 },
                                 label = { Text(stringResource(R.string.assistant_page_header_value)) },
@@ -162,16 +161,14 @@ fun CustomBodies(customBodies: List<CustomBody>, onUpdate: (List<CustomBody>) ->
                                     try {
                                         val newJsonValue = jsonLenient.parseToJsonElement(newString)
                                         val updatedBodies = customBodies.toMutableList()
-                                        updatedBodies[index] =
-                                            updatedBodies[index].copy(value = newJsonValue)
+                                        updatedBodies[index] = updatedBodies[index].copy(value = newJsonValue)
                                         onUpdate(updatedBodies)
                                         jsonParseError = null
                                     } catch (e: Exception) {
-                                        jsonParseError =
-                                            context.getString(
-                                                R.string.assistant_page_invalid_json,
-                                                e.message?.take(100) ?: ""
-                                            )
+                                        jsonParseError = context.getString(
+                                            R.string.assistant_page_invalid_json,
+                                            e.message?.take(100) ?: ""
+                                        )
                                     }
                                 },
                                 label = { Text(stringResource(R.string.assistant_page_body_value)) },

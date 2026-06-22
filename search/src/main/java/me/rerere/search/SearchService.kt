@@ -58,7 +58,7 @@ interface SearchService<T : SearchServiceOptions> {
                 is SearchServiceOptions.FirecrawlOptions -> FirecrawlSearchService
                 is SearchServiceOptions.JinaOptions -> JinaSearchService
                 is SearchServiceOptions.BochaOptions -> BochaSearchService
-                is SearchServiceOptions.RikkaHubOptions -> RikkaHubSearchService
+                is SearchServiceOptions.RemovedSearchOptions -> RemovedSearchService
                 is SearchServiceOptions.GrokOptions -> GrokSearchService
                 is SearchServiceOptions.TinyfishOptions -> TinyfishSearchService
                 is SearchServiceOptions.CustomJsOptions -> CustomJsSearchService
@@ -139,7 +139,6 @@ sealed class SearchServiceOptions {
 
         val TYPES = mapOf(
             BingLocalOptions::class to "Bing",
-            RikkaHubOptions::class to "RikkaHub",
             ZhipuOptions::class to "智谱",
             TavilyOptions::class to "Tavily",
             ExaOptions::class to "Exa",
@@ -261,11 +260,14 @@ sealed class SearchServiceOptions {
 
     @Serializable
     @SerialName("rikkahub")
-    data class RikkaHubOptions(
+    data class RemovedSearchOptions(
         override val id: Uuid = Uuid.random(),
         val apiKey: String = "",
         val depth: String = "standard",
-    ) : SearchServiceOptions()
+    ) : SearchServiceOptions() {
+        override val displayName: String
+            get() = "Removed Search Service"
+    }
 
     @Serializable
     @SerialName("grok")
@@ -346,4 +348,28 @@ internal suspend fun Call.await(): Response {
             }
         })
     }
+}
+
+private object RemovedSearchService : SearchService<SearchServiceOptions.RemovedSearchOptions> {
+    override val name: String = "Removed Search Service"
+
+    override fun parameters(options: SearchServiceOptions.RemovedSearchOptions): InputSchema? = null
+
+    override fun scrapingParameters(options: SearchServiceOptions.RemovedSearchOptions): InputSchema? = null
+
+    @Composable
+    override fun Description() {
+    }
+
+    override suspend fun search(
+        params: JsonObject,
+        commonOptions: SearchCommonOptions,
+        serviceOptions: SearchServiceOptions.RemovedSearchOptions
+    ): Result<SearchResult> = Result.failure(UnsupportedOperationException("This search service has been removed"))
+
+    override suspend fun scrape(
+        params: JsonObject,
+        commonOptions: SearchCommonOptions,
+        serviceOptions: SearchServiceOptions.RemovedSearchOptions
+    ): Result<ScrapedResult> = Result.failure(UnsupportedOperationException("This search service has been removed"))
 }

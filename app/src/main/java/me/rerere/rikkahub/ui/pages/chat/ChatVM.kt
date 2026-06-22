@@ -1,13 +1,9 @@
 package me.rerere.rikkahub.ui.pages.chat
 
 import android.app.Application
-import android.content.Context
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,10 +33,8 @@ import me.rerere.rikkahub.data.repository.ConversationRepository
 import me.rerere.rikkahub.data.repository.FavoriteRepository
 import me.rerere.rikkahub.service.ChatError
 import me.rerere.rikkahub.service.ChatService
-import me.rerere.rikkahub.ui.hooks.writeStringPreference
 import me.rerere.rikkahub.ui.hooks.ChatInputState
-import me.rerere.rikkahub.utils.UiState
-import me.rerere.rikkahub.utils.UpdateChecker
+import me.rerere.rikkahub.ui.hooks.writeStringPreference
 import kotlin.uuid.Uuid
 
 private const val TAG = "ChatVM"
@@ -51,19 +45,16 @@ class ChatVM(
     private val settingsStore: SettingsStore,
     private val conversationRepo: ConversationRepository,
     private val chatService: ChatService,
-    val updateChecker: UpdateChecker,
     private val analytics: FirebaseAnalytics,
     private val filesManager: FilesManager,
     private val favoriteRepository: FavoriteRepository,
 ) : ViewModel() {
     private val _conversationId: Uuid = Uuid.parse(id)
     val conversation: StateFlow<Conversation> = chatService.getConversationFlow(_conversationId)
-    var chatListInitialized by mutableStateOf(false) // 聊天列表是否已经滚动到底部
+    var chatListInitialized by mutableStateOf(false)
 
-    // 聊天输入状态 - 保存在 ViewModel 中避免 TransactionTooLargeException
     val inputState = ChatInputState()
 
-    // 异步任务 (从ChatService获取，响应式)
     val conversationJob: StateFlow<Job?> =
         chatService
             .getGenerationJobStateFlow(_conversationId)
@@ -78,54 +69,41 @@ class ChatVM(
         .stateIn(viewModelScope, SharingStarted.Eagerly, emptyMap())
 
     init {
-        // 添加对话引用
         chatService.addConversationReference(_conversationId)
-
-        // 初始化对话
         viewModelScope.launch {
             chatService.initializeConversation(_conversationId)
         }
-
-        // 记住对话ID, 方便下次启动恢复
         context.writeStringPreference("lastConversationId", _conversationId.toString())
     }
 
     override fun onCleared() {
         super.onCleared()
-        // 移除对话引用
         chatService.removeConversationReference(_conversationId)
     }
 
-    // 用户设置
     val settings: StateFlow<Settings> =
         settingsStore.settingsFlow.stateIn(viewModelScope, SharingStarted.Eagerly, Settings.dummy())
 
-    // 当前模型
     val currentChatModel = settings.map { settings ->
         settings.getCurrentChatModel()
     }.stateIn(viewModelScope, SharingStarted.Lazily, null)
 
-    // 错误状态
     val errors: StateFlow<List<ChatError>> = chatService.errors
 
     fun dismissError(id: Uuid) = chatService.dismissError(id)
 
     fun clearAllErrors() = chatService.clearAllErrors()
 
-    // 生成完成
     val generationDoneFlow: SharedFlow<Uuid> = chatService.generationDoneFlow
 
-    // 更新设置
     fun updateSettings(newSettings: Settings) {
         viewModelScope.launch {
             val oldSettings = settings.value
-            // 检查用户头像是否有变化，如果有则删除旧头像
             checkUserAvatarDelete(oldSettings, newSettings)
             settingsStore.update(newSettings)
         }
     }
 
-    // 检查用户头像删除
     private fun checkUserAvatarDelete(oldSettings: Settings, newSettings: Settings) {
         val oldAvatar = oldSettings.displaySetting.userAvatar
         val newAvatar = newSettings.displaySetting.userAvatar
@@ -135,16 +113,13 @@ class ChatVM(
         }
     }
 
-    // 设置聊天模型
     fun setChatModel(assistant: Assistant, model: Model) {
         viewModelScope.launch {
             settingsStore.update { settings ->
                 settings.copy(
                     assistants = settings.assistants.map {
                         if (it.id == assistant.id) {
-                            it.copy(
-                                chatModelId = model.id
-                            )
+                            it.copy(chatModelId = model.id)
                         } else {
                             it
                         }
@@ -153,27 +128,15 @@ class ChatVM(
         }
     }
 
-    // Update checker
-    val updateState =
-        updateChecker.checkUpdate().stateIn(viewModelScope, SharingStarted.Eagerly, UiState.Loading)
-
-    /**
-     * 处理消息发送
-     *
-     * @param content 消息内容
-     * @param answer 是否触发消息生成，如果为false，则仅添加消息到消息列表中
-     */
-    fun handleMessageSend(content: List<UIMessagePart>,answer: Boolean = true) {
+    fun handleMessageSend(content: List<UIMessagePart>, answer: Boolean = true) {
         if (content.isEmptyInputMessage()) return
         analytics.logEvent("ai_send_message", null)
-
         chatService.sendMessage(_conversationId, content, answer)
     }
 
     fun handleMessageEdit(parts: List<UIMessagePart>, messageId: Uuid) {
         if (parts.isEmptyInputMessage()) return
         analytics.logEvent("ai_edit_message", null)
-
         viewModelScope.launch {
             chatService.editMessage(_conversationId, messageId, parts)
         }
@@ -267,19 +230,6 @@ class ChatVM(
         }
     }
 
-    fun moveConversationToAssistant(conversation: Conversation, targetAssistantId: Uuid) {
-        viewModelScope.launch {
-            val conversationFull = conversationRepo.getConversationById(conversation.id) ?: return@launch
-            val updatedConversation = conversationFull.copy(assistantId = targetAssistantId)
-            if (conversation.id == _conversationId) {
-                chatService.saveConversation(_conversationId, updatedConversation)
-                settingsStore.updateAssistant(targetAssistantId)
-            } else {
-                conversationRepo.updateConversation(updatedConversation)
-            }
-        }
-    }
-
     fun generateTitle(conversation: Conversation, force: Boolean = false) {
         viewModelScope.launch {
             val conversationFull = conversationRepo.getConversationById(conversation.id) ?: return@launch
@@ -332,5 +282,4 @@ class ChatVM(
             }
         }
     }
-
 }

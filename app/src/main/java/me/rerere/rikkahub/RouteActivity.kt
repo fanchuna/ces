@@ -78,41 +78,21 @@ import me.rerere.rikkahub.ui.hooks.readBooleanPreference
 import me.rerere.rikkahub.ui.hooks.readStringPreference
 import me.rerere.rikkahub.ui.hooks.rememberCustomAsrState
 import me.rerere.rikkahub.ui.hooks.rememberCustomTtsState
-import me.rerere.rikkahub.ui.pages.assistant.AssistantPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantBasicPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantDetailPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantExtensionsPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantLocalToolPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantMcpPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantMemoryPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantPromptPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantRequestPage
 import me.rerere.rikkahub.ui.pages.backup.BackupPage
 import me.rerere.rikkahub.ui.pages.chat.ChatPage
 import me.rerere.rikkahub.ui.pages.debug.DebugPage
-import me.rerere.rikkahub.ui.pages.extensions.ExtensionsPage
-import me.rerere.rikkahub.ui.pages.extensions.PromptPage
-import me.rerere.rikkahub.ui.pages.extensions.QuickMessagesPage
-import me.rerere.rikkahub.ui.pages.extensions.skills.SkillDetailPage
-import me.rerere.rikkahub.ui.pages.extensions.skills.SkillsPage
-import me.rerere.rikkahub.ui.pages.extensions.workspace.WorkspacePage
-import me.rerere.rikkahub.ui.pages.extensions.workspace.WorkspaceDetailPage
-import me.rerere.rikkahub.ui.pages.extensions.workspace.WorkspaceTerminalPage
 import me.rerere.rikkahub.ui.pages.favorite.FavoritePage
 import me.rerere.rikkahub.ui.pages.history.HistoryPage
 import me.rerere.rikkahub.ui.pages.imggen.ImageGenPage
 import me.rerere.rikkahub.ui.pages.log.LogPage
 import me.rerere.rikkahub.ui.pages.search.SearchPage
-import me.rerere.rikkahub.ui.pages.setting.SettingAboutPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesThemePage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesNotificationPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesGeneralPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesUIPage
 import me.rerere.rikkahub.ui.pages.setting.SettingThemePage
-import me.rerere.rikkahub.ui.pages.setting.SettingDonatePage
 import me.rerere.rikkahub.ui.pages.setting.SettingFilesPage
-import me.rerere.rikkahub.ui.pages.setting.SettingMcpPage
 import me.rerere.rikkahub.ui.pages.setting.SettingModelPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPage
 import me.rerere.rikkahub.ui.pages.setting.SettingProviderDetailPage
@@ -120,7 +100,6 @@ import me.rerere.rikkahub.ui.pages.setting.SettingProviderPage
 import me.rerere.rikkahub.ui.pages.setting.SettingSearchDetailPage
 import me.rerere.rikkahub.ui.pages.setting.SettingSearchPage
 import me.rerere.rikkahub.ui.pages.setting.SettingSpeechPage
-import me.rerere.rikkahub.ui.pages.setting.SettingWebPage
 import me.rerere.rikkahub.ui.pages.share.handler.ShareHandlerPage
 import me.rerere.rikkahub.ui.pages.stats.StatsPage
 import me.rerere.rikkahub.ui.pages.translator.TranslatorPage
@@ -338,41 +317,6 @@ class RouteActivity : ComponentActivity() {
                                 FavoritePage()
                             }
 
-                            entry<Screen.Assistant> {
-                                AssistantPage()
-                            }
-
-                            entry<Screen.AssistantDetail> { key ->
-                                AssistantDetailPage(key.id)
-                            }
-
-                            entry<Screen.AssistantBasic> { key ->
-                                AssistantBasicPage(key.id)
-                            }
-
-                            entry<Screen.AssistantPrompt> { key ->
-                                AssistantPromptPage(key.id)
-                            }
-
-                            entry<Screen.AssistantMemory> { key ->
-                                AssistantMemoryPage(key.id)
-                            }
-
-                            entry<Screen.AssistantRequest> { key ->
-                                AssistantRequestPage(key.id)
-                            }
-
-                            entry<Screen.AssistantMcp> { key ->
-                                AssistantMcpPage(key.id)
-                            }
-
-                            entry<Screen.AssistantLocalTool> { key ->
-                                AssistantLocalToolPage(key.id)
-                            }
-
-                            entry<Screen.AssistantInjections> { key ->
-                                AssistantExtensionsPage(key.id)
-                            }
 
                             entry<Screen.Translator> {
                                 TranslatorPage()
@@ -431,9 +375,6 @@ class RouteActivity : ComponentActivity() {
                                 SettingModelPage()
                             }
 
-                            entry<Screen.SettingAbout> {
-                                SettingAboutPage()
-                            }
 
                             entry<Screen.SettingSearch> {
                                 SettingSearchPage()
@@ -448,21 +389,12 @@ class RouteActivity : ComponentActivity() {
                                 SettingSpeechPage()
                             }
 
-                            entry<Screen.SettingMcp> {
-                                SettingMcpPage()
-                            }
 
-                            entry<Screen.SettingDonate> {
-                                SettingDonatePage()
-                            }
 
                             entry<Screen.SettingFiles> {
                                 SettingFilesPage()
                             }
 
-                            entry<Screen.SettingWeb> {
-                                SettingWebPage()
-                            }
 
                             entry<Screen.Debug> {
                                 DebugPage()
@@ -472,37 +404,6 @@ class RouteActivity : ComponentActivity() {
                                 LogPage()
                             }
 
-                            entry<Screen.Extensions> {
-                                ExtensionsPage()
-                            }
-
-                            entry<Screen.QuickMessages> {
-                                QuickMessagesPage()
-                            }
-
-                            entry<Screen.Prompts> {
-                                PromptPage()
-                            }
-
-                            entry<Screen.Skills> {
-                                SkillsPage()
-                            }
-
-                            entry<Screen.Workspaces> {
-                                WorkspacePage()
-                            }
-
-                            entry<Screen.WorkspaceDetail> { key ->
-                                WorkspaceDetailPage(key.id)
-                            }
-
-                            entry<Screen.WorkspaceTerminal> { key ->
-                                WorkspaceTerminalPage(key.id)
-                            }
-
-                            entry<Screen.SkillDetail> { key ->
-                                SkillDetailPage(skillName = key.skillName)
-                            }
 
                             entry<Screen.MessageSearch> {
                                 SearchPage()
@@ -579,32 +480,6 @@ sealed interface Screen : NavKey {
     @Serializable
     data object Favorite : Screen
 
-    @Serializable
-    data object Assistant : Screen
-
-    @Serializable
-    data class AssistantDetail(val id: String) : Screen
-
-    @Serializable
-    data class AssistantBasic(val id: String) : Screen
-
-    @Serializable
-    data class AssistantPrompt(val id: String) : Screen
-
-    @Serializable
-    data class AssistantMemory(val id: String) : Screen
-
-    @Serializable
-    data class AssistantRequest(val id: String) : Screen
-
-    @Serializable
-    data class AssistantMcp(val id: String) : Screen
-
-    @Serializable
-    data class AssistantLocalTool(val id: String) : Screen
-
-    @Serializable
-    data class AssistantInjections(val id: String) : Screen
 
     @Serializable
     data object Translator : Screen
@@ -648,8 +523,6 @@ sealed interface Screen : NavKey {
     @Serializable
     data object SettingModels : Screen
 
-    @Serializable
-    data object SettingAbout : Screen
 
     @Serializable
     data object SettingSearch : Screen
@@ -660,17 +533,11 @@ sealed interface Screen : NavKey {
     @Serializable
     data object SettingSpeech : Screen
 
-    @Serializable
-    data object SettingMcp : Screen
 
-    @Serializable
-    data object SettingDonate : Screen
 
     @Serializable
     data object SettingFiles : Screen
 
-    @Serializable
-    data object SettingWeb : Screen
 
     @Serializable
     data object Debug : Screen
@@ -678,29 +545,6 @@ sealed interface Screen : NavKey {
     @Serializable
     data object Log : Screen
 
-    @Serializable
-    data object Extensions : Screen
-
-    @Serializable
-    data object QuickMessages : Screen
-
-    @Serializable
-    data object Prompts : Screen
-
-    @Serializable
-    data object Skills : Screen
-
-    @Serializable
-    data object Workspaces : Screen
-
-    @Serializable
-    data class WorkspaceDetail(val id: String) : Screen
-
-    @Serializable
-    data class WorkspaceTerminal(val id: String) : Screen
-
-    @Serializable
-    data class SkillDetail(val skillName: String) : Screen
 
     @Serializable
     data object MessageSearch : Screen

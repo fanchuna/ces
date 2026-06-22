@@ -29,30 +29,14 @@ jobs:
       - name: Install zsh
         run: sudo apt-get update && sudo apt-get install -y zsh
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v5
-        with:
-          version: 10
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: '22'
-          cache: pnpm
-          cache-dependency-path: web-ui/pnpm-lock.yaml
-
-      - name: Install web-ui dependencies
-        working-directory: web-ui
-        run: pnpm install --frozen-lockfile
-
       - name: Create dummy Google Services config
         run: |
           cat > app/google-services.json <<'EOF'
           {
             "project_info": {
               "project_number": "123456789012",
-              "project_id": "rikkahub-debug",
-              "storage_bucket": "rikkahub-debug.appspot.com"
+              "project_id": "ces-debug",
+              "storage_bucket": "ces-debug.appspot.com"
             },
             "client": [
               {
