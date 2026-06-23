@@ -271,7 +271,7 @@ private fun MessagePartsBlock(
     onUserMessageClick: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
-    val contentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f)
+    val contentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f)
 
     // 消息输出HapticFeedback
     val hapticFeedback = LocalHapticFeedback.current
@@ -320,7 +320,7 @@ private fun MessagePartsBlock(
                         steps = block.steps,
                         collapsedAdaptiveWidth = isReasoningOnlyBlock,
                         cardColors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = settings.displaySetting.bubbleOpacity),
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.82f * settings.displaySetting.bubbleOpacity),
                         ),
                     ) { step ->
                         when (step) {
@@ -363,7 +363,7 @@ private fun MessagePartsBlock(
                                         bottomStart = 22.dp,
                                         bottomEnd = 8.dp,
                                     ),
-                                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = settings.displaySetting.bubbleOpacity),
+                                    color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.96f * settings.displaySetting.bubbleOpacity),
                                     onClick = { onUserMessageClick?.invoke() },
                                 ) {
                                     Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp)) {
@@ -387,9 +387,9 @@ private fun MessagePartsBlock(
                                             bottomStart = 22.dp,
                                             bottomEnd = 22.dp,
                                         ),
-                                        color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = settings.displaySetting.bubbleOpacity),
+                                        color = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.92f * settings.displaySetting.bubbleOpacity),
                                     ) {
-                                        Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp)) {
+                                        Column(modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
                                             MarkdownBlock(
                                                 content = part.text.replaceRegexes(
                                                     assistant = assistant,

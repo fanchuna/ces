@@ -670,8 +670,8 @@ private fun TopBar(
 
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.92f),
-            scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.86f),
+            scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.96f),
         ),
         navigationIcon = {
             if (!bigScreen) {
@@ -694,12 +694,11 @@ private fun TopBar(
                         toaster.show(editTitleWarning, type = ToastType.Warning)
                     }
                 },
-                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.42f),
-                shape = MaterialTheme.shapes.largeIncreased,
-                tonalElevation = 1.dp,
+                color = Color.Transparent,
+                shape = MaterialTheme.shapes.large,
             ) {
                 Column(
-                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 4.dp)
                 ) {
                     val assistant = settings.getCurrentAssistant()
                     val model = settings.getCurrentChatModel()
@@ -707,7 +706,7 @@ private fun TopBar(
                     Text(
                         text = conversation.title.ifBlank { stringResource(R.string.chat_page_new_chat) },
                         maxLines = 1,
-                        style = MaterialTheme.typography.titleSmallEmphasized,
+                        style = MaterialTheme.typography.titleMediumEmphasized,
                         overflow = TextOverflow.Ellipsis,
                     )
                     if (model != null && provider != null) {
@@ -715,9 +714,9 @@ private fun TopBar(
                             text = "${model.displayName} (${provider.name})",
                             overflow = TextOverflow.Ellipsis,
                             maxLines = 1,
-                            color = LocalContentColor.current.copy(0.65f),
+                            color = LocalContentColor.current.copy(0.52f),
                             style = MaterialTheme.typography.labelSmall.copy(
-                                fontSize = 8.sp,
+                                fontSize = 9.sp,
                             )
                         )
                     }

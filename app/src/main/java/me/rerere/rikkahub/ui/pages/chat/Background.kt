@@ -56,9 +56,9 @@ fun AssistantBackground(setting: Settings, modifier: Modifier) {
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.28f),
+                        MaterialTheme.colorScheme.surfaceContainerLowest,
+                        MaterialTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.78f),
                         MaterialTheme.colorScheme.background,
-                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.12f),
                     )
                 )
             )

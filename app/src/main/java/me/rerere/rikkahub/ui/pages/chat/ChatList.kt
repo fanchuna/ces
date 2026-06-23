@@ -296,9 +296,10 @@ private fun ChatListNormal(
         ChatFontProvider(displaySetting = settings.displaySetting) {
             LazyColumn(
                 state = state,
-                contentPadding = PaddingValues(16.dp) + PaddingValues(bottom = 32.dp + innerPadding.calculateBottomPadding()),
+                contentPadding = PaddingValues(horizontal = 14.dp, vertical = 12.dp) +
+                    PaddingValues(bottom = 32.dp + innerPadding.calculateBottomPadding()),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(18.dp),
                 modifier = Modifier
                     .fillMaxSize()
                     .hazeSource(state = hazeState)
@@ -310,9 +311,9 @@ private fun ChatListNormal(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 8.dp, vertical = 12.dp),
-                            shape = RoundedCornerShape(28.dp),
-                            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.58f),
-                            tonalElevation = 1.dp,
+                            shape = RoundedCornerShape(26.dp),
+                            color = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.92f),
+                            tonalElevation = 0.dp,
                         ) {
                             Column(
                                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 18.dp),
@@ -321,12 +322,12 @@ private fun ChatListNormal(
                                 Text(
                                     text = "准备起航",
                                     style = MaterialTheme.typography.titleMediumEmphasized,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                    color = MaterialTheme.colorScheme.onSurface,
                                 )
                                 Text(
                                     text = "选择模型，输入你的想法，让帆船 AI 助手陪你开始新的对话。",
                                     style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.72f),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 )
                             }
                         }
@@ -402,9 +403,9 @@ private fun ChatListNormal(
             if (loading) {
                 item(LoadingIndicatorKey) {
                     Surface(
-                        shape = RoundedCornerShape(50),
-                        color = MaterialTheme.colorScheme.surfaceContainerLow,
-                        tonalElevation = 1.dp,
+                        shape = RoundedCornerShape(24.dp),
+                        color = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.94f),
+                        tonalElevation = 0.dp,
                     ) {
                         Row(
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),

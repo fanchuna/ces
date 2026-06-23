@@ -120,7 +120,7 @@ fun ChatInput(
 ) {
     val toaster = LocalToaster.current
     val assistant = settings.getCurrentAssistant()
-    val hazeTintColor = MaterialTheme.colorScheme.surfaceContainerLow
+    val hazeTintColor = MaterialTheme.colorScheme.surfaceContainerLowest
     val inputHazeStyle = HazeMaterials.thin(containerColor = hazeTintColor)
 
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -176,13 +176,13 @@ fun ChatInput(
             modifier = modifier
                 .imePadding()
                 .navigationBarsPadding()
-                .padding(horizontal = 12.dp),
+                .padding(horizontal = 12.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(28.dp))
+                    .clip(RoundedCornerShape(26.dp))
                     .then(
                         if (settings.displaySetting.enableBlurEffect) Modifier.hazeEffect(
                             state = hazeState
@@ -193,15 +193,15 @@ fun ChatInput(
                         }
                         else Modifier
                     ),
-                shape = RoundedCornerShape(28.dp),
-                tonalElevation = 3.dp,
-                shadowElevation = 2.dp,
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.32f)),
-                color = if (settings.displaySetting.enableBlurEffect) Color.Transparent else MaterialTheme.colorScheme.surfaceContainerLowest,
+                shape = RoundedCornerShape(26.dp),
+                tonalElevation = 0.dp,
+                shadowElevation = 3.dp,
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.42f)),
+                color = if (settings.displaySetting.enableBlurEffect) Color.Transparent else MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.98f),
             ) {
                 Column(
-                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
-                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
                     if (state.messageContent.isNotEmpty()) {
                         MediaFileInputRow(state = state)
@@ -216,15 +216,15 @@ fun ChatInput(
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 4.dp),
+                            .padding(horizontal = 2.dp),
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
                         Row(
                             modifier = Modifier
                                 .weight(1f)
                                 .horizontalScroll(rememberScrollState()),
-                            horizontalArrangement = Arrangement.spacedBy(2.dp)
+                            horizontalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             // Model Picker
                             ModelSelector(
@@ -294,7 +294,7 @@ fun ChatInput(
                             Box(
                                 contentAlignment = Alignment.Center,
                                 modifier = Modifier
-                                    .size(36.dp)
+                                    .size(38.dp)
                                     .testTag("chat_send_button")
                                     .clip(CircleShape)
                                     .combinedClickable(
@@ -308,7 +308,7 @@ fun ChatInput(
                             ) {
                                 val containerColor = when {
                                     loading -> MaterialTheme.colorScheme.errorContainer
-                                    state.isEmpty() -> MaterialTheme.colorScheme.surfaceContainerHighest
+                                    state.isEmpty() -> MaterialTheme.colorScheme.surfaceContainerHigh
                                     else -> MaterialTheme.colorScheme.primary
                                 }
                                 val contentColor = when {
@@ -354,10 +354,10 @@ private fun ActionIconButton(
 ) {
     Surface(
         onClick = onClick,
-        modifier = Modifier.size(32.dp),
+        modifier = Modifier.size(34.dp),
         shape = CircleShape,
-        tonalElevation = 1.dp,
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        tonalElevation = 0.dp,
+        color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.72f),
     ) {
         Box(
             modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
@@ -499,7 +499,7 @@ private fun TextInputRow(
                 .onFocusChanged {
                     isFocused = it.isFocused
                 },
-            shape = MaterialTheme.shapes.largeIncreased,
+            shape = RoundedCornerShape(22.dp),
             placeholder = {
                 Text(stringResource(R.string.chat_input_placeholder))
             },
@@ -517,6 +517,7 @@ private fun TextInputRow(
                 focusedIndicatorColor = Color.Transparent,
                 focusedContainerColor = Color.Transparent,
                 unfocusedContainerColor = Color.Transparent,
+                cursorColor = MaterialTheme.colorScheme.primary,
             ),
             trailingIcon = {
                 if (isFocused) {
