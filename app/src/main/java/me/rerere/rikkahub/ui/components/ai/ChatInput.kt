@@ -176,13 +176,13 @@ fun ChatInput(
             modifier = modifier
                 .imePadding()
                 .navigationBarsPadding()
-                .padding(horizontal = 12.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+                .padding(horizontal = 10.dp, vertical = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(26.dp))
+                    .clip(RoundedCornerShape(30.dp))
                     .then(
                         if (settings.displaySetting.enableBlurEffect) Modifier.hazeEffect(
                             state = hazeState
@@ -193,15 +193,15 @@ fun ChatInput(
                         }
                         else Modifier
                     ),
-                shape = RoundedCornerShape(26.dp),
+                shape = RoundedCornerShape(30.dp),
                 tonalElevation = 0.dp,
-                shadowElevation = 3.dp,
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.42f)),
+                shadowElevation = 8.dp,
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.30f)),
                 color = if (settings.displaySetting.enableBlurEffect) Color.Transparent else MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.98f),
             ) {
                 Column(
-                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     if (state.messageContent.isNotEmpty()) {
                         MediaFileInputRow(state = state)
@@ -224,7 +224,7 @@ fun ChatInput(
                             modifier = Modifier
                                 .weight(1f)
                                 .horizontalScroll(rememberScrollState()),
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             // Model Picker
                             ModelSelector(
@@ -234,7 +234,7 @@ fun ChatInput(
                                     onUpdateChatModel(it)
                                 },
                                 type = ModelType.CHAT,
-                                onlyIcon = true,
+                                onlyIcon = false,
                                 modifier = Modifier,
                             )
 
@@ -246,7 +246,7 @@ fun ChatInput(
                                     onUpdateReasoningLevel = {
                                         onUpdateAssistant(assistant.copy(reasoningLevel = it))
                                     },
-                                    onlyIcon = true,
+                                    onlyIcon = false,
                                 )
                             }
 
@@ -294,7 +294,7 @@ fun ChatInput(
                             Box(
                                 contentAlignment = Alignment.Center,
                                 modifier = Modifier
-                                    .size(38.dp)
+                                    .size(42.dp)
                                     .testTag("chat_send_button")
                                     .clip(CircleShape)
                                     .combinedClickable(
@@ -354,10 +354,10 @@ private fun ActionIconButton(
 ) {
     Surface(
         onClick = onClick,
-        modifier = Modifier.size(34.dp),
+        modifier = Modifier.size(38.dp),
         shape = CircleShape,
         tonalElevation = 0.dp,
-        color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.72f),
+        color = MaterialTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.82f),
     ) {
         Box(
             modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
@@ -495,6 +495,7 @@ private fun TextInputRow(
             modifier = Modifier
                 .fillMaxWidth()
                 .testTag("chat_input")
+                .heightIn(min = 58.dp)
                 .contentReceiver(receiveContentListener)
                 .onFocusChanged {
                     isFocused = it.isFocused
@@ -503,7 +504,7 @@ private fun TextInputRow(
             placeholder = {
                 Text(stringResource(R.string.chat_input_placeholder))
             },
-            lineLimits = TextFieldLineLimits.MultiLine(maxHeightInLines = 5),
+            lineLimits = TextFieldLineLimits.MultiLine(maxHeightInLines = 7),
             keyboardOptions = KeyboardOptions(
                 imeAction = if (settings.displaySetting.sendOnEnter) ImeAction.Send else ImeAction.Default
             ),

@@ -133,28 +133,8 @@ fun ChatMessage(
         horizontalAlignment = if (message.role == MessageRole.USER) Alignment.End else Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        if (!message.parts.isEmptyUIMessage()) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
-            ) {
-                ChatMessageAssistantAvatar(
-                    message = message,
-                    model = model,
-                    assistant = assistant,
-                    loading = loading,
-                    modifier = Modifier.weight(1f)
-                )
-                ChatMessageUserAvatar(
-                    message = message,
-                    avatar = settings.userAvatar,
-                    nickname = settings.userNickname,
-                    modifier = Modifier.weight(1f)
-                )
-            }
-        }
+        // Claude mobile style: keep the conversation as a direct text stream.
+        // Avatars/model headers are intentionally hidden here to reduce chrome.
         ProvideTextStyle(textStyle) {
             MessagePartsBlock(
                 assistant = assistant,
@@ -356,17 +336,19 @@ private fun MessagePartsBlock(
                         val textContent = @Composable {
                             if (role == MessageRole.USER) {
                                 Surface(
-                                    modifier = Modifier.animateContentSize(),
+                                    modifier = Modifier
+                                        .animateContentSize()
+                                        .widthIn(max = 360.dp),
                                     shape = RoundedCornerShape(
-                                        topStart = 22.dp,
-                                        topEnd = 22.dp,
-                                        bottomStart = 22.dp,
-                                        bottomEnd = 8.dp,
+                                        topStart = 24.dp,
+                                        topEnd = 24.dp,
+                                        bottomStart = 24.dp,
+                                        bottomEnd = 10.dp,
                                     ),
-                                    color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.96f * settings.displaySetting.bubbleOpacity),
+                                    color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.98f * settings.displaySetting.bubbleOpacity),
                                     onClick = { onUserMessageClick?.invoke() },
                                 ) {
-                                    Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp)) {
+                                    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
                                         MarkdownBlock(
                                             content = part.text.replaceRegexes(
                                                 assistant = assistant,
@@ -409,6 +391,7 @@ private fun MessagePartsBlock(
                                         ),
                                         onClickCitation = handleClickCitation,
                                         modifier = Modifier
+                                            .fillMaxWidth()
                                             .animateContentSize()
                                     )
                                 }

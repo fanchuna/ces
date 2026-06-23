@@ -6,9 +6,16 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.AlertDialog
@@ -40,6 +47,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -668,24 +676,41 @@ private fun TopBar(
         onUpdateTitle(it)
     }
 
-    TopAppBar(
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.86f),
-            scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.96f),
-        ),
-        navigationIcon = {
+    val editTitleWarning = stringResource(R.string.chat_page_edit_title_warning)
+    val model = settings.getCurrentChatModel()
+    val provider = model?.findProvider(providers = settings.providers, checkOverwrite = false)
+
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.94f),
+        tonalElevation = 0.dp,
+        shadowElevation = 0.dp,
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(horizontal = 10.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
             if (!bigScreen) {
-                IconButton(
-                    onClick = {
-                        scope.launch { drawerState.open() }
-                    }
+                Surface(
+                    onClick = { scope.launch { drawerState.open() } },
+                    modifier = Modifier.size(42.dp),
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.surfaceContainerLow,
+                    contentColor = MaterialTheme.colorScheme.onSurface,
                 ) {
-                    Icon(OceanIcons.Menu03, "Messages")
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = OceanIcons.Menu03,
+                            contentDescription = "Messages",
+                            modifier = Modifier.size(21.dp),
+                        )
+                    }
                 }
             }
-        },
-        title = {
-            val editTitleWarning = stringResource(R.string.chat_page_edit_title_warning)
+
             Surface(
                 onClick = {
                     if (conversation.messageNodes.isNotEmpty()) {
@@ -694,15 +719,14 @@ private fun TopBar(
                         toaster.show(editTitleWarning, type = ToastType.Warning)
                     }
                 },
+                modifier = Modifier.weight(1f),
                 color = Color.Transparent,
-                shape = MaterialTheme.shapes.large,
+                shape = RoundedCornerShape(18.dp),
             ) {
                 Column(
-                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 4.dp)
+                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp),
+                    verticalArrangement = Arrangement.spacedBy(1.dp),
                 ) {
-                    val assistant = settings.getCurrentAssistant()
-                    val model = settings.getCurrentChatModel()
-                    val provider = model?.findProvider(providers = settings.providers, checkOverwrite = false)
                     Text(
                         text = conversation.title.ifBlank { stringResource(R.string.chat_page_new_chat) },
                         maxLines = 1,
@@ -711,36 +735,49 @@ private fun TopBar(
                     )
                     if (model != null && provider != null) {
                         Text(
-                            text = "${model.displayName} (${provider.name})",
+                            text = "${model.displayName} · ${provider.name}",
                             overflow = TextOverflow.Ellipsis,
                             maxLines = 1,
-                            color = LocalContentColor.current.copy(0.52f),
-                            style = MaterialTheme.typography.labelSmall.copy(
-                                fontSize = 9.sp,
-                            )
+                            color = LocalContentColor.current.copy(0.50f),
+                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
                         )
                     }
                 }
             }
-        },
-        actions = {
-            IconButton(
-                onClick = {
-                    onClickMenu()
-                }
+
+            Surface(
+                onClick = onClickMenu,
+                modifier = Modifier.size(42.dp),
+                shape = CircleShape,
+                color = if (previewMode) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerLow,
+                contentColor = MaterialTheme.colorScheme.onSurface,
             ) {
-                Icon(if (previewMode) OceanIcons.Cancel01 else OceanIcons.LeftToRightListBullet, "Chat Options")
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = if (previewMode) OceanIcons.Cancel01 else OceanIcons.LeftToRightListBullet,
+                        contentDescription = "Chat Options",
+                        modifier = Modifier.size(21.dp),
+                    )
+                }
             }
 
-            IconButton(
-                onClick = {
-                    onNewChat()
-                }
+            Surface(
+                onClick = onNewChat,
+                modifier = Modifier.size(42.dp),
+                shape = CircleShape,
+                color = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
             ) {
-                Icon(OceanIcons.MessageAdd01, "New Message")
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = OceanIcons.MessageAdd01,
+                        contentDescription = "New Message",
+                        modifier = Modifier.size(21.dp),
+                    )
+                }
             }
-        },
-    )
+        }
+    }
     titleState.EditStateContent { title, onUpdate ->
         AlertDialog(
             onDismissRequest = {

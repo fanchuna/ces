@@ -8,6 +8,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -96,7 +97,8 @@ fun ColumnScope.ConversationList(
     LazyColumn(
         state = listState,
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(3.dp),
+        contentPadding = PaddingValues(vertical = 6.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         if (conversations.itemCount == 0) {
             item {
@@ -221,7 +223,7 @@ private fun ConversationItem(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val backgroundColor = if (selected) {
-        MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.72f)
+        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.46f)
     } else {
         Color.Transparent
     }
@@ -230,7 +232,7 @@ private fun ConversationItem(
     }
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(18.dp))
             .combinedClickable(
                 interactionSource = interactionSource,
                 indication = LocalIndication.current,
@@ -244,7 +246,7 @@ private fun ConversationItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 9.dp),
+                .padding(horizontal = 14.dp, vertical = 11.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
@@ -252,6 +254,7 @@ private fun ConversationItem(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.bodyMedium,
+                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
                 color = MaterialTheme.colorScheme.onSurface,
             )
             Spacer(Modifier.weight(1f))
