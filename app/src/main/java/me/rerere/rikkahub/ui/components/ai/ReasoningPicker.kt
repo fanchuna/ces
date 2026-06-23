@@ -1,12 +1,14 @@
 package me.rerere.rikkahub.ui.components.ai
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -31,9 +33,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import me.rerere.ai.core.ReasoningLevel
 import me.rerere.rikkahub.ui.icons.OceanIcons
@@ -133,18 +140,11 @@ fun ReasoningPicker(
                     if (reasoningLevel.isEnabled) MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.onSurface
                 )
-                Icon(
-                    imageVector = when (reasoningLevel) {
-                        ReasoningLevel.OFF -> OceanIcons.Brain02
-                        ReasoningLevel.AUTO -> OceanIcons.Brain02
-                        ReasoningLevel.LOW -> OceanIcons.Brain02
-                        ReasoningLevel.MEDIUM -> OceanIcons.Brain02
-                        ReasoningLevel.HIGH -> OceanIcons.Brain02
-                        ReasoningLevel.XHIGH -> OceanIcons.Brain02
-                    },
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp),
+                ReasoningIcon(
+                    level = reasoningLevel,
+                    modifier = Modifier.size(56.dp),
                     tint = iconColor,
+                    iconSize = 30.dp,
                 )
                 Text(
                     text = reasoningLevel.label(),
@@ -262,14 +262,140 @@ private fun ReasoningScale(
 }
 
 @Composable
-private fun ReasoningIcon(level: ReasoningLevel) {
-    when (level) {
-        ReasoningLevel.OFF -> Icon(OceanIcons.Brain02, null)
-        ReasoningLevel.AUTO -> Icon(OceanIcons.Brain02, null)
-        ReasoningLevel.LOW -> Icon(OceanIcons.Brain02, null)
-        ReasoningLevel.MEDIUM -> Icon(OceanIcons.Brain02, null)
-        ReasoningLevel.HIGH -> Icon(OceanIcons.Brain02, null)
-        ReasoningLevel.XHIGH -> Icon(OceanIcons.Brain02, null)
+private fun ReasoningIcon(
+    level: ReasoningLevel,
+    modifier: Modifier = Modifier.size(24.dp),
+    tint: Color = MaterialTheme.colorScheme.onSurface,
+    iconSize: Dp = 18.dp,
+) {
+    val enabled = level.isEnabled
+    val ringColor = if (enabled) tint else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.45f)
+    val accentColor = if (enabled) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant
+    val faintRingColor = ringColor.copy(alpha = if (enabled) 0.20f else 0.12f)
+
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center,
+    ) {
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            val strokeWidth = size.minDimension * 0.07f
+            val ringSize = size.minDimension * 0.74f
+            val topLeft = Offset(
+                x = (size.width - ringSize) / 2f,
+                y = (size.height - ringSize) / 2f,
+            )
+
+            if (level != ReasoningLevel.OFF) {
+                drawArc(
+                    color = faintRingColor,
+                    startAngle = -90f,
+                    sweepAngle = 360f,
+                    useCenter = false,
+                    topLeft = topLeft,
+                    size = androidx.compose.ui.geometry.Size(ringSize, ringSize),
+                    style = Stroke(width = strokeWidth, cap = StrokeCap.Round),
+                )
+            }
+
+            when (level) {
+                ReasoningLevel.OFF -> Unit
+                ReasoningLevel.AUTO -> {
+                    drawCircle(
+                        color = accentColor,
+                        radius = strokeWidth * 0.95f,
+                        center = Offset(size.width * 0.70f, size.height * 0.27f),
+                    )
+                    drawCircle(
+                        color = accentColor.copy(alpha = 0.55f),
+                        radius = strokeWidth * 0.62f,
+                        center = Offset(size.width * 0.30f, size.height * 0.73f),
+                    )
+                }
+                ReasoningLevel.LOW -> {
+                    drawArc(
+                        color = ringColor,
+                        startAngle = -130f,
+                        sweepAngle = 115f,
+                        useCenter = false,
+                        topLeft = topLeft,
+                        size = androidx.compose.ui.geometry.Size(ringSize, ringSize),
+                        style = Stroke(width = strokeWidth, cap = StrokeCap.Round),
+                    )
+                }
+                ReasoningLevel.MEDIUM -> {
+                    listOf(-150f to 110f, 18f to 120f).forEach { (start, sweep) ->
+                        drawArc(
+                            color = ringColor,
+                            startAngle = start,
+                            sweepAngle = sweep,
+                            useCenter = false,
+                            topLeft = topLeft,
+                            size = androidx.compose.ui.geometry.Size(ringSize, ringSize),
+                            style = Stroke(width = strokeWidth, cap = StrokeCap.Round),
+                        )
+                    }
+                }
+                ReasoningLevel.HIGH -> {
+                    drawArc(
+                        color = ringColor,
+                        startAngle = -90f,
+                        sweepAngle = 330f,
+                        useCenter = false,
+                        topLeft = topLeft,
+                        size = androidx.compose.ui.geometry.Size(ringSize, ringSize),
+                        style = Stroke(width = strokeWidth, cap = StrokeCap.Round),
+                    )
+                    drawCircle(
+                        color = accentColor,
+                        radius = strokeWidth * 0.78f,
+                        center = Offset(size.width * 0.78f, size.height * 0.22f),
+                    )
+                }
+                ReasoningLevel.XHIGH -> {
+                    drawArc(
+                        color = ringColor,
+                        startAngle = -90f,
+                        sweepAngle = 360f,
+                        useCenter = false,
+                        topLeft = topLeft,
+                        size = androidx.compose.ui.geometry.Size(ringSize, ringSize),
+                        style = Stroke(width = strokeWidth, cap = StrokeCap.Round),
+                    )
+                    val outerSize = size.minDimension * 0.94f
+                    val outerTopLeft = Offset(
+                        x = (size.width - outerSize) / 2f,
+                        y = (size.height - outerSize) / 2f,
+                    )
+                    drawArc(
+                        color = accentColor.copy(alpha = 0.72f),
+                        startAngle = -42f,
+                        sweepAngle = 255f,
+                        useCenter = false,
+                        topLeft = outerTopLeft,
+                        size = androidx.compose.ui.geometry.Size(outerSize, outerSize),
+                        style = Stroke(width = strokeWidth * 0.78f, cap = StrokeCap.Round),
+                    )
+                    listOf(
+                        Offset(size.width * 0.78f, size.height * 0.17f),
+                        Offset(size.width * 0.88f, size.height * 0.50f),
+                        Offset(size.width * 0.24f, size.height * 0.82f),
+                    ).forEachIndexed { index, center ->
+                        drawCircle(
+                            color = accentColor.copy(alpha = 1f - index * 0.16f),
+                            radius = strokeWidth * (0.88f - index * 0.08f),
+                            center = center,
+                        )
+                    }
+                }
+            }
+        }
+
+        Icon(
+            imageVector = OceanIcons.Brain02,
+            contentDescription = null,
+            tint = tint,
+            modifier = Modifier.size(iconSize),
+        )
     }
 }
 
