@@ -35,8 +35,8 @@ jobs:
           {
             "project_info": {
               "project_number": "123456789012",
-              "project_id": "ces-debug",
-              "storage_bucket": "ces-debug.appspot.com"
+              "project_id": "fanchuan-debug",
+              "storage_bucket": "fanchuan-debug.appspot.com"
             },
             "client": [
               {
@@ -81,5 +81,5 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v6
         with:
-          name: rikkahub-debug-apk
+          name: fanchuan-debug-apk
           path: app/build/outputs/apk/debug/*.apk

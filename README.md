@@ -1,10 +1,10 @@
-# CES
+# Sail AI Assistant
 
-A simplified native Android LLM chat client built with Kotlin and Jetpack Compose.
+A sailing-themed native Android LLM chat client built with Kotlin and Jetpack Compose.
 
 ## Features
 
-- Material Design 3 Android UI with dark mode
+- Sea-blue Material Design 3 Android UI with dark mode
 - Default AI providers limited to OpenAI, Gemini, and DeepSeek
 - Custom API base URL, headers, request body, and model configuration
 - Multimodal input support

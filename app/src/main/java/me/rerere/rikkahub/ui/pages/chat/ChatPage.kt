@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.AlertDialog
@@ -672,7 +673,10 @@ private fun TopBar(
     }
 
     TopAppBar(
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.92f),
+            scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+        ),
         navigationIcon = {
             if (!bigScreen) {
                 IconButton(
@@ -694,16 +698,20 @@ private fun TopBar(
                         toaster.show(editTitleWarning, type = ToastType.Warning)
                     }
                 },
-                color = Color.Transparent,
+                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.42f),
+                shape = MaterialTheme.shapes.largeIncreased,
+                tonalElevation = 1.dp,
             ) {
-                Column {
+                Column(
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                ) {
                     val assistant = settings.getCurrentAssistant()
                     val model = settings.getCurrentChatModel()
                     val provider = model?.findProvider(providers = settings.providers, checkOverwrite = false)
                     Text(
                         text = conversation.title.ifBlank { stringResource(R.string.chat_page_new_chat) },
                         maxLines = 1,
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.titleSmallEmphasized,
                         overflow = TextOverflow.Ellipsis,
                     )
                     if (model != null && provider != null) {

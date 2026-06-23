@@ -89,6 +89,33 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                 }
             }
 
+            item("brandHeader") {
+                Card(
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                    )
+                ) {
+                    Column(
+                        modifier = Modifier.padding(20.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text(
+                            text = "帆船 AI 助手",
+                            style = MaterialTheme.typography.titleLargeEmphasized,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        )
+                        Text(
+                            text = "海蓝航行主题 · 多模型对话 · 本地数据管理",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.72f),
+                        )
+                    }
+                }
+            }
+
             item("generalSettings") {
                 var colorMode by rememberColorMode()
                 val selectedColorModeText = when (colorMode) {

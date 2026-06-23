@@ -47,5 +47,20 @@ fun AssistantBackground(setting: Settings, modifier: Modifier) {
                     )
             )
         }
+        return
     }
+
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(
+                        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.28f),
+                        MaterialTheme.colorScheme.background,
+                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.12f),
+                    )
+                )
+            )
+    )
 }

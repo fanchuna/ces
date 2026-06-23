@@ -151,17 +151,17 @@ class WebDavSync(
             if (config.items.contains(WebDavConfig.BackupItem.DATABASE)) {
                 val dbFile = context.getDatabasePath("rikka_hub")
                 if (dbFile.exists()) {
-                    addFileToZip(zipOut, dbFile, "rikka_hub.db")
+                    addFileToZip(zipOut, dbFile, "fanchuan.db")
                 }
 
                 val walFile = File(dbFile.parentFile, "rikka_hub-wal")
                 if (walFile.exists()) {
-                    addFileToZip(zipOut, walFile, "rikka_hub-wal")
+                    addFileToZip(zipOut, walFile, "fanchuan-wal")
                 }
 
                 val shmFile = File(dbFile.parentFile, "rikka_hub-shm")
                 if (shmFile.exists()) {
-                    addFileToZip(zipOut, shmFile, "rikka_hub-shm")
+                    addFileToZip(zipOut, shmFile, "fanchuan-shm")
                 }
             }
 
@@ -237,16 +237,16 @@ class WebDavSync(
                             }
                         }
 
-                        "rikka_hub.db", "rikka_hub-wal", "rikka_hub-shm" -> {
+                        "fanchuan.db", "fanchuan-wal", "fanchuan-shm", "rikka_hub.db", "rikka_hub-wal", "rikka_hub-shm" -> {
                             if (config.items.contains(WebDavConfig.BackupItem.DATABASE)) {
                                 val dbFile = when (zipEntry.name) {
-                                    "rikka_hub.db" -> context.getDatabasePath("rikka_hub")
-                                    "rikka_hub-wal" -> File(
+                                    "fanchuan.db", "rikka_hub.db" -> context.getDatabasePath("rikka_hub")
+                                    "fanchuan-wal", "rikka_hub-wal" -> File(
                                         context.getDatabasePath("rikka_hub").parentFile,
                                         "rikka_hub-wal"
                                     )
 
-                                    "rikka_hub-shm" -> File(
+                                    "fanchuan-shm", "rikka_hub-shm" -> File(
                                         context.getDatabasePath("rikka_hub").parentFile,
                                         "rikka_hub-shm"
                                     )

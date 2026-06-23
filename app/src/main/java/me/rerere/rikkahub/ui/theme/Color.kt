@@ -173,19 +173,17 @@ object CustomColors {
     var black = false
 
     val topBarColors: TopAppBarColors
-        @Composable get() {
-            return if (!LocalDarkMode.current) TopAppBarDefaults.topAppBarColors(
-                containerColor = colorScheme.surfaceContainer,
-                scrolledContainerColor = colorScheme.surfaceContainer
-            ) else TopAppBarDefaults.topAppBarColors()
-        }
+        @Composable get() = TopAppBarDefaults.topAppBarColors(
+            containerColor = colorScheme.surfaceContainerLow,
+            scrolledContainerColor = colorScheme.surfaceContainer,
+        )
 
     val cardColors: CardColors
-        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceContainer)
+        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceContainerLow)
 
     val cardColorsOnSurfaceContainer: CardColors
-        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceBright)
+        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceContainerLowest)
 
     val listItemColors: ListItemColors
-        @Composable get() = ListItemDefaults.colors(containerColor = colorScheme.surfaceBright)
+        @Composable get() = ListItemDefaults.colors(containerColor = colorScheme.surfaceContainerLowest)
 }

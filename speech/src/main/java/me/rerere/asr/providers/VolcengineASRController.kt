@@ -165,7 +165,7 @@ class VolcengineASRController(
         }
 
         val json = JSONObject()
-            .put("user", JSONObject().put("uid", "rikkahub"))
+            .put("user", JSONObject().put("uid", "fanchuan_ai"))
             .put("audio", audio)
             .put(
                 "request", JSONObject()

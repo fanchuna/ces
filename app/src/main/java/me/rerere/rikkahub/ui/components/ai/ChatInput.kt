@@ -180,13 +180,13 @@ fun ChatInput(
             modifier = modifier
                 .imePadding()
                 .navigationBarsPadding()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 12.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(MaterialTheme.shapes.largeIncreased)
+                    .clip(RoundedCornerShape(28.dp))
                     .then(
                         if (settings.displaySetting.enableBlurEffect) Modifier.hazeEffect(
                             state = hazeState
@@ -197,14 +197,15 @@ fun ChatInput(
                         }
                         else Modifier
                     ),
-                shape = MaterialTheme.shapes.largeIncreased,
-                tonalElevation = 0.dp,
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
-                color = if (settings.displaySetting.enableBlurEffect) Color.Transparent else hazeTintColor,
+                shape = RoundedCornerShape(28.dp),
+                tonalElevation = 3.dp,
+                shadowElevation = 2.dp,
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.32f)),
+                color = if (settings.displaySetting.enableBlurEffect) Color.Transparent else MaterialTheme.colorScheme.surfaceContainerLowest,
             ) {
                 Column(
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                    verticalArrangement = Arrangement.spacedBy(2.dp)
+                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     if (state.messageContent.isNotEmpty()) {
                         MediaFileInputRow(state = state)
@@ -297,7 +298,7 @@ fun ChatInput(
                             Box(
                                 contentAlignment = Alignment.Center,
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(36.dp)
                                     .testTag("chat_send_button")
                                     .clip(CircleShape)
                                     .combinedClickable(
@@ -311,7 +312,7 @@ fun ChatInput(
                             ) {
                                 val containerColor = when {
                                     loading -> MaterialTheme.colorScheme.errorContainer
-                                    state.isEmpty() -> MaterialTheme.colorScheme.surfaceContainerHigh
+                                    state.isEmpty() -> MaterialTheme.colorScheme.surfaceContainerHighest
                                     else -> MaterialTheme.colorScheme.primary
                                 }
                                 val contentColor = when {
@@ -330,14 +331,14 @@ fun ChatInput(
                                         imageVector = HugeIcons.Cancel01,
                                         contentDescription = stringResource(R.string.stop),
                                         tint = contentColor,
-                                        modifier = Modifier.size(18.dp)
+                                        modifier = Modifier.size(20.dp)
                                     )
                                 } else {
                                     Icon(
                                         imageVector = HugeIcons.ArrowUp02,
                                         contentDescription = stringResource(R.string.send),
                                         tint = contentColor,
-                                        modifier = Modifier.size(18.dp)
+                                        modifier = Modifier.size(20.dp)
                                     )
                                 }
                             }
@@ -357,10 +358,10 @@ private fun ActionIconButton(
 ) {
     Surface(
         onClick = onClick,
-        modifier = Modifier.size(30.dp),
+        modifier = Modifier.size(32.dp),
         shape = CircleShape,
-        tonalElevation = 0.dp,
-        color = Color.Transparent,
+        tonalElevation = 1.dp,
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
     ) {
         Box(
             modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center

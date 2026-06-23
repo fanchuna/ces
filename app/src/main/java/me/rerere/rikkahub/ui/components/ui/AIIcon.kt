@@ -26,7 +26,7 @@ private fun AIIcon(
     name: String,
     modifier: Modifier = Modifier,
     loading: Boolean = false,
-    color: Color = MaterialTheme.colorScheme.secondaryContainer,
+    color: Color = MaterialTheme.colorScheme.primaryContainer,
 ) {
     val contentColor = LocalContentColor.current
     val context = LocalContext.current
@@ -60,7 +60,7 @@ fun AutoAIIcon(
     name: String,
     modifier: Modifier = Modifier,
     loading: Boolean = false,
-    color: Color = MaterialTheme.colorScheme.secondaryContainer,
+    color: Color = MaterialTheme.colorScheme.primaryContainer,
 ) {
     val path = remember(name) { computeAIIconByName(name) } ?: run {
         TextAvatar(text = name, modifier = modifier, loading = loading, color = color)

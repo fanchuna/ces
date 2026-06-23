@@ -82,7 +82,7 @@
 
         <data
           android:host="shortcut"
-          android:scheme="ces" />
+          android:scheme="fanchuan" />
       </intent-filter>
     </activity>
     <activity

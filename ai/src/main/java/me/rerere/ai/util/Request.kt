@@ -26,8 +26,8 @@ fun Request.Builder.configureReferHeaders(url: String): Request.Builder {
     return when (httpUrl.host) {
         "openrouter.ai" -> {
             this
-                .addHeader("X-Title", "CES")
-                .addHeader("HTTP-Referer", "https://github.com/fanchuna/ces")
+                .addHeader("X-Title", "Fanchuan AI Assistant")
+                .addHeader("HTTP-Referer", "https://github.com/fanchuna")
         }
 
         else -> this

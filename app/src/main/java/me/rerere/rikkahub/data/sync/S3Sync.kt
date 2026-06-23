@@ -46,7 +46,7 @@ class S3Sync(
     suspend fun backupToS3(config: S3Config) = withContext(Dispatchers.IO) {
         val file = prepareBackupFile(config)
         val client = getS3Client(config)
-        val key = "rikkahub_backups/${file.name}"
+        val key = "fanchuan_backups/${file.name}"
 
         client.putObject(
             key = key,
@@ -62,13 +62,18 @@ class S3Sync(
 
     suspend fun listBackupFiles(config: S3Config): List<S3BackupItem> = withContext(Dispatchers.IO) {
         val client = getS3Client(config)
-        val result = client.listObjects(
-            prefix = "rikkahub_backups/",
-            maxKeys = 1000
-        ).getOrThrow()
+        val prefixes = listOf("fanchuan_backups/", "rikkahub_backups/")
 
-        result.objects
-            .filter { it.key.startsWith("rikkahub_backups/backup_") && it.key.endsWith(".zip") }
+        prefixes
+            .flatMap { prefix ->
+                val result = client.listObjects(
+                    prefix = prefix,
+                    maxKeys = 1000
+                ).getOrThrow()
+
+                result.objects.filter { it.key.startsWith("${prefix}backup_") && it.key.endsWith(".zip") }
+            }
+            .distinctBy { it.key }
             .map { obj ->
                 S3BackupItem(
                     key = obj.key,
@@ -128,17 +133,17 @@ class S3Sync(
             if (config.items.contains(S3Config.BackupItem.DATABASE)) {
                 val dbFile = context.getDatabasePath("rikka_hub")
                 if (dbFile.exists()) {
-                    addFileToZip(zipOut, dbFile, "rikka_hub.db")
+                    addFileToZip(zipOut, dbFile, "fanchuan.db")
                 }
 
                 val walFile = File(dbFile.parentFile, "rikka_hub-wal")
                 if (walFile.exists()) {
-                    addFileToZip(zipOut, walFile, "rikka_hub-wal")
+                    addFileToZip(zipOut, walFile, "fanchuan-wal")
                 }
 
                 val shmFile = File(dbFile.parentFile, "rikka_hub-shm")
                 if (shmFile.exists()) {
-                    addFileToZip(zipOut, shmFile, "rikka_hub-shm")
+                    addFileToZip(zipOut, shmFile, "fanchuan-shm")
                 }
             }
 
@@ -214,16 +219,16 @@ class S3Sync(
                             }
                         }
 
-                        "rikka_hub.db", "rikka_hub-wal", "rikka_hub-shm" -> {
+                        "fanchuan.db", "fanchuan-wal", "fanchuan-shm", "rikka_hub.db", "rikka_hub-wal", "rikka_hub-shm" -> {
                             if (config.items.contains(S3Config.BackupItem.DATABASE)) {
                                 val dbFile = when (zipEntry.name) {
-                                    "rikka_hub.db" -> context.getDatabasePath("rikka_hub")
-                                    "rikka_hub-wal" -> File(
+                                    "fanchuan.db", "rikka_hub.db" -> context.getDatabasePath("rikka_hub")
+                                    "fanchuan-wal", "rikka_hub-wal" -> File(
                                         context.getDatabasePath("rikka_hub").parentFile,
                                         "rikka_hub-wal"
                                     )
 
-                                    "rikka_hub-shm" -> File(
+                                    "fanchuan-shm", "rikka_hub-shm" -> File(
                                         context.getDatabasePath("rikka_hub").parentFile,
                                         "rikka_hub-shm"
                                     )

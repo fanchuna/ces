@@ -1,10 +1,10 @@
-# CES
+# 帆船 AI 助手
 
-一个精简后的原生 Android LLM 聊天客户端，使用 Kotlin 与 Jetpack Compose 构建。
+一个海蓝航行风格的原生 Android LLM 聊天客户端，使用 Kotlin 与 Jetpack Compose 构建。
 
 ## 功能
 
-- Material Design 3 Android 界面和暗色模式
+- 海蓝主题 Material Design 3 Android 界面和暗色模式
 - 默认 AI Provider 仅保留 OpenAI、Gemini、DeepSeek
 - 支持自定义 API 地址、请求头、请求体和模型配置
 - 支持多模态输入
