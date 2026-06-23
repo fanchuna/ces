@@ -191,7 +191,7 @@ private fun AppSearchSettings(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(OceanIcons.GlobalSearch, null)
+            Icon(OceanIcons.Compass, null)
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -297,7 +297,7 @@ private fun BuiltInSearchSetting(model: Model) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(OceanIcons.GlobalSearch, null)
+            Icon(OceanIcons.Compass, null)
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)

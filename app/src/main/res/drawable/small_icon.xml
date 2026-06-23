@@ -48,23 +48,38 @@
     <aapt:attr name="android:animation">
       <set android:ordering="together">
         <objectAnimator
-          android:duration="2400"
+          android:duration="2100"
           android:propertyName="translateY"
           android:repeatCount="infinite">
           <propertyValuesHolder android:propertyName="translateY">
-            <keyframe android:fraction="0.0" android:value="0.0" />
-            <keyframe android:fraction="0.5" android:value="-18.0" />
-            <keyframe android:fraction="1.0" android:value="0.0" />
+            <keyframe android:fraction="0.0" android:value="10.0" />
+            <keyframe android:fraction="0.28" android:value="-72.0" />
+            <keyframe android:fraction="0.55" android:value="-28.0" />
+            <keyframe android:fraction="0.78" android:value="18.0" />
+            <keyframe android:fraction="1.0" android:value="10.0" />
           </propertyValuesHolder>
         </objectAnimator>
         <objectAnimator
-          android:duration="2400"
+          android:duration="2100"
+          android:propertyName="translateX"
+          android:repeatCount="infinite">
+          <propertyValuesHolder android:propertyName="translateX">
+            <keyframe android:fraction="0.0" android:value="-16.0" />
+            <keyframe android:fraction="0.32" android:value="18.0" />
+            <keyframe android:fraction="0.66" android:value="-10.0" />
+            <keyframe android:fraction="1.0" android:value="-16.0" />
+          </propertyValuesHolder>
+        </objectAnimator>
+        <objectAnimator
+          android:duration="2100"
           android:propertyName="rotation"
           android:repeatCount="infinite">
           <propertyValuesHolder android:propertyName="rotation">
-            <keyframe android:fraction="0.0" android:value="-1.5" />
-            <keyframe android:fraction="0.5" android:value="1.5" />
-            <keyframe android:fraction="1.0" android:value="-1.5" />
+            <keyframe android:fraction="0.0" android:value="-4.2" />
+            <keyframe android:fraction="0.28" android:value="4.6" />
+            <keyframe android:fraction="0.55" android:value="-2.8" />
+            <keyframe android:fraction="0.78" android:value="3.8" />
+            <keyframe android:fraction="1.0" android:value="-4.2" />
           </propertyValuesHolder>
         </objectAnimator>
       </set>
@@ -73,16 +88,28 @@
 
   <target android:name="wave_group">
     <aapt:attr name="android:animation">
-      <objectAnimator
-        android:duration="2400"
-        android:propertyName="translateX"
-        android:repeatCount="infinite">
-        <propertyValuesHolder android:propertyName="translateX">
-          <keyframe android:fraction="0.0" android:value="-22.0" />
-          <keyframe android:fraction="0.5" android:value="22.0" />
-          <keyframe android:fraction="1.0" android:value="-22.0" />
-        </propertyValuesHolder>
-      </objectAnimator>
+      <set android:ordering="together">
+        <objectAnimator
+          android:duration="2100"
+          android:propertyName="translateX"
+          android:repeatCount="infinite">
+          <propertyValuesHolder android:propertyName="translateX">
+            <keyframe android:fraction="0.0" android:value="-96.0" />
+            <keyframe android:fraction="0.5" android:value="96.0" />
+            <keyframe android:fraction="1.0" android:value="-96.0" />
+          </propertyValuesHolder>
+        </objectAnimator>
+        <objectAnimator
+          android:duration="2100"
+          android:propertyName="translateY"
+          android:repeatCount="infinite">
+          <propertyValuesHolder android:propertyName="translateY">
+            <keyframe android:fraction="0.0" android:value="6.0" />
+            <keyframe android:fraction="0.5" android:value="-8.0" />
+            <keyframe android:fraction="1.0" android:value="6.0" />
+          </propertyValuesHolder>
+        </objectAnimator>
+      </set>
     </aapt:attr>
   </target>
 </animated-vector>

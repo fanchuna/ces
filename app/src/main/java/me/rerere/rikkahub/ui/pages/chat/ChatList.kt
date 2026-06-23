@@ -412,7 +412,7 @@ private fun ChatListNormal(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             RabbitLoadingIndicator(
-                                modifier = Modifier.size(28.dp)
+                                modifier = Modifier.size(32.dp)
                             )
                             AnimatedVisibility(
                                 visible = processingStatus != null,

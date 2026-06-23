@@ -280,13 +280,13 @@ private fun StatsGrid(stats: AppStats, modifier: Modifier = Modifier) {
         ) {
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = OceanIcons.ChartColumn,
+                icon = OceanIcons.VoyageLog,
                 label = stringResource(R.string.stats_page_total_conversations),
                 value = formatCount(stats.totalConversations.toLong()),
             )
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = OceanIcons.Message01,
+                icon = OceanIcons.Waves,
                 label = stringResource(R.string.stats_page_total_messages),
                 value = formatCount(stats.totalMessages.toLong()),
             )
@@ -297,13 +297,13 @@ private fun StatsGrid(stats: AppStats, modifier: Modifier = Modifier) {
         ) {
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = OceanIcons.Cpu,
+                icon = OceanIcons.Compass,
                 label = stringResource(R.string.stats_page_input_tokens),
                 value = formatTokens(stats.totalPromptTokens),
             )
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = OceanIcons.Cpu,
+                icon = OceanIcons.Lighthouse,
                 label = stringResource(R.string.stats_page_output_tokens),
                 value = formatTokens(stats.totalCompletionTokens),
             )
@@ -311,14 +311,14 @@ private fun StatsGrid(stats: AppStats, modifier: Modifier = Modifier) {
         if (stats.totalCachedTokens > 0) {
             StatCard(
                 modifier = Modifier.fillMaxWidth(),
-                icon = OceanIcons.Zap,
+                icon = OceanIcons.Waves,
                 label = stringResource(R.string.stats_page_cached_tokens),
                 value = formatTokens(stats.totalCachedTokens),
             )
         }
         StatCard(
             modifier = Modifier.fillMaxWidth(),
-            icon = OceanIcons.Rocket01,
+            icon = OceanIcons.Sailboat,
             label = stringResource(R.string.stats_page_launch_count),
             value = formatCount(stats.launchCount.toLong()),
         )

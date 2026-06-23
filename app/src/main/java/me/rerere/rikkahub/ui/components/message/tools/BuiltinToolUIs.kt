@@ -191,7 +191,7 @@ object SearchWebToolUI : ToolUIRenderer {
 object ScrapeWebToolUI : ToolUIRenderer {
     override val toolName: String = "scrape_web"
 
-    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.GlobalSearch
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.Compass
 
     @Composable
     override fun title(context: ToolUIContext): String =

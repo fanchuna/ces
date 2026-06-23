@@ -201,7 +201,7 @@ fun ImportExportTab(
                         if (isExporting) {
                             CircularWavyProgressIndicator(modifier = Modifier.size(24.dp))
                         } else {
-                            Icon(OceanIcons.File01, null)
+                            Icon(OceanIcons.VoyageLog, null)
                         }
                     },
                 )

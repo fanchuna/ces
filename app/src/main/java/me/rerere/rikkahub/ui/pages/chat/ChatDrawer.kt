@@ -208,7 +208,7 @@ fun ChatDrawerContent(
                 Box {
                     DrawerAction(
                         icon = {
-                            Icon(OceanIcons.Sparkles, "Menu")
+                            Icon(OceanIcons.Sailboat, "Menu")
                         },
                         label = {
                             Text(stringResource(R.string.menu))
@@ -234,7 +234,7 @@ fun ChatDrawerContent(
 
                 DrawerAction(
                     icon = {
-                        Icon(OceanIcons.InLove, stringResource(R.string.favorite_page_title))
+                        Icon(OceanIcons.AnchorMark, stringResource(R.string.favorite_page_title))
                     },
                     label = {
                         Text(stringResource(R.string.favorite_page_title))
@@ -329,7 +329,7 @@ private fun DrawerActions(navController: Navigator) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 Icon(
-                    imageVector = OceanIcons.TransactionHistory,
+                    imageVector = OceanIcons.VoyageLog,
                     contentDescription = null,
                     modifier = Modifier.size(18.dp),
                     tint = MaterialTheme.colorScheme.onSurface,

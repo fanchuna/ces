@@ -46,7 +46,7 @@ fun BackupReminderCard(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
-                imageVector = OceanIcons.DatabaseRestore,
+                imageVector = OceanIcons.AnchorMark,
                 contentDescription = null,
                 modifier = Modifier.size(20.dp),
                 tint = MaterialTheme.colorScheme.primary,
