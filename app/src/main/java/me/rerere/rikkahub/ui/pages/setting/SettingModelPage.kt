@@ -34,11 +34,7 @@ import kotlinx.coroutines.launch
 import me.rerere.ai.provider.Model
 import me.rerere.ai.provider.ModelType
 import me.rerere.ai.provider.ProviderSetting
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.AiBrain01
-import me.rerere.hugeicons.stroke.AiEditing
-import me.rerere.hugeicons.stroke.ArrowRight01
-import me.rerere.hugeicons.stroke.Cancel01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.datastore.Settings
 import me.rerere.rikkahub.ui.components.ai.ModelListSheet
@@ -74,13 +70,13 @@ fun SettingModelPage(vm: SettingVM = koinViewModel()) {
                 NavigationBarItem(
                     selected = pagerState.currentPage == 0,
                     onClick = { scope.launch { pagerState.animateScrollToPage(0) } },
-                    icon = { Icon(HugeIcons.AiBrain01, null) },
+                    icon = { Icon(OceanIcons.AiBrain01, null) },
                     label = { Text(stringResource(R.string.setting_model_page_tab_model)) }
                 )
                 NavigationBarItem(
                     selected = pagerState.currentPage == 1,
                     onClick = { scope.launch { pagerState.animateScrollToPage(1) } },
-                    icon = { Icon(HugeIcons.AiEditing, null) },
+                    icon = { Icon(OceanIcons.AiEditing, null) },
                     label = { Text(stringResource(R.string.setting_model_page_tab_prompt)) }
                 )
             }
@@ -208,11 +204,11 @@ private fun SuggestionModelSettingItem(
                                     onClick = { vm.updateSettings(settings.copy(suggestionModelId = null)) },
                                     modifier = Modifier.size(20.dp),
                                 ) {
-                                    Icon(HugeIcons.Cancel01, contentDescription = null, modifier = Modifier.size(14.dp))
+                                    Icon(OceanIcons.Cancel01, contentDescription = null, modifier = Modifier.size(14.dp))
                                 }
                             } else {
                                 Icon(
-                                    HugeIcons.ArrowRight01,
+                                    OceanIcons.ArrowRight01,
                                     contentDescription = null,
                                     modifier = Modifier.size(16.dp),
                                 )
@@ -268,11 +264,11 @@ private fun ModelSettingItem(
                         )
                         if (onClear != null && state.currentModel != null) {
                             IconButton(onClick = onClear, modifier = Modifier.size(20.dp)) {
-                                Icon(HugeIcons.Cancel01, contentDescription = null, modifier = Modifier.size(14.dp))
+                                Icon(OceanIcons.Cancel01, contentDescription = null, modifier = Modifier.size(14.dp))
                             }
                         } else {
                             Icon(
-                                HugeIcons.ArrowRight01,
+                                OceanIcons.ArrowRight01,
                                 contentDescription = null,
                                 modifier = Modifier.size(16.dp),
                             )

@@ -26,13 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowLeft01
-import me.rerere.hugeicons.stroke.ArrowRight01
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.Forward02
-import me.rerere.hugeicons.stroke.Pause
-import me.rerere.hugeicons.stroke.Play
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.ui.context.LocalTTSState
 import me.rerere.rikkahub.ui.hooks.CustomTtsState
 import me.rerere.tts.model.PlaybackState
@@ -80,7 +74,7 @@ fun TTSController() {
                     }
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Cancel01,
+                        imageVector = OceanIcons.Cancel01,
                         contentDescription = null,
                     )
                 }
@@ -102,7 +96,7 @@ fun TTSController() {
                     }
                 ) {
                     Icon(
-                        imageVector = if (expand) HugeIcons.ArrowLeft01 else HugeIcons.ArrowRight01,
+                        imageVector = if (expand) OceanIcons.ArrowLeft01 else OceanIcons.ArrowRight01,
                         contentDescription = null,
                     )
                 }
@@ -119,7 +113,7 @@ private fun FastForwardButton(ttsState: CustomTtsState) {
         }
     ) {
         Icon(
-            imageVector = HugeIcons.Forward02,
+            imageVector = OceanIcons.Forward02,
             contentDescription = null,
         )
     }
@@ -148,7 +142,7 @@ private fun PlayPauseButton(
         )
     ) {
         Icon(
-            imageVector = if (playbackState.status == PlaybackStatus.Playing) HugeIcons.Pause else HugeIcons.Play,
+            imageVector = if (playbackState.status == PlaybackStatus.Playing) OceanIcons.Pause else OceanIcons.Play,
             contentDescription = null,
         )
         if (playbackState.status == PlaybackStatus.Playing || playbackState.status == PlaybackStatus.Buffering || playbackState.status == PlaybackStatus.Paused) {

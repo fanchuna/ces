@@ -41,14 +41,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.compose.collectAsLazyPagingItems
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ChartColumn
-import me.rerere.hugeicons.stroke.Image02
-import me.rerere.hugeicons.stroke.InLove
-import me.rerere.hugeicons.stroke.PencilEdit01
-import me.rerere.hugeicons.stroke.Settings03
-import me.rerere.hugeicons.stroke.Sparkles
-import me.rerere.hugeicons.stroke.TransactionHistory
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.data.datastore.Settings
@@ -162,7 +155,7 @@ fun ChatDrawerContent(
                         )
 
                         Icon(
-                            imageVector = HugeIcons.PencilEdit01,
+                            imageVector = OceanIcons.PencilEdit01,
                             contentDescription = "Edit",
                             modifier = Modifier
                                 .onClick {
@@ -215,7 +208,7 @@ fun ChatDrawerContent(
                 Box {
                     DrawerAction(
                         icon = {
-                            Icon(HugeIcons.Sparkles, "Menu")
+                            Icon(OceanIcons.Sparkles, "Menu")
                         },
                         label = {
                             Text(stringResource(R.string.menu))
@@ -230,7 +223,7 @@ fun ChatDrawerContent(
                     ) {
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.chat_page_menu_image_generation)) },
-                            leadingIcon = { Icon(HugeIcons.Image02, null) },
+                            leadingIcon = { Icon(OceanIcons.Image02, null) },
                             onClick = {
                                 showMenuPopup = false
                                 navController.navigate(Screen.ImageGen)
@@ -241,7 +234,7 @@ fun ChatDrawerContent(
 
                 DrawerAction(
                     icon = {
-                        Icon(HugeIcons.InLove, stringResource(R.string.favorite_page_title))
+                        Icon(OceanIcons.InLove, stringResource(R.string.favorite_page_title))
                     },
                     label = {
                         Text(stringResource(R.string.favorite_page_title))
@@ -253,7 +246,7 @@ fun ChatDrawerContent(
 
                 DrawerAction(
                     icon = {
-                        Icon(HugeIcons.ChartColumn, "统计数据")
+                        Icon(OceanIcons.ChartColumn, "统计数据")
                     },
                     label = {
                         Text("统计数据")
@@ -267,7 +260,7 @@ fun ChatDrawerContent(
 
                 DrawerAction(
                     icon = {
-                        Icon(HugeIcons.Settings03, null)
+                        Icon(OceanIcons.Settings03, null)
                     },
                     label = { Text(stringResource(R.string.settings)) },
                     onClick = {
@@ -336,7 +329,7 @@ private fun DrawerActions(navController: Navigator) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 Icon(
-                    imageVector = HugeIcons.TransactionHistory,
+                    imageVector = OceanIcons.TransactionHistory,
                     contentDescription = null,
                     modifier = Modifier.size(18.dp),
                     tint = MaterialTheme.colorScheme.onSurface,

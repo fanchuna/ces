@@ -25,8 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import me.rerere.ai.provider.ProviderSetting
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Share03
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.utils.JsonInstant
 import kotlin.io.encoding.Base64
 
@@ -70,7 +69,7 @@ fun ShareSheet(
                             }
                         }
                     ) {
-                        Icon(HugeIcons.Share03, null)
+                        Icon(OceanIcons.Share03, null)
                     }
                 }
 

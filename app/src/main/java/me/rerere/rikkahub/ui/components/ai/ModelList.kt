@@ -66,16 +66,7 @@ import me.rerere.ai.provider.Model
 import me.rerere.ai.provider.ModelAbility
 import me.rerere.ai.provider.ModelType
 import me.rerere.ai.provider.ProviderSetting
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowRight01
-import me.rerere.hugeicons.stroke.Brain02
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.DragDropHorizontal
-import me.rerere.hugeicons.stroke.Favourite
-import me.rerere.hugeicons.stroke.Image03
-import me.rerere.hugeicons.stroke.Search01
-import me.rerere.hugeicons.stroke.Text
-import me.rerere.hugeicons.stroke.Tools
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.data.datastore.SettingsStore
@@ -207,7 +198,7 @@ fun ModelSelector(
                     }
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Cancel01,
+                        imageVector = OceanIcons.Cancel01,
                         contentDescription = "Clear"
                     )
                 }
@@ -227,7 +218,7 @@ fun ModelSelector(
                 )
             } else {
                 Icon(
-                    imageVector = HugeIcons.Brain02,
+                    imageVector = OceanIcons.Brain02,
                     contentDescription = stringResource(R.string.setting_model_page_chat_model),
                     modifier = Modifier.size(20.dp)
                 )
@@ -441,7 +432,7 @@ private fun ColumnScope.ModelList(
                 unfocusedContainerColor = Color.Transparent,
             ),
             leadingIcon = {
-                Icon(HugeIcons.Search01, null)
+                Icon(OceanIcons.Search01, null)
             },
             maxLines = 1,
         )
@@ -518,7 +509,7 @@ private fun ColumnScope.ModelList(
                         },
                         dragHandle = {
                             Icon(
-                                imageVector = HugeIcons.DragDropHorizontal,
+                                imageVector = OceanIcons.DragDropHorizontal,
                                 contentDescription = null,
                                 modifier = Modifier.longPressDraggableHandle(
                                     onDragStarted = {
@@ -601,7 +592,7 @@ private fun ColumnScope.ModelList(
                                 )
                             } else {
                                 Icon(
-                                    imageVector = HugeIcons.Favourite,
+                                    imageVector = OceanIcons.Favourite,
                                     contentDescription = null,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -777,8 +768,8 @@ fun ModelModalityTag(model: Model) {
         model.inputModalities.fastForEach { modality ->
             Icon(
                 imageVector = when (modality) {
-                    Modality.TEXT -> HugeIcons.Text
-                    Modality.IMAGE -> HugeIcons.Image03
+                    Modality.TEXT -> OceanIcons.Text
+                    Modality.IMAGE -> OceanIcons.Image03
                 },
                 contentDescription = null,
                 modifier = Modifier
@@ -787,15 +778,15 @@ fun ModelModalityTag(model: Model) {
             )
         }
         Icon(
-            imageVector = HugeIcons.ArrowRight01,
+            imageVector = OceanIcons.ArrowRight01,
             contentDescription = null,
             modifier = Modifier.size(LocalTextStyle.current.lineHeight.toDp())
         )
         model.outputModalities.fastForEach { modality ->
             Icon(
                 imageVector = when (modality) {
-                    Modality.TEXT -> HugeIcons.Text
-                    Modality.IMAGE -> HugeIcons.Image03
+                    Modality.TEXT -> OceanIcons.Text
+                    Modality.IMAGE -> OceanIcons.Image03
                 },
                 contentDescription = null,
                 modifier = Modifier
@@ -815,7 +806,7 @@ fun ModelAbilityTag(model: Model) {
                     type = TagType.WARNING
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Tools,
+                        imageVector = OceanIcons.Tools,
                         contentDescription = null,
                         modifier = Modifier.size(LocalTextStyle.current.lineHeight.toDp())
                     )

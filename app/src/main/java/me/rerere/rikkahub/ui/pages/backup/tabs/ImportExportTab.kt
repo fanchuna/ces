@@ -1,8 +1,6 @@
 package me.rerere.rikkahub.ui.pages.backup.tabs
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.File01
-import me.rerere.hugeicons.stroke.FileImport
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -203,7 +201,7 @@ fun ImportExportTab(
                         if (isExporting) {
                             CircularWavyProgressIndicator(modifier = Modifier.size(24.dp))
                         } else {
-                            Icon(HugeIcons.File01, null)
+                            Icon(OceanIcons.File01, null)
                         }
                     },
                 )
@@ -229,7 +227,7 @@ fun ImportExportTab(
                         if (isRestoring) {
                             CircularWavyProgressIndicator(modifier = Modifier.size(24.dp))
                         } else {
-                            Icon(HugeIcons.FileImport, null)
+                            Icon(OceanIcons.FileImport, null)
                         }
                     },
                 )
@@ -257,7 +255,7 @@ fun ImportExportTab(
                         if (isRestoring && importType == "chatbox") {
                             CircularWavyProgressIndicator(modifier = Modifier.size(24.dp))
                         } else {
-                            Icon(HugeIcons.FileImport, null)
+                            Icon(OceanIcons.FileImport, null)
                         }
                     },
                 )
@@ -275,7 +273,7 @@ fun ImportExportTab(
                         if (isRestoring && importType == "cherry") {
                             CircularWavyProgressIndicator(modifier = Modifier.size(24.dp))
                         } else {
-                            Icon(HugeIcons.FileImport, null)
+                            Icon(OceanIcons.FileImport, null)
                         }
                     },
                 )

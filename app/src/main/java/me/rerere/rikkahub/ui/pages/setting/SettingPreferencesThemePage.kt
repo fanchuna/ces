@@ -25,8 +25,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowRight01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.ui.components.nav.BackButton
@@ -83,7 +82,7 @@ fun SettingPreferencesThemePage(vm: SettingVM = koinViewModel()) {
                         onClick = { navController.navigate(Screen.SettingTheme) },
                         headlineContent = { Text(stringResource(R.string.setting_page_theme_setting)) },
                         supportingContent = { Text(stringResource(R.string.setting_page_theme_setting_desc)) },
-                        trailingContent = { Icon(HugeIcons.ArrowRight01, contentDescription = null) },
+                        trailingContent = { Icon(OceanIcons.ArrowRight01, contentDescription = null) },
                     )
                     item(
                         headlineContent = { Text(stringResource(R.string.setting_display_page_amoled_dark_mode_title)) },

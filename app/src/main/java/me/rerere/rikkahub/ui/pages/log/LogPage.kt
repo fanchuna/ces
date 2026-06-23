@@ -1,7 +1,6 @@
 package me.rerere.rikkahub.ui.pages.log
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Delete01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.layout.Arrangement
@@ -68,7 +67,7 @@ fun LogPage() {
                             logs = Logging.getRecentLogs()
                         }
                     ) {
-                        Icon(HugeIcons.Delete01, null)
+                        Icon(OceanIcons.Delete01, null)
                     }
                 },
                 scrollBehavior = scrollBehavior,

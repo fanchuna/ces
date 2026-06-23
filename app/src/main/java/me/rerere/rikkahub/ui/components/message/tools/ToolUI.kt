@@ -24,8 +24,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.contentOrNull
 import me.rerere.ai.ui.UIMessagePart
 import me.rerere.common.http.jsonObjectOrNull
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Tools
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.richtext.HighlightCodeBlock
 import me.rerere.rikkahub.ui.components.richtext.ZoomableAsyncImage
@@ -58,7 +57,7 @@ interface ToolUIRenderer {
     val toolName: String
 
     /** 折叠步骤的图标 */
-    fun icon(context: ToolUIContext): ImageVector = HugeIcons.Tools
+    fun icon(context: ToolUIContext): ImageVector = OceanIcons.Tools
 
     /** 折叠步骤的标题 */
     @Composable

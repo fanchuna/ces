@@ -1,7 +1,6 @@
 package me.rerere.rikkahub.ui.pages.chat
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Alert01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -65,7 +64,7 @@ fun ConversationSizeWarningDialog(
         onDismissRequest = onDismiss,
         icon = {
             Icon(
-                imageVector = HugeIcons.Alert01,
+                imageVector = OceanIcons.Alert01,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.tertiary
             )

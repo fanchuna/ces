@@ -18,8 +18,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import coil3.compose.AsyncImage
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Link01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
 @Composable
@@ -41,8 +40,8 @@ fun Favicon(
             .background(MaterialTheme.colorScheme.surfaceContainer),
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        placeholder = rememberVectorPainter(HugeIcons.Link01),
-        fallback = rememberVectorPainter(HugeIcons.Link01),
+        placeholder = rememberVectorPainter(OceanIcons.Link01),
+        fallback = rememberVectorPainter(OceanIcons.Link01),
     )
 }
 

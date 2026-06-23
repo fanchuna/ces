@@ -1,15 +1,6 @@
 package me.rerere.rikkahub.ui.pages.setting
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Tick01
-import me.rerere.hugeicons.stroke.StopCircle
-import me.rerere.hugeicons.stroke.DragDropHorizontal
-import me.rerere.hugeicons.stroke.PencilEdit01
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Mic01
-import me.rerere.hugeicons.stroke.Tools
-import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.VolumeHigh
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -127,13 +118,13 @@ fun SettingSpeechPage(vm: SettingVM = koinViewModel()) {
                 NavigationBarItem(
                     selected = selectedPage == 0,
                     onClick = { selectedPage = 0 },
-                    icon = { Icon(HugeIcons.VolumeHigh, contentDescription = null) },
+                    icon = { Icon(OceanIcons.VolumeHigh, contentDescription = null) },
                     label = { Text(stringResource(R.string.speech_tab_tts)) }
                 )
                 NavigationBarItem(
                     selected = selectedPage == 1,
                     onClick = { selectedPage = 1 },
-                    icon = { Icon(HugeIcons.Mic01, contentDescription = null) },
+                    icon = { Icon(OceanIcons.Mic01, contentDescription = null) },
                     label = { Text(stringResource(R.string.speech_tab_asr)) }
                 )
             }
@@ -334,7 +325,7 @@ private fun TTSProviderList(
                                 )
                         ) {
                             Icon(
-                                imageVector = HugeIcons.DragDropHorizontal,
+                                imageVector = OceanIcons.DragDropHorizontal,
                                 contentDescription = null
                             )
                         }
@@ -411,7 +402,7 @@ private fun ASRProviderList(
                                 )
                         ) {
                             Icon(
-                                imageVector = HugeIcons.DragDropHorizontal,
+                                imageVector = OceanIcons.DragDropHorizontal,
                                 contentDescription = null
                             )
                         }
@@ -455,7 +446,7 @@ private fun AddTTSProviderButton(onAdd: (TTSProviderSetting) -> Unit) {
             showBottomSheet = true
         }
     ) {
-        Icon(HugeIcons.Add01, stringResource(R.string.setting_tts_page_add_provider_content_description))
+        Icon(OceanIcons.Add01, stringResource(R.string.setting_tts_page_add_provider_content_description))
     }
 
     if (showBottomSheet) {
@@ -527,7 +518,7 @@ private fun AddASRProviderButton(onAdd: (ASRProviderSetting) -> Unit) {
         IconButton(
             onClick = { showTypeMenu = true }
         ) {
-            Icon(HugeIcons.Add01, stringResource(R.string.setting_asr_page_add_provider))
+            Icon(OceanIcons.Add01, stringResource(R.string.setting_asr_page_add_provider))
         }
         DropdownMenu(
             expanded = showTypeMenu,
@@ -736,7 +727,7 @@ private fun TTSProviderItem(
                         }
                     ) {
                         Icon(
-                            imageVector = if (isSpeaking) HugeIcons.StopCircle else HugeIcons.VolumeHigh,
+                            imageVector = if (isSpeaking) OceanIcons.StopCircle else OceanIcons.VolumeHigh,
                             contentDescription = if (isSpeaking) stringResource(R.string.stop) else stringResource(R.string.test_tts),
                             tint = if (isSpeaking) MaterialTheme.colorScheme.error else LocalContentColor.current
                         )
@@ -747,7 +738,7 @@ private fun TTSProviderItem(
                     onClick = { showDropdownMenu = true }
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Tools,
+                        imageVector = OceanIcons.Tools,
                         contentDescription = stringResource(R.string.setting_tts_page_more_options_content_description)
                     )
                     DropdownMenu(
@@ -761,7 +752,7 @@ private fun TTSProviderItem(
                                 onEdit()
                             },
                             leadingIcon = {
-                                Icon(HugeIcons.PencilEdit01, contentDescription = null)
+                                Icon(OceanIcons.PencilEdit01, contentDescription = null)
                             }
                         )
                         DropdownMenuItem(
@@ -771,7 +762,7 @@ private fun TTSProviderItem(
                                 onDelete()
                             },
                             leadingIcon = {
-                                Icon(HugeIcons.Delete01, contentDescription = null)
+                                Icon(OceanIcons.Delete01, contentDescription = null)
                             },
                             enabled = provider.id != DEFAULT_SYSTEM_TTS_ID
                         )
@@ -867,7 +858,7 @@ private fun ASRProviderItem(
                     onClick = { showDropdownMenu = true }
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Tools,
+                        imageVector = OceanIcons.Tools,
                         contentDescription = stringResource(R.string.setting_tts_page_more_options_content_description)
                     )
                     DropdownMenu(
@@ -881,7 +872,7 @@ private fun ASRProviderItem(
                                 onEdit()
                             },
                             leadingIcon = {
-                                Icon(HugeIcons.PencilEdit01, contentDescription = null)
+                                Icon(OceanIcons.PencilEdit01, contentDescription = null)
                             }
                         )
                         DropdownMenuItem(
@@ -891,7 +882,7 @@ private fun ASRProviderItem(
                                 onDelete()
                             },
                             leadingIcon = {
-                                Icon(HugeIcons.Delete01, contentDescription = null)
+                                Icon(OceanIcons.Delete01, contentDescription = null)
                             }
                         )
                     }

@@ -36,9 +36,7 @@ import java.util.concurrent.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.compose.ui.res.stringResource
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowTurnBackward
-import me.rerere.hugeicons.stroke.Folder01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.repository.WorkspaceRepository
 import me.rerere.workspace.WorkspaceFileEntry
@@ -103,7 +101,7 @@ fun WorkspaceCwdPickerSheet(
                         browsePath = browsePath.substringBeforeLast('/', missingDelimiterValue = "")
                     },
                 ) {
-                    Icon(HugeIcons.ArrowTurnBackward, contentDescription = null)
+                    Icon(OceanIcons.ArrowTurnBackward, contentDescription = null)
                 }
                 Text(
                     text = toAbsolutePath(browsePath),
@@ -134,7 +132,7 @@ fun WorkspaceCwdPickerSheet(
                         },
                         leadingContent = {
                             Icon(
-                                imageVector = HugeIcons.Folder01,
+                                imageVector = OceanIcons.Folder01,
                                 contentDescription = null,
                                 modifier = Modifier.size(22.dp),
                                 tint = MaterialTheme.colorScheme.primary,

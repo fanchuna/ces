@@ -59,11 +59,7 @@ import kotlinx.coroutines.launch
 import me.rerere.ai.provider.Model
 import me.rerere.ai.ui.UIMessagePart
 import me.rerere.common.android.appTempFolder
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.LeftToRightListBullet
-import me.rerere.hugeicons.stroke.Menu03
-import me.rerere.hugeicons.stroke.MessageAdd01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.datastore.Settings
 import me.rerere.rikkahub.data.datastore.findProvider
@@ -684,7 +680,7 @@ private fun TopBar(
                         scope.launch { drawerState.open() }
                     }
                 ) {
-                    Icon(HugeIcons.Menu03, "Messages")
+                    Icon(OceanIcons.Menu03, "Messages")
                 }
             }
         },
@@ -734,7 +730,7 @@ private fun TopBar(
                     onClickMenu()
                 }
             ) {
-                Icon(if (previewMode) HugeIcons.Cancel01 else HugeIcons.LeftToRightListBullet, "Chat Options")
+                Icon(if (previewMode) OceanIcons.Cancel01 else OceanIcons.LeftToRightListBullet, "Chat Options")
             }
 
             IconButton(
@@ -742,7 +738,7 @@ private fun TopBar(
                     onNewChat()
                 }
             ) {
-                Icon(HugeIcons.MessageAdd01, "New Message")
+                Icon(OceanIcons.MessageAdd01, "New Message")
             }
         },
     )

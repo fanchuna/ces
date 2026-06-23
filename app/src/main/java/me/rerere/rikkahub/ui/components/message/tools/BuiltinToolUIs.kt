@@ -35,17 +35,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import me.rerere.common.http.jsonObjectOrNull
 import me.rerere.highlight.HighlightText
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Clipboard
-import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.Eraser
-import me.rerere.hugeicons.stroke.GlobalSearch
-import me.rerere.hugeicons.stroke.MagicWand01
-import me.rerere.hugeicons.stroke.QuillWrite01
-import me.rerere.hugeicons.stroke.Refresh01
-import me.rerere.hugeicons.stroke.Search01
-import me.rerere.hugeicons.stroke.Time02
-import me.rerere.hugeicons.stroke.VolumeHigh
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.event.AppEvent
 import me.rerere.rikkahub.data.event.AppEventBus
@@ -73,8 +63,8 @@ object MemoryToolUI : ToolUIRenderer {
         context.arguments.getStringContent("action")
 
     override fun icon(context: ToolUIContext): ImageVector = when (action(context)) {
-        ACTION_DELETE -> HugeIcons.Eraser
-        else -> HugeIcons.QuillWrite01
+        ACTION_DELETE -> OceanIcons.Eraser
+        else -> OceanIcons.QuillWrite01
     }
 
     @Composable
@@ -121,7 +111,7 @@ object MemoryToolUI : ToolUIRenderer {
                         }
                     ) {
                         Icon(
-                            imageVector = HugeIcons.Delete01,
+                            imageVector = OceanIcons.Delete01,
                             contentDescription = stringResource(R.string.tool_ui_delete_memory)
                         )
                     }
@@ -139,7 +129,7 @@ object MemoryToolUI : ToolUIRenderer {
 object SearchWebToolUI : ToolUIRenderer {
     override val toolName: String = "search_web"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.Search01
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.Search01
 
     @Composable
     override fun title(context: ToolUIContext): String = stringResource(
@@ -201,7 +191,7 @@ object SearchWebToolUI : ToolUIRenderer {
 object ScrapeWebToolUI : ToolUIRenderer {
     override val toolName: String = "scrape_web"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.GlobalSearch
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.GlobalSearch
 
     @Composable
     override fun title(context: ToolUIContext): String =
@@ -236,7 +226,7 @@ object ScrapeWebToolUI : ToolUIRenderer {
 object GetTimeInfoToolUI : ToolUIRenderer {
     override val toolName: String = "get_time_info"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.Time02
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.Time02
 
     @Composable
     override fun title(context: ToolUIContext): String =
@@ -252,7 +242,7 @@ object ClipboardToolUI : ToolUIRenderer {
 
     override val toolName: String = "clipboard_tool"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.Clipboard
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.Clipboard
 
     @Composable
     override fun title(context: ToolUIContext): String =
@@ -269,7 +259,7 @@ object ClipboardToolUI : ToolUIRenderer {
 object TextToSpeechToolUI : ToolUIRenderer {
     override val toolName: String = "text_to_speech"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.VolumeHigh
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.VolumeHigh
 
     @Composable
     override fun title(context: ToolUIContext): String {
@@ -305,7 +295,7 @@ object TextToSpeechToolUI : ToolUIRenderer {
                 modifier = Modifier.size(28.dp),
             ) {
                 Icon(
-                    imageVector = HugeIcons.Refresh01,
+                    imageVector = OceanIcons.Refresh01,
                     contentDescription = stringResource(R.string.tool_ui_replay),
                     modifier = Modifier.size(14.dp),
                 )
@@ -320,7 +310,7 @@ object TextToSpeechToolUI : ToolUIRenderer {
 object UseSkillToolUI : ToolUIRenderer {
     override val toolName: String = "use_skill"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.MagicWand01
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.MagicWand01
 
     @Composable
     override fun title(context: ToolUIContext): String {

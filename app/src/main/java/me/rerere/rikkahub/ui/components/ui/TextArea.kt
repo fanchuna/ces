@@ -43,9 +43,7 @@ import com.dokar.sonner.ToastType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.FileImport
-import me.rerere.hugeicons.stroke.FullScreen
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.context.LocalToaster
 import me.rerere.rikkahub.ui.modifier.onClick
@@ -133,7 +131,7 @@ fun TextArea(
                 ) {
                     if (enableFullscreen) {
                         Icon(
-                            imageVector = HugeIcons.FullScreen,
+                            imageVector = OceanIcons.FullScreen,
                             contentDescription = stringResource(R.string.text_area_fullscreen_edit),
                             modifier = Modifier
                                 .onClick(onClick = {
@@ -144,7 +142,7 @@ fun TextArea(
                     }
 
                     Icon(
-                        imageVector = HugeIcons.FileImport,
+                        imageVector = OceanIcons.FileImport,
                         contentDescription = stringResource(R.string.text_area_import_from_file),
                         modifier = Modifier
                             .onClick(onClick = {

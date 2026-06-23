@@ -1,7 +1,6 @@
 package me.rerere.rikkahub.ui.pages.favorite
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Delete01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -162,7 +161,7 @@ private fun SwipeableFavoriteCard(
                 contentAlignment = Alignment.CenterEnd,
             ) {
                 Icon(
-                    imageVector = HugeIcons.Delete01,
+                    imageVector = OceanIcons.Delete01,
                     contentDescription = stringResource(R.string.assistant_page_remove),
                     tint = MaterialTheme.colorScheme.onErrorContainer,
                 )

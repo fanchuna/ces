@@ -30,15 +30,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.AiMagic
-import me.rerere.hugeicons.stroke.Alert01
-import me.rerere.hugeicons.stroke.Brain02
-import me.rerere.hugeicons.stroke.Database02
-import me.rerere.hugeicons.stroke.ImageUpload
-import me.rerere.hugeicons.stroke.Megaphone01
-import me.rerere.hugeicons.stroke.Settings03
-import me.rerere.hugeicons.stroke.Sun01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.data.datastore.isNotConfigured
@@ -128,7 +120,7 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                     title = { Text(stringResource(R.string.setting_page_general_settings)) },
                 ) {
                     item(
-                        leadingContent = { Icon(HugeIcons.Sun01, null) },
+                        leadingContent = { Icon(OceanIcons.Sun01, null) },
                         trailingContent = {
                             Select(
                                 options = ColorMode.entries,
@@ -156,7 +148,7 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                     )
                     item(
                         onClick = { navController.navigate(Screen.SettingPreferences) },
-                        leadingContent = { Icon(HugeIcons.Settings03, null) },
+                        leadingContent = { Icon(OceanIcons.Settings03, null) },
                         supportingContent = { Text(stringResource(R.string.setting_page_preferences_desc)) },
                         headlineContent = { Text(stringResource(R.string.setting_page_preferences)) },
                     )
@@ -170,19 +162,19 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                 ) {
                     item(
                         onClick = { navController.navigate(Screen.SettingModels) },
-                        leadingContent = { Icon(HugeIcons.AiMagic, null) },
+                        leadingContent = { Icon(OceanIcons.AiMagic, null) },
                         supportingContent = { Text(stringResource(R.string.setting_page_default_model_desc)) },
                         headlineContent = { Text(stringResource(R.string.setting_page_default_model)) },
                     )
                     item(
                         onClick = { navController.navigate(Screen.SettingProvider) },
-                        leadingContent = { Icon(HugeIcons.Brain02, null) },
+                        leadingContent = { Icon(OceanIcons.Brain02, null) },
                         supportingContent = { Text(stringResource(R.string.setting_page_providers_desc)) },
                         headlineContent = { Text(stringResource(R.string.setting_page_providers)) },
                     )
                     item(
                         onClick = { navController.navigate(Screen.SettingSpeech) },
-                        leadingContent = { Icon(HugeIcons.Megaphone01, null) },
+                        leadingContent = { Icon(OceanIcons.Megaphone01, null) },
                         supportingContent = { Text(stringResource(R.string.setting_page_tts_service_desc)) },
                         headlineContent = { Text(stringResource(R.string.setting_page_tts_service)) },
                     )
@@ -199,13 +191,13 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                 ) {
                     item(
                         onClick = { navController.navigate(Screen.Backup) },
-                        leadingContent = { Icon(HugeIcons.Database02, null) },
+                        leadingContent = { Icon(OceanIcons.Database02, null) },
                         supportingContent = { Text(stringResource(R.string.setting_page_data_backup_desc)) },
                         headlineContent = { Text(stringResource(R.string.setting_page_data_backup)) },
                     )
                     item(
                         onClick = { navController.navigate(Screen.SettingFiles) },
-                        leadingContent = { Icon(HugeIcons.ImageUpload, null) },
+                        leadingContent = { Icon(OceanIcons.ImageUpload, null) },
                         supportingContent = {
                             if (storageState.first == -1) {
                                 Text(stringResource(R.string.calculating))
@@ -249,7 +241,7 @@ private fun ProviderConfigWarningCard(navController: Navigator) {
                     Text(stringResource(R.string.setting_page_config_api_desc))
                 },
                 leadingContent = {
-                    Icon(HugeIcons.Alert01, null)
+                    Icon(OceanIcons.Alert01, null)
                 },
                 colors = ListItemDefaults.colors(
                     containerColor = Color.Transparent

@@ -23,9 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.dokar.sonner.ToastType
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Download01
-import me.rerere.hugeicons.stroke.View
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.ui.components.webview.WebView
@@ -128,7 +126,7 @@ fun Mermaid(
                     },
                 ) {
                     Icon(
-                        HugeIcons.View,
+                        OceanIcons.View,
                         contentDescription = "Preview"
                     )
                 }
@@ -141,7 +139,7 @@ fun Mermaid(
                     },
                 ) {
                     Icon(
-                        HugeIcons.Download01,
+                        OceanIcons.Download01,
                         contentDescription = stringResource(R.string.mermaid_export)
                     )
                 }

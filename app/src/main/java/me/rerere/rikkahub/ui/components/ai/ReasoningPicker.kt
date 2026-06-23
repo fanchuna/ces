@@ -36,9 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.rerere.ai.core.ReasoningLevel
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Idea
-import me.rerere.hugeicons.stroke.Idea01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.ui.ToggleSurface
 import me.rerere.rikkahub.ui.components.ui.icons.ReasoningHigh
@@ -140,8 +138,8 @@ fun ReasoningPicker(
                 )
                 Icon(
                     imageVector = when (reasoningLevel) {
-                        ReasoningLevel.OFF -> HugeIcons.Idea
-                        ReasoningLevel.AUTO -> HugeIcons.Idea01
+                        ReasoningLevel.OFF -> OceanIcons.Idea
+                        ReasoningLevel.AUTO -> OceanIcons.Idea01
                         ReasoningLevel.LOW -> ReasoningLow
                         ReasoningLevel.MEDIUM -> ReasoningMedium
                         ReasoningLevel.HIGH -> ReasoningHigh
@@ -269,8 +267,8 @@ private fun ReasoningScale(
 @Composable
 private fun ReasoningIcon(level: ReasoningLevel) {
     when (level) {
-        ReasoningLevel.OFF -> Icon(HugeIcons.Idea, null)
-        ReasoningLevel.AUTO -> Icon(HugeIcons.Idea01, null)
+        ReasoningLevel.OFF -> Icon(OceanIcons.Idea, null)
+        ReasoningLevel.AUTO -> Icon(OceanIcons.Idea01, null)
         ReasoningLevel.LOW -> Icon(ReasoningLow, null)
         ReasoningLevel.MEDIUM -> Icon(ReasoningMedium, null)
         ReasoningLevel.HIGH -> Icon(ReasoningHigh, null)

@@ -1,7 +1,6 @@
 package me.rerere.rikkahub.ui.pages.setting.components
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Tick01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
@@ -101,7 +100,7 @@ fun PresetThemeButton(
             }
             if (selected) {
                 Icon(
-                    HugeIcons.Tick01,
+                    OceanIcons.Tick01,
                     contentDescription = null,
                     tint = scheme.contentColorFor(scheme.onPrimary)
                 )

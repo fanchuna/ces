@@ -33,9 +33,7 @@ import me.rerere.ai.provider.ClaudePromptCacheTtl
 import me.rerere.ai.provider.ProviderSetting
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.datastore.DEFAULT_PROVIDERS
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.View
-import me.rerere.hugeicons.stroke.ViewOff
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.ui.context.LocalToaster
 import me.rerere.rikkahub.ui.theme.JetbrainsMono
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -224,7 +222,7 @@ private fun ProviderConfigureOpenAI(
         visualTransformation = if (keyVisible) VisualTransformation.None else PasswordVisualTransformation(),
         trailingIcon = {
             IconButton(onClick = { keyVisible = !keyVisible }) {
-                Icon(if (keyVisible) HugeIcons.ViewOff else HugeIcons.View, contentDescription = null)
+                Icon(if (keyVisible) OceanIcons.ViewOff else OceanIcons.View, contentDescription = null)
             }
         },
     )
@@ -315,7 +313,7 @@ private fun ProviderConfigureClaude(
         visualTransformation = if (keyVisible) VisualTransformation.None else PasswordVisualTransformation(),
         trailingIcon = {
             IconButton(onClick = { keyVisible = !keyVisible }) {
-                Icon(if (keyVisible) HugeIcons.ViewOff else HugeIcons.View, contentDescription = null)
+                Icon(if (keyVisible) OceanIcons.ViewOff else OceanIcons.View, contentDescription = null)
             }
         },
     )
@@ -427,7 +425,7 @@ private fun ProviderConfigureGoogle(
             visualTransformation = if (keyVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
                 IconButton(onClick = { keyVisible = !keyVisible }) {
-                    Icon(if (keyVisible) HugeIcons.ViewOff else HugeIcons.View, contentDescription = null)
+                    Icon(if (keyVisible) OceanIcons.ViewOff else OceanIcons.View, contentDescription = null)
                 }
             },
         )
@@ -513,7 +511,7 @@ private fun ProviderConfigureGoogle(
             visualTransformation = if (privateKeyVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
                 IconButton(onClick = { privateKeyVisible = !privateKeyVisible }) {
-                    Icon(if (privateKeyVisible) HugeIcons.ViewOff else HugeIcons.View, contentDescription = null)
+                    Icon(if (privateKeyVisible) OceanIcons.ViewOff else OceanIcons.View, contentDescription = null)
                 }
             },
         )

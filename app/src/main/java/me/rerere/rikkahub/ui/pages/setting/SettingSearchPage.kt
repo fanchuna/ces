@@ -1,10 +1,6 @@
 package me.rerere.rikkahub.ui.pages.setting
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.PencilEdit01
-import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.MoreVertical
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -90,7 +86,7 @@ fun SettingSearchPage(vm: SettingVM = koinViewModel()) {
                         onClick = { showAddDialog = true }
                     ) {
                         Icon(
-                            imageVector = HugeIcons.Add01,
+                            imageVector = OceanIcons.Add01,
                             contentDescription = stringResource(R.string.setting_page_search_add_provider)
                         )
                     }
@@ -307,7 +303,7 @@ private fun SearchProviderCard(
 
             IconButton(onClick = { showMenu = true }) {
                 Icon(
-                    imageVector = HugeIcons.MoreVertical,
+                    imageVector = OceanIcons.MoreVertical,
                     contentDescription = null
                 )
                 DropdownMenu(
@@ -321,7 +317,7 @@ private fun SearchProviderCard(
                             onEdit()
                         },
                         leadingIcon = {
-                            Icon(HugeIcons.PencilEdit01, contentDescription = null)
+                            Icon(OceanIcons.PencilEdit01, contentDescription = null)
                         }
                     )
                     DropdownMenuItem(
@@ -331,7 +327,7 @@ private fun SearchProviderCard(
                             onDelete()
                         },
                         leadingIcon = {
-                            Icon(HugeIcons.Delete01, contentDescription = null)
+                            Icon(OceanIcons.Delete01, contentDescription = null)
                         },
                         enabled = canDelete
                     )

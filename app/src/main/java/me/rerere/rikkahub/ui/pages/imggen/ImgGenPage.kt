@@ -87,16 +87,7 @@ import kotlinx.coroutines.withContext
 import me.rerere.ai.provider.ModelType
 import me.rerere.ai.ui.ImageAspectRatio
 import me.rerere.common.android.appTempFolder
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.ArrowUp02
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.Colors
-import me.rerere.hugeicons.stroke.Copy01
-import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.FloppyDisk
-import me.rerere.hugeicons.stroke.Image03
-import me.rerere.hugeicons.stroke.Tools
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.datastore.Settings
 import me.rerere.rikkahub.data.files.FileUtils
@@ -148,7 +139,7 @@ fun ImageGenPage(
                 actions = {
                     IconButton(onClick = vm::startNewSession) {
                         Icon(
-                            imageVector = HugeIcons.Add01,
+                            imageVector = OceanIcons.Add01,
                             contentDescription = "New session"
                         )
                     }
@@ -207,7 +198,7 @@ private fun BottomBar(
                 Text(stringResource(R.string.imggen_page_title))
             },
             icon = {
-                Icon(HugeIcons.Colors, null)
+                Icon(OceanIcons.Colors, null)
             },
             onClick = {
                 scope.launch {
@@ -222,7 +213,7 @@ private fun BottomBar(
                 Text(stringResource(R.string.imggen_page_gallery))
             },
             icon = {
-                Icon(HugeIcons.Image03, null)
+                Icon(OceanIcons.Image03, null)
             },
             onClick = {
                 scope.launch {
@@ -405,14 +396,14 @@ private fun InputBar(
             IconButton(
                 onClick = onShowSettings
             ) {
-                Icon(HugeIcons.Tools, null)
+                Icon(OceanIcons.Tools, null)
             }
 
             IconButton(
                 onClick = { imagePickerLauncher.launch("image/*") }
             ) {
                 Icon(
-                    imageVector = HugeIcons.Add01,
+                    imageVector = OceanIcons.Add01,
                     contentDescription = "Add reference image"
                 )
             }
@@ -446,7 +437,7 @@ private fun InputBar(
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
-                        imageVector = if (isGenerating) HugeIcons.Cancel01 else HugeIcons.ArrowUp02,
+                        imageVector = if (isGenerating) OceanIcons.Cancel01 else OceanIcons.ArrowUp02,
                         contentDescription = stringResource(R.string.imggen_page_generate_image),
                         tint = when {
                             isGenerating -> MaterialTheme.colorScheme.onErrorContainer
@@ -498,7 +489,7 @@ private fun ReferenceImagesRow(
                     ) {
                         Box(contentAlignment = Alignment.Center) {
                             Icon(
-                                imageVector = HugeIcons.Delete01,
+                                imageVector = OceanIcons.Delete01,
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.inverseOnSurface,
                                 modifier = Modifier.size(12.dp)
@@ -537,7 +528,7 @@ private fun ImageGalleryScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Image03,
+                        imageVector = OceanIcons.Image03,
                         contentDescription = null,
                         modifier = Modifier.size(64.dp),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -614,7 +605,7 @@ private fun ImageGalleryScreen(
                                             modifier = Modifier.size(32.dp)
                                         ) {
                                             Icon(
-                                                imageVector = HugeIcons.Copy01,
+                                                imageVector = OceanIcons.Copy01,
                                                 contentDescription = "Copy prompt",
                                                 modifier = Modifier.size(16.dp)
                                             )
@@ -643,7 +634,7 @@ private fun ImageGalleryScreen(
                                             modifier = Modifier.size(32.dp)
                                         ) {
                                             Icon(
-                                                imageVector = HugeIcons.FloppyDisk,
+                                                imageVector = OceanIcons.FloppyDisk,
                                                 contentDescription = stringResource(R.string.imggen_page_save),
                                                 modifier = Modifier.size(16.dp)
                                             )
@@ -654,7 +645,7 @@ private fun ImageGalleryScreen(
                                             modifier = Modifier.size(32.dp)
                                         ) {
                                             Icon(
-                                                imageVector = HugeIcons.Delete01,
+                                                imageVector = OceanIcons.Delete01,
                                                 contentDescription = stringResource(R.string.imggen_page_delete),
                                                 modifier = Modifier.size(16.dp),
                                                 tint = MaterialTheme.colorScheme.error

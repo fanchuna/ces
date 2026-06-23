@@ -1,8 +1,6 @@
 package me.rerere.rikkahub.ui.pages.search
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Refresh01
-import me.rerere.hugeicons.stroke.Sorting01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -111,7 +109,7 @@ fun SearchPage(vm: SearchVM = koinViewModel()) {
                         enabled = !vm.isRebuilding,
                     ) {
                         Icon(
-                            HugeIcons.Refresh01,
+                            OceanIcons.Refresh01,
                             contentDescription = stringResource(R.string.search_page_rebuild_button)
                         )
                     }
@@ -228,7 +226,7 @@ private fun SortMenuButton(
     Box {
         IconButton(onClick = { expanded = true }) {
             Icon(
-                HugeIcons.Sorting01,
+                OceanIcons.Sorting01,
                 contentDescription = stringResource(R.string.search_page_sort)
             )
         }

@@ -45,10 +45,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import me.rerere.ai.ui.ToolApprovalState
 import me.rerere.ai.ui.UIMessagePart
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.BubbleChatQuestion
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.Tick01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.message.tools.ToolUIContext
 import me.rerere.rikkahub.ui.components.message.tools.ToolUIRegistry
@@ -138,7 +135,7 @@ fun ChainOfThoughtScope.ChatMessageToolStep(
                         modifier = Modifier.size(28.dp),
                     ) {
                         Icon(
-                            imageVector = HugeIcons.Cancel01,
+                            imageVector = OceanIcons.Cancel01,
                             contentDescription = stringResource(R.string.chat_message_tool_deny),
                             modifier = Modifier.size(14.dp)
                         )
@@ -148,7 +145,7 @@ fun ChainOfThoughtScope.ChatMessageToolStep(
                         modifier = Modifier.size(28.dp),
                     ) {
                         Icon(
-                            imageVector = HugeIcons.Tick01,
+                            imageVector = OceanIcons.Tick01,
                             contentDescription = stringResource(R.string.chat_message_tool_approve),
                             modifier = Modifier.size(14.dp)
                         )
@@ -269,7 +266,7 @@ private fun ChainOfThoughtScope.AskUserToolStep(
                 DotLoading(size = 10.dp)
             } else {
                 Icon(
-                    imageVector = HugeIcons.BubbleChatQuestion,
+                    imageVector = OceanIcons.BubbleChatQuestion,
                     contentDescription = null,
                     modifier = Modifier.size(16.dp),
                     tint = LocalContentColor.current.copy(alpha = 0.7f)
@@ -431,7 +428,7 @@ private fun ChainOfThoughtScope.AskUserToolStep(
                         modifier = Modifier.align(Alignment.End),
                     ) {
                         Icon(
-                            imageVector = HugeIcons.Tick01,
+                            imageVector = OceanIcons.Tick01,
                             contentDescription = null,
                             modifier = Modifier.size(16.dp)
                         )

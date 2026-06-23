@@ -23,8 +23,7 @@ import com.dokar.sonner.ToastType
 import com.jvziyaoyao.scale.image.pager.ImagePager
 import com.jvziyaoyao.scale.zoomable.pager.rememberZoomablePagerState
 import kotlinx.coroutines.launch
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Download01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.data.files.FilesManager
 import me.rerere.rikkahub.ui.context.LocalToaster
 import org.koin.compose.koinInject
@@ -81,7 +80,7 @@ fun ImagePreviewDialog(
                         }
                     }
                 ) {
-                    Icon(HugeIcons.Download01, null, tint = Color.White)
+                    Icon(OceanIcons.Download01, null, tint = Color.White)
                 }
             }
         }

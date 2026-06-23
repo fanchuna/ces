@@ -64,13 +64,7 @@ import com.dokar.sonner.ToastType
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Copy01
-import me.rerere.hugeicons.stroke.Delete02
-import me.rerere.hugeicons.stroke.Edit02
-import me.rerere.hugeicons.stroke.FileImport
-import me.rerere.hugeicons.stroke.PlusSign
-import me.rerere.hugeicons.stroke.Tick01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.nav.BackButton
 import me.rerere.rikkahub.ui.components.ui.RikkaConfirmDialog
@@ -184,7 +178,7 @@ fun SettingThemePage(vm: SettingVM = koinViewModel()) {
                             FilledTonalButton(
                                 onClick = { showImportDialog = true }
                             ) {
-                                Icon(HugeIcons.FileImport, null, modifier = Modifier.size(18.dp))
+                                Icon(OceanIcons.FileImport, null, modifier = Modifier.size(18.dp))
                                 Spacer(Modifier.width(4.dp))
                                 Text(stringResource(R.string.setting_theme_page_import_theme))
                             }
@@ -194,7 +188,7 @@ fun SettingThemePage(vm: SettingVM = koinViewModel()) {
                                     showEditSheet = true
                                 }
                             ) {
-                                Icon(HugeIcons.PlusSign, null, modifier = Modifier.size(18.dp))
+                                Icon(OceanIcons.PlusSign, null, modifier = Modifier.size(18.dp))
                                 Spacer(Modifier.width(4.dp))
                                 Text(stringResource(R.string.setting_theme_page_add_theme))
                             }
@@ -350,7 +344,7 @@ private fun CustomThemeItem(
                 }
                 if (isSelected) {
                     Icon(
-                        HugeIcons.Tick01,
+                        OceanIcons.Tick01,
                         contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.size(16.dp)
@@ -361,14 +355,14 @@ private fun CustomThemeItem(
         trailingContent = {
             Row {
                 IconButton(onClick = onExport) {
-                    Icon(HugeIcons.Copy01, null)
+                    Icon(OceanIcons.Copy01, null)
                 }
                 IconButton(onClick = onEdit) {
-                    Icon(HugeIcons.Edit02, null)
+                    Icon(OceanIcons.Edit02, null)
                 }
                 IconButton(onClick = onDelete) {
                     Icon(
-                        HugeIcons.Delete02,
+                        OceanIcons.Delete02,
                         null,
                         tint = MaterialTheme.colorScheme.error
                     )

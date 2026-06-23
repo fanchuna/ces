@@ -34,13 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Job
 import me.rerere.ai.provider.ProviderSetting
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Camera01
-import me.rerere.hugeicons.stroke.Files02
-import me.rerere.hugeicons.stroke.Image02
-import me.rerere.hugeicons.stroke.MusicNote03
-import me.rerere.hugeicons.stroke.Package01
-import me.rerere.hugeicons.stroke.Video01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.datastore.findProvider
 import me.rerere.rikkahub.data.datastore.getCurrentChatModel
@@ -101,7 +95,7 @@ internal fun FilesPicker(
         ListItem(
             leadingContent = {
                 Icon(
-                    imageVector = HugeIcons.Package01,
+                    imageVector = OceanIcons.Package01,
                     contentDescription = stringResource(R.string.chat_page_compress_context),
                 )
             },
@@ -141,7 +135,7 @@ internal fun FilesPicker(
 @Composable
 private fun ImagePickButton(onClick: () -> Unit = {}) {
     BigIconTextButton(icon = {
-        Icon(HugeIcons.Image02, null)
+        Icon(OceanIcons.Image02, null)
     }, text = {
         Text(stringResource(R.string.photo))
     }) {
@@ -152,7 +146,7 @@ private fun ImagePickButton(onClick: () -> Unit = {}) {
 @Composable
 fun TakePicButton(onLaunchCamera: () -> Unit = {}) {
     BigIconTextButton(icon = {
-        Icon(HugeIcons.Camera01, null)
+        Icon(OceanIcons.Camera01, null)
     }, text = {
         Text(stringResource(R.string.take_picture))
     }) {
@@ -163,7 +157,7 @@ fun TakePicButton(onLaunchCamera: () -> Unit = {}) {
 @Composable
 fun VideoPickButton(onClick: () -> Unit = {}) {
     BigIconTextButton(icon = {
-        Icon(HugeIcons.Video01, null)
+        Icon(OceanIcons.Video01, null)
     }, text = {
         Text(stringResource(R.string.video))
     }) {
@@ -174,7 +168,7 @@ fun VideoPickButton(onClick: () -> Unit = {}) {
 @Composable
 fun AudioPickButton(onClick: () -> Unit = {}) {
     BigIconTextButton(icon = {
-        Icon(HugeIcons.MusicNote03, null)
+        Icon(OceanIcons.MusicNote03, null)
     }, text = {
         Text(stringResource(R.string.audio))
     }) {
@@ -185,7 +179,7 @@ fun AudioPickButton(onClick: () -> Unit = {}) {
 @Composable
 fun FilePickButton(onClick: () -> Unit = {}) {
     BigIconTextButton(icon = {
-        Icon(HugeIcons.Files02, null)
+        Icon(OceanIcons.Files02, null)
     }, text = {
         Text(stringResource(R.string.upload_file))
     }) {
@@ -239,7 +233,7 @@ private fun BigIconTextButtonPreview() {
         modifier = Modifier.padding(16.dp)
     ) {
         BigIconTextButton(icon = {
-            Icon(HugeIcons.Image02, null)
+            Icon(OceanIcons.Image02, null)
         }, text = {
             Text(stringResource(R.string.photo))
         }) {}

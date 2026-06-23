@@ -1,15 +1,6 @@
 package me.rerere.rikkahub.ui.pages.setting
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Package01
-import me.rerere.hugeicons.stroke.Connect
-import me.rerere.hugeicons.stroke.ArrowDown01
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Refresh03
-import me.rerere.hugeicons.stroke.Tools
-import me.rerere.hugeicons.stroke.Share01
-import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.Cancel01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -188,7 +179,7 @@ fun SettingProviderDetailPage(id: Uuid, vm: SettingVM = koinViewModel()) {
                             shareSheetState.show(provider)
                         }
                     ) {
-                        Icon(HugeIcons.Share01, null)
+                        Icon(OceanIcons.Share01, null)
                     }
                 }
             )
@@ -200,7 +191,7 @@ fun SettingProviderDetailPage(id: Uuid, vm: SettingVM = koinViewModel()) {
                 NavigationBarItem(
                     selected = pager.currentPage == 0,
                     label = { Text(stringResource(id = R.string.setting_provider_page_configuration)) },
-                    icon = { Icon(HugeIcons.Tools, null) },
+                    icon = { Icon(OceanIcons.Tools, null) },
                     onClick = {
                         scope.launch {
                             pager.animateScrollToPage(0)
@@ -210,7 +201,7 @@ fun SettingProviderDetailPage(id: Uuid, vm: SettingVM = koinViewModel()) {
                 NavigationBarItem(
                     selected = pager.currentPage == 1,
                     label = { Text(stringResource(id = R.string.setting_provider_page_models)) },
-                    icon = { Icon(HugeIcons.Package01, null) },
+                    icon = { Icon(OceanIcons.Package01, null) },
                     onClick = {
                         scope.launch {
                             pager.animateScrollToPage(1)
@@ -304,7 +295,7 @@ private fun SettingProviderConfigPage(
                         showDeleteDialog = true
                     },
                 ) {
-                    Icon(HugeIcons.Delete01, null)
+                    Icon(OceanIcons.Delete01, null)
                 }
             }
 
@@ -315,7 +306,7 @@ private fun SettingProviderConfigPage(
                 enabled = !internalProvider.isUsingDefaultBaseUrl(),
             ) {
                 Icon(
-                    imageVector = HugeIcons.Refresh03,
+                    imageVector = OceanIcons.Refresh03,
                     contentDescription = stringResource(R.string.setting_model_page_reset_to_default)
                 )
             }
@@ -736,7 +727,7 @@ private fun AddModelButton(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    HugeIcons.Add01,
+                    OceanIcons.Add01,
                     contentDescription = stringResource(R.string.setting_provider_page_add_model)
                 )
                 AnimatedVisibility(expanded) {
@@ -768,7 +759,7 @@ private fun AddModelButton(
                             }
                         }
                     ) {
-                        Icon(HugeIcons.ArrowDown01, null)
+                        Icon(OceanIcons.ArrowDown01, null)
                     }
                 }
             ) {
@@ -959,9 +950,9 @@ private fun ModelPicker(
                                     }
                                 ) {
                                     if (selectedModels.any { model -> model.modelId == it.modelId }) {
-                                        Icon(HugeIcons.Cancel01, null)
+                                        Icon(OceanIcons.Cancel01, null)
                                     } else {
-                                        Icon(HugeIcons.Add01, null)
+                                        Icon(OceanIcons.Add01, null)
                                     }
                                 }
                             }
@@ -996,7 +987,7 @@ private fun ModelPicker(
                 showModal = true
             }
         ) {
-            Icon(HugeIcons.Package01, null)
+            Icon(OceanIcons.Package01, null)
         }
     }
 }
@@ -1191,7 +1182,7 @@ private fun ModelCard(
                             },
                             modifier = Modifier.align(Alignment.CenterStart)
                         ) {
-                            Icon(HugeIcons.Cancel01, null)
+                            Icon(OceanIcons.Cancel01, null)
                         }
                         Text(
                             text = stringResource(R.string.setting_provider_page_edit_model),
@@ -1256,7 +1247,7 @@ private fun ModelCard(
                         }
                     }
                 ) {
-                    Icon(HugeIcons.Cancel01, null)
+                    Icon(OceanIcons.Cancel01, null)
                 }
                 FilledIconButton(
                     onClick = {
@@ -1267,7 +1258,7 @@ private fun ModelCard(
                     }
                 ) {
                     Icon(
-                        HugeIcons.Delete01,
+                        OceanIcons.Delete01,
                         contentDescription = stringResource(R.string.chat_page_delete)
                     )
                 }
@@ -1328,7 +1319,7 @@ private fun ModelCard(
                         dialogState.open(model.copy())
                     }
                 ) {
-                    Icon(HugeIcons.Tools, "Edit")
+                    Icon(OceanIcons.Tools, "Edit")
                 }
             }
         }
@@ -1467,14 +1458,14 @@ private fun ProviderOverrideSettings(
                                 showProviderConfig = true
                             }
                         ) {
-                            Icon(HugeIcons.Tools, contentDescription = "Edit override")
+                            Icon(OceanIcons.Tools, contentDescription = "Edit override")
                         }
                         IconButton(
                             onClick = {
                                 onUpdateProviderOverride(null)
                             }
                         ) {
-                            Icon(HugeIcons.Cancel01, contentDescription = "Remove override")
+                            Icon(OceanIcons.Cancel01, contentDescription = "Remove override")
                         }
                     }
                 }
@@ -1492,7 +1483,7 @@ private fun ProviderOverrideSettings(
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(HugeIcons.Add01, contentDescription = null)
+                Icon(OceanIcons.Add01, contentDescription = null)
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(stringResource(R.string.setting_provider_page_add_provider_override))
             }

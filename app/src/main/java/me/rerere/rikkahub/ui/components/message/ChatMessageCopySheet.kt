@@ -30,9 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import me.rerere.ai.ui.UIMessage
 import me.rerere.ai.ui.UIMessagePart
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.Copy01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.utils.copyMessageToClipboard
 
@@ -65,7 +63,7 @@ fun ChatMessageCopySheet(
                         onDismissRequest()
                     }
                 ) {
-                    Icon(HugeIcons.Cancel01, null)
+                    Icon(OceanIcons.Cancel01, null)
                 }
 
                 Text(
@@ -80,7 +78,7 @@ fun ChatMessageCopySheet(
                     }
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Copy01,
+                        imageVector = OceanIcons.Copy01,
                         contentDescription = null,
                         modifier = Modifier.size(16.dp)
                     )

@@ -18,9 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowLeft01
-import me.rerere.hugeicons.stroke.ArrowRight01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.data.model.MessageNode
 
 @Composable
@@ -38,7 +36,7 @@ fun ChatMessageBranchSelector(
             val actionColor = MaterialTheme.colorScheme.onSurfaceVariant
 
             Icon(
-                imageVector = HugeIcons.ArrowLeft01,
+                imageVector = OceanIcons.ArrowLeft01,
                 contentDescription = "Prev",
                 modifier = Modifier
                     .clip(CircleShape)
@@ -68,7 +66,7 @@ fun ChatMessageBranchSelector(
             )
 
             Icon(
-                imageVector = HugeIcons.ArrowRight01,
+                imageVector = OceanIcons.ArrowRight01,
                 contentDescription = "Next",
                 modifier = Modifier
                     .clip(CircleShape)

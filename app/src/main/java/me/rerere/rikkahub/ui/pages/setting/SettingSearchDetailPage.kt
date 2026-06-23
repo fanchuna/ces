@@ -1,8 +1,6 @@
 package me.rerere.rikkahub.ui.pages.setting
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Play
-import me.rerere.hugeicons.stroke.Delete01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -104,7 +102,7 @@ fun SettingSearchDetailPage(
                             }
                         ) {
                             Icon(
-                                imageVector = HugeIcons.Delete01,
+                                imageVector = OceanIcons.Delete01,
                                 contentDescription = stringResource(R.string.delete)
                             )
                         }
@@ -285,7 +283,7 @@ private fun SearchTestSection(
                         )
                     } else {
                         Icon(
-                            imageVector = HugeIcons.Play,
+                            imageVector = OceanIcons.Play,
                             contentDescription = stringResource(R.string.setting_page_search_test_run)
                         )
                     }

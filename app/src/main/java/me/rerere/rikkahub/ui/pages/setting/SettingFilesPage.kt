@@ -1,8 +1,6 @@
 package me.rerere.rikkahub.ui.pages.setting
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Image02
-import me.rerere.hugeicons.stroke.Delete01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -218,7 +216,7 @@ private fun FileItem(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = HugeIcons.Image02,
+                            imageVector = OceanIcons.Image02,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -230,7 +228,7 @@ private fun FileItem(
                     modifier = Modifier.align(Alignment.TopEnd)
                 ) {
                     Icon(
-                        HugeIcons.Delete01,
+                        OceanIcons.Delete01,
                         contentDescription = stringResource(R.string.setting_files_page_delete_content_description)
                     )
                 }

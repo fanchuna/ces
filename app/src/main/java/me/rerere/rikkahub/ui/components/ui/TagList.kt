@@ -30,9 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Cancel01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.model.Tag
 import kotlin.uuid.Uuid
@@ -61,7 +59,7 @@ fun TagsInput(
                 Text(tag.name)
             }, selected = false, trailingIcon = {
                 Icon(
-                    imageVector = HugeIcons.Cancel01,
+                    imageVector = OceanIcons.Cancel01,
                     contentDescription = null,
                     modifier = Modifier
                         .size(16.dp)
@@ -83,7 +81,7 @@ fun TagsInput(
                 .clip(CircleShape)
                 .clickable { showAddDialog = true }) {
             Icon(
-                imageVector = HugeIcons.Add01,
+                imageVector = OceanIcons.Add01,
                 contentDescription = stringResource(R.string.add),
                 modifier = Modifier
                     .padding(6.dp)

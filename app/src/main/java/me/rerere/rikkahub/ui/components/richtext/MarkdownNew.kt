@@ -70,8 +70,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Tick01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.ui.components.table.DataTable
 import me.rerere.rikkahub.ui.context.LocalSettings
 import me.rerere.rikkahub.ui.theme.JetbrainsMono
@@ -461,7 +460,7 @@ private fun HtmlListItem(
                         ) {
                             if (isChecked) {
                                 Icon(
-                                    imageVector = HugeIcons.Tick01,
+                                    imageVector = OceanIcons.Tick01,
                                     contentDescription = null,
                                     tint = MaterialTheme.colorScheme.primary,
                                 )

@@ -69,10 +69,7 @@ import me.rerere.ai.ui.UIMessage
 import me.rerere.ai.ui.UIMessageAnnotation
 import me.rerere.ai.ui.UIMessagePart
 import me.rerere.ai.ui.isEmptyUIMessage
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.File02
-import me.rerere.hugeicons.stroke.MusicNote03
-import me.rerere.hugeicons.stroke.Video01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.data.model.Assistant
@@ -449,7 +446,7 @@ private fun MessagePartsBlock(
                             shape = RoundedCornerShape(8.dp),
                         ) {
                             Box(modifier = Modifier.size(72.dp), contentAlignment = Alignment.Center) {
-                                Icon(HugeIcons.Video01, null)
+                                Icon(OceanIcons.Video01, null)
                             }
                         }
                     }
@@ -479,7 +476,7 @@ private fun MessagePartsBlock(
                                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                                 ) {
                                     Icon(
-                                        imageVector = HugeIcons.MusicNote03,
+                                        imageVector = OceanIcons.MusicNote03,
                                         contentDescription = null,
                                         modifier = Modifier.size(20.dp)
                                     )
@@ -553,7 +550,7 @@ private fun MessagePartsBlock(
 
                                         else -> {
                                             Icon(
-                                                imageVector = HugeIcons.File02,
+                                                imageVector = OceanIcons.File02,
                                                 contentDescription = null,
                                                 modifier = Modifier.size(20.dp)
                                             )

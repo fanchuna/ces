@@ -1,14 +1,7 @@
 package me.rerere.rikkahub.ui.pages.setting
 
 import android.net.Uri
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Camera01
-import me.rerere.hugeicons.stroke.DragDropHorizontal
-import me.rerere.hugeicons.stroke.Image02
-import me.rerere.hugeicons.stroke.FileImport
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Search01
-import me.rerere.hugeicons.stroke.Cancel01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -154,12 +147,12 @@ fun SettingProviderPage(vm: SettingVM = koinViewModel()) {
                     .padding(horizontal = 16.dp, vertical = 8.dp),
                 placeholder = { Text(stringResource(R.string.setting_provider_page_search_providers)) },
                 leadingIcon = {
-                    Icon(HugeIcons.Search01, contentDescription = null)
+                    Icon(OceanIcons.Search01, contentDescription = null)
                 },
                 trailingIcon = {
                     if (searchQuery.isNotEmpty()) {
                         IconButton(onClick = { searchQuery = "" }) {
-                            Icon(HugeIcons.Cancel01, contentDescription = "Clear")
+                            Icon(OceanIcons.Cancel01, contentDescription = "Clear")
                         }
                     }
                 },
@@ -203,7 +196,7 @@ fun SettingProviderPage(vm: SettingVM = koinViewModel()) {
                                         )
                                 ) {
                                     Icon(
-                                        imageVector = HugeIcons.DragDropHorizontal,
+                                        imageVector = OceanIcons.DragDropHorizontal,
                                         contentDescription = null
                                     )
                                 }
@@ -244,7 +237,7 @@ private fun ImportProviderButton(
             showImportDialog = true
         }
     ) {
-        Icon(HugeIcons.FileImport, null)
+        Icon(OceanIcons.FileImport, null)
     }
 
     if (showImportDialog) {
@@ -287,7 +280,7 @@ private fun ImportProviderButton(
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Icon(
-                                    imageVector = HugeIcons.Camera01,
+                                    imageVector = OceanIcons.Camera01,
                                     contentDescription = null,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -320,7 +313,7 @@ private fun ImportProviderButton(
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Icon(
-                                    imageVector = HugeIcons.Image02,
+                                    imageVector = OceanIcons.Image02,
                                     contentDescription = null,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -437,7 +430,7 @@ private fun AddButton(onAdd: (ProviderSetting) -> Unit) {
             dialogState.open(ProviderSetting.OpenAI())
         }
     ) {
-        Icon(HugeIcons.Add01, "Add")
+        Icon(OceanIcons.Add01, "Add")
     }
 
     if (dialogState.isEditing) {

@@ -40,20 +40,7 @@ import me.rerere.ai.core.MessageRole
 import me.rerere.ai.provider.Model
 import me.rerere.ai.ui.UIMessage
 import me.rerere.ai.ui.UIMessagePart
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Copy01
-import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.Edit01
-import me.rerere.hugeicons.stroke.FavouriteCircle
-import me.rerere.hugeicons.stroke.GitFork
-import me.rerere.hugeicons.stroke.MoreVertical
-import me.rerere.hugeicons.stroke.Refresh03
-import me.rerere.hugeicons.stroke.Share04
-import me.rerere.hugeicons.stroke.StopCircle
-import me.rerere.hugeicons.stroke.TextSelection
-import me.rerere.hugeicons.stroke.Translate
-import me.rerere.hugeicons.stroke.VolumeHigh
-import me.rerere.hugeicons.stroke.WebDesign01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.model.MessageNode
 import me.rerere.rikkahub.ui.components.ui.RikkaConfirmDialog
@@ -95,7 +82,7 @@ fun ColumnScope.ChatMessageActionButtons(
         val actionIconColor = MaterialTheme.colorScheme.onSurfaceVariant
 
         Icon(
-            imageVector = HugeIcons.Copy01,
+            imageVector = OceanIcons.Copy01,
             contentDescription = stringResource(R.string.copy),
             modifier = Modifier
                 .clip(CircleShape)
@@ -106,7 +93,7 @@ fun ColumnScope.ChatMessageActionButtons(
         )
 
         Icon(
-            imageVector = HugeIcons.Refresh03,
+            imageVector = OceanIcons.Refresh03,
             contentDescription = stringResource(R.string.regenerate),
             modifier = Modifier
                 .clip(CircleShape)
@@ -127,7 +114,7 @@ fun ColumnScope.ChatMessageActionButtons(
             val isSpeaking by tts.isSpeaking.collectAsState()
             val isAvailable by tts.isAvailable.collectAsState()
             Icon(
-                imageVector = if (isSpeaking) HugeIcons.StopCircle else HugeIcons.VolumeHigh,
+                imageVector = if (isSpeaking) OceanIcons.StopCircle else OceanIcons.VolumeHigh,
                 contentDescription = stringResource(R.string.tts),
                 modifier = Modifier
                     .clip(CircleShape)
@@ -157,7 +144,7 @@ fun ColumnScope.ChatMessageActionButtons(
             // Translation button
             if (onTranslate != null) {
                 Icon(
-                    imageVector = HugeIcons.Translate,
+                    imageVector = OceanIcons.Translate,
                     contentDescription = stringResource(R.string.translate),
                     modifier = Modifier
                         .clip(CircleShape)
@@ -176,7 +163,7 @@ fun ColumnScope.ChatMessageActionButtons(
         }
 
         Icon(
-            imageVector = HugeIcons.MoreVertical,
+            imageVector = OceanIcons.MoreVertical,
             contentDescription = stringResource(R.string.more_options),
             modifier = Modifier
                 .clip(CircleShape)
@@ -280,7 +267,7 @@ fun ChatMessageActionsSheet(
                         .fillMaxWidth()
                 ) {
                     Icon(
-                        imageVector = HugeIcons.TextSelection,
+                        imageVector = OceanIcons.TextSelection,
                         contentDescription = null,
                         modifier = Modifier.padding(4.dp)
                     )
@@ -311,7 +298,7 @@ fun ChatMessageActionsSheet(
                             .fillMaxWidth()
                     ) {
                         Icon(
-                            imageVector = HugeIcons.WebDesign01,
+                            imageVector = OceanIcons.WebDesign01,
                             contentDescription = null,
                             modifier = Modifier.padding(4.dp)
                         )
@@ -339,7 +326,7 @@ fun ChatMessageActionsSheet(
                         .fillMaxWidth()
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Edit01,
+                        imageVector = OceanIcons.Edit01,
                         contentDescription = null,
                         modifier = Modifier.padding(4.dp)
                     )
@@ -366,7 +353,7 @@ fun ChatMessageActionsSheet(
                         .fillMaxWidth()
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Share04,
+                        imageVector = OceanIcons.Share04,
                         contentDescription = null,
                         modifier = Modifier.padding(4.dp)
                     )
@@ -393,7 +380,7 @@ fun ChatMessageActionsSheet(
                         .fillMaxWidth()
                 ) {
                     Icon(
-                        imageVector = HugeIcons.GitFork,
+                        imageVector = OceanIcons.GitFork,
                         contentDescription = null,
                         modifier = Modifier.padding(4.dp)
                     )
@@ -420,7 +407,7 @@ fun ChatMessageActionsSheet(
                             .fillMaxWidth()
                     ) {
                         Icon(
-                            imageVector = HugeIcons.FavouriteCircle,
+                            imageVector = OceanIcons.FavouriteCircle,
                             contentDescription = null,
                             modifier = Modifier.padding(4.dp)
                         )
@@ -454,7 +441,7 @@ fun ChatMessageActionsSheet(
                         .fillMaxWidth()
                 ) {
                     Icon(
-                        imageVector = HugeIcons.Delete01,
+                        imageVector = OceanIcons.Delete01,
                         contentDescription = null,
                         modifier = Modifier.padding(4.dp)
                     )

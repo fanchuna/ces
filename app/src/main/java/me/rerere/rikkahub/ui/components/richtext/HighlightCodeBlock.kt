@@ -60,14 +60,7 @@ import me.rerere.highlight.HighlightTextColorPalette
 import me.rerere.highlight.Highlighter
 import me.rerere.highlight.LocalHighlighter
 import me.rerere.highlight.buildHighlightText
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowDown01
-import me.rerere.hugeicons.stroke.ArrowUp01
-import me.rerere.hugeicons.stroke.Code
-import me.rerere.hugeicons.stroke.Copy01
-import me.rerere.hugeicons.stroke.Download04
-import me.rerere.hugeicons.stroke.Eye
-import me.rerere.hugeicons.stroke.View
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.ui.components.webview.WebView
@@ -229,7 +222,7 @@ fun HighlightCodeBlock(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Icon(
-                                    imageVector = if (isExpanded) HugeIcons.ArrowUp01 else HugeIcons.ArrowDown01,
+                                    imageVector = if (isExpanded) OceanIcons.ArrowUp01 else OceanIcons.ArrowDown01,
                                     contentDescription = null,
                                     tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                                     modifier = Modifier.size(textStyle.fontSize.toDp())
@@ -386,7 +379,7 @@ private fun HighlightCodeActions(
             val iconTint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
 
             Icon(
-                imageVector = HugeIcons.Download04,
+                imageVector = OceanIcons.Download04,
                 contentDescription = stringResource(id = R.string.chat_page_save),
                 tint = iconTint,
                 modifier = Modifier
@@ -422,7 +415,7 @@ private fun HighlightCodeActions(
             )
 
             Icon(
-                imageVector = HugeIcons.Copy01,
+                imageVector = OceanIcons.Copy01,
                 contentDescription = stringResource(id = R.string.code_block_copy),
                 tint = iconTint,
                 modifier = Modifier
@@ -439,7 +432,7 @@ private fun HighlightCodeActions(
             val normalizedLanguage = language.lowercase()
             if (canInlinePreview) {
                 Icon(
-                    imageVector = if (previewMode) HugeIcons.Code else HugeIcons.View,
+                    imageVector = if (previewMode) OceanIcons.Code else OceanIcons.View,
                     contentDescription = if (previewMode) "Code" else stringResource(id = R.string.code_block_preview),
                     tint = iconTint,
                     modifier = Modifier
@@ -454,7 +447,7 @@ private fun HighlightCodeActions(
 
             if (completeCodeBlock && normalizedLanguage in PREVIEWABLE_LANGUAGES) {
                 Icon(
-                    imageVector = HugeIcons.Eye,
+                    imageVector = OceanIcons.Eye,
                     contentDescription = stringResource(id = R.string.code_block_preview),
                     tint = iconTint,
                     modifier = Modifier

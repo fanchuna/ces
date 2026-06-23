@@ -18,11 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.datetime.toJavaLocalDateTime
 import me.rerere.ai.ui.UIMessage
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Clock02
-import me.rerere.hugeicons.stroke.Download04
-import me.rerere.hugeicons.stroke.Upload02
-import me.rerere.hugeicons.stroke.Zap
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.ui.context.LocalSettings
 import me.rerere.rikkahub.utils.formatNumber
 import me.rerere.rikkahub.utils.toFixed
@@ -52,7 +48,7 @@ fun ChatMessageNerdLine(
                     StatsItem(
                         icon = {
                             Icon(
-                                imageVector = HugeIcons.Upload02,
+                                imageVector = OceanIcons.Upload02,
                                 contentDescription = "Input",
                                 tint = color,
                                 modifier = Modifier.size(12.dp)
@@ -72,7 +68,7 @@ fun ChatMessageNerdLine(
                     StatsItem(
                         icon = {
                             Icon(
-                                imageVector = HugeIcons.Download04,
+                                imageVector = OceanIcons.Download04,
                                 contentDescription = "Output",
                                 modifier = Modifier.size(12.dp)
                             )
@@ -92,7 +88,7 @@ fun ChatMessageNerdLine(
                         StatsItem(
                             icon = {
                                 Icon(
-                                    imageVector = HugeIcons.Zap,
+                                    imageVector = OceanIcons.Zap,
                                     contentDescription = "Speed",
                                     modifier = Modifier.size(12.dp)
                                 )
@@ -105,7 +101,7 @@ fun ChatMessageNerdLine(
                         StatsItem(
                             icon = {
                                 Icon(
-                                    imageVector = HugeIcons.Clock02,
+                                    imageVector = OceanIcons.Clock02,
                                     contentDescription = "Duration",
                                     modifier = Modifier.size(12.dp)
                                 )

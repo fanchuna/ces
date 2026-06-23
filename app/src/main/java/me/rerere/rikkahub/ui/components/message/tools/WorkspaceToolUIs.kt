@@ -33,11 +33,7 @@ import me.rerere.ai.ui.metadataAs
 import me.rerere.common.http.jsonObjectOrNull
 import me.rerere.highlight.HighlightText
 import androidx.compose.ui.res.stringResource
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ComputerTerminal01
-import me.rerere.hugeicons.stroke.FileAdd
-import me.rerere.hugeicons.stroke.FileEdit
-import me.rerere.hugeicons.stroke.FileView
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.richtext.DiffAddedColor
 import me.rerere.rikkahub.ui.components.richtext.DiffRemovedColor
@@ -56,7 +52,7 @@ object EditFileToolUI : ToolUIRenderer {
 
     override val toolName: String = "workspace_edit_file"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.FileEdit
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.FileEdit
 
     @Composable
     override fun title(context: ToolUIContext): String {
@@ -159,7 +155,7 @@ object EditFileToolUI : ToolUIRenderer {
 object ReadFileToolUI : ToolUIRenderer {
     override val toolName: String = "workspace_read_file"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.FileView
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.FileView
 
     @Composable
     override fun title(context: ToolUIContext): String {
@@ -200,7 +196,7 @@ object ReadFileToolUI : ToolUIRenderer {
 object WriteFileToolUI : ToolUIRenderer {
     override val toolName: String = "workspace_write_file"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.FileAdd
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.FileAdd
 
     @Composable
     override fun title(context: ToolUIContext): String {
@@ -294,7 +290,7 @@ object ShellToolUI : ToolUIRenderer {
 
     override val toolName: String = "workspace_shell"
 
-    override fun icon(context: ToolUIContext): ImageVector = HugeIcons.ComputerTerminal01
+    override fun icon(context: ToolUIContext): ImageVector = OceanIcons.ComputerTerminal01
 
     @Composable
     override fun title(context: ToolUIContext): String {

@@ -38,9 +38,7 @@ import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.longOrNull
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowDown01
-import me.rerere.hugeicons.stroke.ArrowRight01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.ui.theme.JetbrainsMono
 
 @Composable
@@ -114,7 +112,7 @@ private fun JsonObjectNode(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = if (expanded) HugeIcons.ArrowDown01 else HugeIcons.ArrowRight01,
+                imageVector = if (expanded) OceanIcons.ArrowDown01 else OceanIcons.ArrowRight01,
                 contentDescription = null,
                 modifier = Modifier
                     .padding(start = (depth * 16).dp)
@@ -177,7 +175,7 @@ private fun JsonArrayNode(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = if (expanded) HugeIcons.ArrowDown01 else HugeIcons.ArrowRight01,
+                imageVector = if (expanded) OceanIcons.ArrowDown01 else OceanIcons.ArrowRight01,
                 contentDescription = null,
                 modifier = Modifier
                     .padding(start = (depth * 16).dp)

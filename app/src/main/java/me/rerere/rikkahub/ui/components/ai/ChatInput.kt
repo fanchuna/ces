@@ -81,11 +81,7 @@ import me.rerere.ai.provider.Model
 import me.rerere.ai.provider.ModelAbility
 import me.rerere.ai.provider.ModelType
 import me.rerere.asr.ASRStatus
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.ArrowUp02
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.FullScreen
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.datastore.Settings
 import me.rerere.rikkahub.data.datastore.getCurrentAssistant
@@ -260,7 +256,7 @@ fun ChatInput(
                             onClick = onMoreClick
                         ) {
                             Icon(
-                                imageVector = HugeIcons.Add01,
+                                imageVector = OceanIcons.Add01,
                                 contentDescription = stringResource(R.string.more_options)
                             )
                         }
@@ -328,14 +324,14 @@ fun ChatInput(
                                 if (loading) {
                                     KeepScreenOn()
                                     Icon(
-                                        imageVector = HugeIcons.Cancel01,
+                                        imageVector = OceanIcons.Cancel01,
                                         contentDescription = stringResource(R.string.stop),
                                         tint = contentColor,
                                         modifier = Modifier.size(20.dp)
                                     )
                                 } else {
                                     Icon(
-                                        imageVector = HugeIcons.ArrowUp02,
+                                        imageVector = OceanIcons.ArrowUp02,
                                         contentDescription = stringResource(R.string.send),
                                         tint = contentColor,
                                         modifier = Modifier.size(20.dp)
@@ -397,7 +393,7 @@ private fun TextInputRow(
                     Text(text = stringResource(R.string.editing))
                     Spacer(Modifier.weight(1f))
                     Icon(
-                        imageVector = HugeIcons.Cancel01,
+                        imageVector = OceanIcons.Cancel01,
                         contentDescription = stringResource(R.string.cancel_edit),
                         modifier = Modifier.clickable { state.clearInput() }
                     )
@@ -528,7 +524,7 @@ private fun TextInputRow(
                         onClick = {
                             isFullScreen = !isFullScreen
                         }) {
-                        Icon(HugeIcons.FullScreen, null)
+                        Icon(OceanIcons.FullScreen, null)
                     }
                 }
             },

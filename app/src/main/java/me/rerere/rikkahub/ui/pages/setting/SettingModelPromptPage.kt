@@ -23,8 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ArrowRight01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.ai.prompts.DEFAULT_COMPRESS_PROMPT
 import me.rerere.rikkahub.data.ai.prompts.DEFAULT_OCR_PROMPT
@@ -96,7 +95,7 @@ private fun PromptSettingItem(
             headlineContent = { Text(stringResource(R.string.setting_model_page_prompt)) },
             trailingContent = {
                 Icon(
-                    HugeIcons.ArrowRight01,
+                    OceanIcons.ArrowRight01,
                     contentDescription = null,
                     modifier = Modifier.size(16.dp),
                 )

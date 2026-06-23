@@ -1,9 +1,6 @@
 package me.rerere.rikkahub.ui.pages.history;
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Pin
-import me.rerere.hugeicons.stroke.PinOff
-import me.rerere.hugeicons.stroke.Delete01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -80,7 +77,7 @@ fun HistoryPage(vm: HistoryVM = koinViewModel()) {
                             showDeleteAllDialog = true
                         }
                     ) {
-                        Icon(HugeIcons.Delete01, contentDescription = stringResource(R.string.history_page_delete_all))
+                        Icon(OceanIcons.Delete01, contentDescription = stringResource(R.string.history_page_delete_all))
                     }
                 }
             )
@@ -191,7 +188,7 @@ private fun SwipeableConversationItem(
                 contentAlignment = Alignment.CenterEnd
             ) {
                 Icon(
-                    imageVector = HugeIcons.Delete01,
+                    imageVector = OceanIcons.Delete01,
                     contentDescription = stringResource(R.string.history_page_delete),
                     tint = MaterialTheme.colorScheme.onErrorContainer
                 )
@@ -229,7 +226,7 @@ private fun ConversationItem(
                 ) {
                     if (conversation.isPinned) {
                         Icon(
-                            imageVector = HugeIcons.Pin,
+                            imageVector = OceanIcons.Pin,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(16.dp),
@@ -252,7 +249,7 @@ private fun ConversationItem(
                     onClick = onTogglePin
                 ) {
                     Icon(
-                        if (conversation.isPinned) HugeIcons.PinOff else HugeIcons.Pin,
+                        if (conversation.isPinned) OceanIcons.PinOff else OceanIcons.Pin,
                         contentDescription = if (conversation.isPinned) stringResource(R.string.history_page_unpin) else stringResource(
                             R.string.history_page_pin
                         )

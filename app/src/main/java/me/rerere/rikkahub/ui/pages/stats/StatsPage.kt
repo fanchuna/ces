@@ -1,11 +1,6 @@
 package me.rerere.rikkahub.ui.pages.stats
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.ChartColumn
-import me.rerere.hugeicons.stroke.Cpu
-import me.rerere.hugeicons.stroke.Message01
-import me.rerere.hugeicons.stroke.Rocket01
-import me.rerere.hugeicons.stroke.Zap
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -285,13 +280,13 @@ private fun StatsGrid(stats: AppStats, modifier: Modifier = Modifier) {
         ) {
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = HugeIcons.ChartColumn,
+                icon = OceanIcons.ChartColumn,
                 label = stringResource(R.string.stats_page_total_conversations),
                 value = formatCount(stats.totalConversations.toLong()),
             )
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = HugeIcons.Message01,
+                icon = OceanIcons.Message01,
                 label = stringResource(R.string.stats_page_total_messages),
                 value = formatCount(stats.totalMessages.toLong()),
             )
@@ -302,13 +297,13 @@ private fun StatsGrid(stats: AppStats, modifier: Modifier = Modifier) {
         ) {
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = HugeIcons.Cpu,
+                icon = OceanIcons.Cpu,
                 label = stringResource(R.string.stats_page_input_tokens),
                 value = formatTokens(stats.totalPromptTokens),
             )
             StatCard(
                 modifier = Modifier.weight(1f),
-                icon = HugeIcons.Cpu,
+                icon = OceanIcons.Cpu,
                 label = stringResource(R.string.stats_page_output_tokens),
                 value = formatTokens(stats.totalCompletionTokens),
             )
@@ -316,14 +311,14 @@ private fun StatsGrid(stats: AppStats, modifier: Modifier = Modifier) {
         if (stats.totalCachedTokens > 0) {
             StatCard(
                 modifier = Modifier.fillMaxWidth(),
-                icon = HugeIcons.Zap,
+                icon = OceanIcons.Zap,
                 label = stringResource(R.string.stats_page_cached_tokens),
                 value = formatTokens(stats.totalCachedTokens),
             )
         }
         StatCard(
             modifier = Modifier.fillMaxWidth(),
-            icon = HugeIcons.Rocket01,
+            icon = OceanIcons.Rocket01,
             label = stringResource(R.string.stats_page_launch_count),
             value = formatCount(stats.launchCount.toLong()),
         )

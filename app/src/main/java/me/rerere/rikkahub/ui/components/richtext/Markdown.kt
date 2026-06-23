@@ -89,10 +89,7 @@ import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.launch
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Copy01
-import me.rerere.hugeicons.stroke.Download04
-import me.rerere.hugeicons.stroke.Tick01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.data.datastore.Settings
 import me.rerere.rikkahub.ui.components.table.DataTable
 import me.rerere.rikkahub.ui.context.LocalSettings
@@ -422,7 +419,7 @@ private fun MarkdownNode(
                 ) {
                     if (isChecked) {
                         Icon(
-                            imageVector = HugeIcons.Tick01,
+                            imageVector = OceanIcons.Tick01,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.primary
                         )
@@ -923,7 +920,7 @@ private fun TableNode(node: ASTNode, content: String, modifier: Modifier = Modif
                 val iconTint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
 
                 Icon(
-                    imageVector = HugeIcons.Copy01,
+                    imageVector = OceanIcons.Copy01,
                     contentDescription = "Copy",
                     tint = iconTint,
                     modifier = Modifier
@@ -938,7 +935,7 @@ private fun TableNode(node: ASTNode, content: String, modifier: Modifier = Modif
                 )
 
                 Icon(
-                    imageVector = HugeIcons.Download04,
+                    imageVector = OceanIcons.Download04,
                     contentDescription = "Download",
                     tint = iconTint,
                     modifier = Modifier

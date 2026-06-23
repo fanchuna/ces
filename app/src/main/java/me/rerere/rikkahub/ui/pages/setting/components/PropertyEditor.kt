@@ -28,9 +28,7 @@ import kotlinx.serialization.json.JsonPrimitive
 import me.rerere.ai.provider.CustomBody
 import me.rerere.ai.provider.CustomHeader
 import me.rerere.highlight.LocalHighlighter
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Delete01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.richtext.HighlightCodeVisualTransformation
 import me.rerere.rikkahub.ui.components.ui.CardGroup
@@ -94,7 +92,7 @@ fun CustomHeaders(headers: List<CustomHeader>, onUpdate: (List<CustomHeader>) ->
                             onUpdate(updatedHeaders)
                         }) {
                             Icon(
-                                HugeIcons.Delete01,
+                                OceanIcons.Delete01,
                                 contentDescription = stringResource(R.string.assistant_page_delete_header)
                             )
                         }
@@ -112,7 +110,7 @@ fun CustomHeaders(headers: List<CustomHeader>, onUpdate: (List<CustomHeader>) ->
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Icon(HugeIcons.Add01, contentDescription = stringResource(R.string.assistant_page_add_header))
+            Icon(OceanIcons.Add01, contentDescription = stringResource(R.string.assistant_page_add_header))
             Spacer(Modifier.width(4.dp))
             Text(stringResource(R.string.assistant_page_add_header))
         }
@@ -197,7 +195,7 @@ fun CustomBodies(customBodies: List<CustomBody>, onUpdate: (List<CustomBody>) ->
                             onUpdate(updatedBodies)
                         }) {
                             Icon(
-                                HugeIcons.Delete01,
+                                OceanIcons.Delete01,
                                 contentDescription = stringResource(R.string.assistant_page_delete_body)
                             )
                         }
@@ -215,7 +213,7 @@ fun CustomBodies(customBodies: List<CustomBody>, onUpdate: (List<CustomBody>) ->
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Icon(HugeIcons.Add01, contentDescription = stringResource(R.string.assistant_page_add_body))
+            Icon(OceanIcons.Add01, contentDescription = stringResource(R.string.assistant_page_add_body))
             Spacer(Modifier.width(4.dp))
             Text(stringResource(R.string.assistant_page_add_body))
         }

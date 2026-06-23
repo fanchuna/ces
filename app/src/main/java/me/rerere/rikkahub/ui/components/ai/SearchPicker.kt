@@ -40,11 +40,7 @@ import kotlinx.coroutines.launch
 import me.rerere.ai.provider.BuiltInTools
 import me.rerere.ai.provider.Model
 import me.rerere.ai.registry.ModelRegistry
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.GlobalSearch
-import me.rerere.hugeicons.stroke.AiSearch02
-import me.rerere.hugeicons.stroke.Search01
-import me.rerere.hugeicons.stroke.Settings03
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.Screen
 import me.rerere.rikkahub.data.datastore.Settings
@@ -88,7 +84,7 @@ fun SearchPickerButton(
             ) {
                 if (model?.tools?.contains(BuiltInTools.Search) == true) {
                     Icon(
-                        imageVector = HugeIcons.AiSearch02,
+                        imageVector = OceanIcons.AiSearch02,
                         contentDescription = stringResource(R.string.use_web_search),
                     )
                 } else if (enableSearch && currentService != null) {
@@ -98,7 +94,7 @@ fun SearchPickerButton(
                     )
                 } else {
                     Icon(
-                        imageVector = HugeIcons.Search01,
+                        imageVector = OceanIcons.Search01,
                         contentDescription = stringResource(R.string.use_web_search),
                     )
                 }
@@ -195,7 +191,7 @@ private fun AppSearchSettings(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(HugeIcons.GlobalSearch, null)
+            Icon(OceanIcons.GlobalSearch, null)
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -220,7 +216,7 @@ private fun AppSearchSettings(
                     navBackStack.navigate(Screen.SettingSearch)
                 }
             ) {
-                Icon(HugeIcons.Settings03, null)
+                Icon(OceanIcons.Settings03, null)
             }
             Switch(
                 checked = enableSearch,
@@ -301,7 +297,7 @@ private fun BuiltInSearchSetting(model: Model) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(HugeIcons.GlobalSearch, null)
+            Icon(OceanIcons.GlobalSearch, null)
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)

@@ -1,9 +1,7 @@
 package me.rerere.rikkahub.ui.pages.translator
 
 import android.content.ClipData
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Clipboard
-import me.rerere.hugeicons.stroke.LanguageCircle
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
@@ -151,7 +149,7 @@ fun TranslatorPage(vm: TranslatorVM = koinViewModel()) {
                         }
                     }
                 ) {
-                    Icon(HugeIcons.Clipboard, null)
+                    Icon(OceanIcons.Clipboard, null)
                     Text("粘贴文本", modifier = Modifier.padding(start = 4.dp))
                 }
             }
@@ -196,7 +194,7 @@ fun TranslatorPage(vm: TranslatorVM = koinViewModel()) {
                         }
                     }
                 ) {
-                    Icon(HugeIcons.Clipboard, null)
+                    Icon(OceanIcons.Clipboard, null)
                     Text("复制翻译结果", modifier = Modifier.padding(start = 4.dp))
                 }
             }
@@ -316,7 +314,7 @@ private fun BottomBar(
                         modifier = Modifier.padding(horizontal = 8.dp)
                     ) {
                         Icon(
-                            HugeIcons.LanguageCircle,
+                            OceanIcons.LanguageCircle,
                             contentDescription = null,
                             modifier = Modifier.size(20.dp)
                         )

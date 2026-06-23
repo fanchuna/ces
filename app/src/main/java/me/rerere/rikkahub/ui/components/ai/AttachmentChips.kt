@@ -34,11 +34,7 @@ import androidx.compose.ui.util.fastForEach
 import androidx.core.net.toUri
 import coil3.compose.AsyncImage
 import me.rerere.ai.ui.UIMessagePart
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Cancel01
-import me.rerere.hugeicons.stroke.Files02
-import me.rerere.hugeicons.stroke.MusicNote03
-import me.rerere.hugeicons.stroke.Video01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.data.files.FilesManager
 import me.rerere.rikkahub.ui.hooks.ChatInputState
 import org.koin.compose.koinInject
@@ -106,7 +102,7 @@ internal fun MediaFileInputRow(
                             displayNameByRelativePath = displayNameByRelativePath,
                             displayNameByFileName = displayNameByFileName
                         ),
-                        leading = { AttachmentLeadingIcon(icon = HugeIcons.Video01) },
+                        leading = { AttachmentLeadingIcon(icon = OceanIcons.Video01) },
                         onRemove = { removePart(part, part.url) }
                     )
                 }
@@ -119,7 +115,7 @@ internal fun MediaFileInputRow(
                             displayNameByRelativePath = displayNameByRelativePath,
                             displayNameByFileName = displayNameByFileName
                         ),
-                        leading = { AttachmentLeadingIcon(icon = HugeIcons.MusicNote03) },
+                        leading = { AttachmentLeadingIcon(icon = OceanIcons.MusicNote03) },
                         onRemove = { removePart(part, part.url) }
                     )
                 }
@@ -132,7 +128,7 @@ internal fun MediaFileInputRow(
                             displayNameByRelativePath = displayNameByRelativePath,
                             displayNameByFileName = displayNameByFileName
                         ),
-                        leading = { AttachmentLeadingIcon(icon = HugeIcons.Files02) },
+                        leading = { AttachmentLeadingIcon(icon = OceanIcons.Files02) },
                         onRemove = { removePart(part, part.url) }
                     )
                 }
@@ -179,7 +175,7 @@ private fun AttachmentChip(
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    imageVector = HugeIcons.Cancel01,
+                    imageVector = OceanIcons.Cancel01,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(16.dp)

@@ -1,14 +1,6 @@
 package me.rerere.rikkahub.ui.pages.chat
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Tick01
-import me.rerere.hugeicons.stroke.ArrowDown01
-import me.rerere.hugeicons.stroke.ArrowUp01
-import me.rerere.hugeicons.stroke.ArrowDownDouble
-import me.rerere.hugeicons.stroke.ArrowUpDouble
-import me.rerere.hugeicons.stroke.CursorPointer01
-import me.rerere.hugeicons.stroke.Search01
-import me.rerere.hugeicons.stroke.Cancel01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope
@@ -489,7 +481,7 @@ private fun ChatListNormal(
                                 selectedItems.clear()
                             }
                         ) {
-                            Icon(HugeIcons.Cancel01, null)
+                            Icon(OceanIcons.Cancel01, null)
                         }
                     }
                     Tooltip(
@@ -506,7 +498,7 @@ private fun ChatListNormal(
                                 }
                             }
                         ) {
-                            Icon(HugeIcons.CursorPointer01, null)
+                            Icon(OceanIcons.CursorPointer01, null)
                         }
                     }
                     Tooltip(
@@ -523,7 +515,7 @@ private fun ChatListNormal(
                                 }
                             }
                         ) {
-                            Icon(HugeIcons.Tick01, null)
+                            Icon(OceanIcons.Tick01, null)
                         }
                     }
                 }
@@ -665,7 +657,7 @@ private fun ChatListPreview(
             placeholder = { Text(stringResource(R.string.history_page_search)) },
             leadingIcon = {
                 Icon(
-                    imageVector = HugeIcons.Search01,
+                    imageVector = OceanIcons.Search01,
                     contentDescription = null,
                     modifier = Modifier.size(20.dp)
                 )
@@ -674,7 +666,7 @@ private fun ChatListPreview(
                 if (searchQuery.isNotEmpty()) {
                     IconButton(onClick = { searchQuery = "" }) {
                         Icon(
-                            imageVector = HugeIcons.Cancel01,
+                            imageVector = OceanIcons.Cancel01,
                             contentDescription = "Clear",
                             modifier = Modifier.size(20.dp)
                         )
@@ -814,7 +806,7 @@ private fun BoxScope.MessageJumper(
                 ).copy(alpha = 0.65f)
             ) {
                 Icon(
-                    imageVector = HugeIcons.ArrowUpDouble,
+                    imageVector = OceanIcons.ArrowUpDouble,
                     contentDescription = null,
                     modifier = Modifier
                         .padding(4.dp)
@@ -837,7 +829,7 @@ private fun BoxScope.MessageJumper(
                 ).copy(alpha = 0.65f)
             ) {
                 Icon(
-                    imageVector = HugeIcons.ArrowUp01,
+                    imageVector = OceanIcons.ArrowUp01,
                     contentDescription = null,
                     modifier = Modifier
                         .padding(4.dp)
@@ -855,7 +847,7 @@ private fun BoxScope.MessageJumper(
                 ).copy(alpha = 0.65f)
             ) {
                 Icon(
-                    imageVector = HugeIcons.ArrowDown01,
+                    imageVector = OceanIcons.ArrowDown01,
                     contentDescription = null,
                     modifier = Modifier
                         .padding(4.dp)
@@ -873,7 +865,7 @@ private fun BoxScope.MessageJumper(
                 ).copy(alpha = 0.65f),
             ) {
                 Icon(
-                    imageVector = HugeIcons.ArrowDownDouble,
+                    imageVector = OceanIcons.ArrowDownDouble,
                     contentDescription = stringResource(R.string.chat_page_scroll_to_bottom),
                     modifier = Modifier
                         .padding(4.dp)

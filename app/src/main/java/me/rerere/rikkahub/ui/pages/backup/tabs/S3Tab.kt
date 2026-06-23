@@ -1,9 +1,6 @@
 package me.rerere.rikkahub.ui.pages.backup.tabs
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.View
-import me.rerere.hugeicons.stroke.ViewOff
-import me.rerere.hugeicons.stroke.Upload02
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -156,9 +153,9 @@ fun S3Tab(
                             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                             trailingIcon = {
                                 val image = if (passwordVisible) {
-                                    HugeIcons.ViewOff
+                                    OceanIcons.ViewOff
                                 } else {
-                                    HugeIcons.View
+                                    OceanIcons.View
                                 }
                                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
                                     Icon(imageVector = image, contentDescription = null)
@@ -309,7 +306,7 @@ fun S3Tab(
                         modifier = Modifier.size(18.dp)
                     )
                 } else {
-                    Icon(HugeIcons.Upload02, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Icon(OceanIcons.Upload02, contentDescription = null, modifier = Modifier.size(18.dp))
                 }
                 Spacer(Modifier.width(8.dp))
                 Text(

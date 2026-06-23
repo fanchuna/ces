@@ -1,10 +1,6 @@
 package me.rerere.rikkahub.ui.pages.chat
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Pin
-import me.rerere.hugeicons.stroke.PinOff
-import me.rerere.hugeicons.stroke.Refresh01
-import me.rerere.hugeicons.stroke.Delete01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -199,7 +195,7 @@ private fun PinnedHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            imageVector = HugeIcons.Pin,
+            imageVector = OceanIcons.Pin,
             contentDescription = null,
             modifier = Modifier.size(16.dp),
             tint = MaterialTheme.colorScheme.primary
@@ -263,7 +259,7 @@ private fun ConversationItem(
             // 置顶图标
             AnimatedVisibility(conversation.isPinned) {
                 Icon(
-                    imageVector = HugeIcons.Pin,
+                    imageVector = OceanIcons.Pin,
                     contentDescription = "Pinned",
                     modifier = Modifier.size(12.dp),
                     tint = MaterialTheme.colorScheme.primary
@@ -296,7 +292,7 @@ private fun ConversationItem(
                     },
                     leadingIcon = {
                         Icon(
-                            if (conversation.isPinned) HugeIcons.PinOff else HugeIcons.Pin,
+                            if (conversation.isPinned) OceanIcons.PinOff else OceanIcons.Pin,
                             null
                         )
                     }
@@ -311,7 +307,7 @@ private fun ConversationItem(
                         showDropdownMenu = false
                     },
                     leadingIcon = {
-                        Icon(HugeIcons.Refresh01, null)
+                        Icon(OceanIcons.Refresh01, null)
                     }
                 )
 
@@ -324,7 +320,7 @@ private fun ConversationItem(
                         showDropdownMenu = false
                     },
                     leadingIcon = {
-                        Icon(HugeIcons.Delete01, null)
+                        Icon(OceanIcons.Delete01, null)
                     }
                 )
             }

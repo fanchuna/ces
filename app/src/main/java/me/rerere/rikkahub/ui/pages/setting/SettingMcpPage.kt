@@ -1,17 +1,6 @@
 package me.rerere.rikkahub.ui.pages.setting
 
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.AlertCircle
-import me.rerere.hugeicons.stroke.ArrowDown01
-import me.rerere.hugeicons.stroke.ArrowUp01
-import me.rerere.hugeicons.stroke.FileImport
-import me.rerere.hugeicons.stroke.MessageBlocked
-import me.rerere.hugeicons.stroke.Add01
-import me.rerere.hugeicons.stroke.Settings03
-import me.rerere.hugeicons.stroke.Console
-import me.rerere.hugeicons.stroke.Delete01
-import me.rerere.hugeicons.stroke.Upload02
-import me.rerere.hugeicons.stroke.Cancel01
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -86,7 +75,6 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import me.rerere.ai.core.InputSchema
-import me.rerere.hugeicons.stroke.McpServer
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.ai.mcp.McpManager
 import me.rerere.rikkahub.data.ai.mcp.McpServerConfig
@@ -145,14 +133,14 @@ fun SettingMcpPage(vm: SettingVM = koinViewModel()) {
                             showImportDialog = true
                         }
                     ) {
-                        Icon(HugeIcons.FileImport, null)
+                        Icon(OceanIcons.FileImport, null)
                     }
                     IconButton(
                         onClick = {
                             creationState.open(McpServerConfig.StreamableHTTPServer())
                         }
                     ) {
-                        Icon(HugeIcons.Add01, null)
+                        Icon(OceanIcons.Add01, null)
                     }
                 },
                 scrollBehavior = scrollBehavior,
@@ -255,14 +243,14 @@ private fun McpServerItem(
                         scope.launch { dismissBoxState.reset() }
                     }
                 ) {
-                    Icon(HugeIcons.Cancel01, null)
+                    Icon(OceanIcons.Cancel01, null)
                 }
                 FilledTonalIconButton(
                     onClick = {
                         onDelete()
                     }
                 ) {
-                    Icon(HugeIcons.Delete01, null)
+                    Icon(OceanIcons.Delete01, null)
                 }
             }
         },
@@ -283,18 +271,18 @@ private fun McpServerItem(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 when (status) {
-                    McpStatus.Idle -> Icon(HugeIcons.MessageBlocked, null)
+                    McpStatus.Idle -> Icon(OceanIcons.MessageBlocked, null)
                     McpStatus.Connecting -> CircularProgressIndicator(
                         modifier = Modifier.size(
                             24.dp
                         )
                     )
 
-                    McpStatus.Connected -> Icon(HugeIcons.McpServer, null)
+                    McpStatus.Connected -> Icon(OceanIcons.McpServer, null)
                     is McpStatus.Reconnecting -> CircularProgressIndicator(
                         modifier = Modifier.size(24.dp)
                     )
-                    is McpStatus.Error -> Icon(HugeIcons.AlertCircle, null)
+                    is McpStatus.Error -> Icon(OceanIcons.AlertCircle, null)
                 }
 
                 Column(
@@ -348,7 +336,7 @@ private fun McpServerItem(
                         onEdit(item)
                     }
                 ) {
-                    Icon(HugeIcons.Settings03, null)
+                    Icon(OceanIcons.Settings03, null)
                 }
             }
         }
@@ -716,7 +704,7 @@ private fun McpCommonOptionsConfigure(
                             )
                         }) {
                             Icon(
-                                HugeIcons.Delete01,
+                                OceanIcons.Delete01,
                                 contentDescription = stringResource(R.string.setting_mcp_page_delete_header)
                             )
                         }
@@ -742,7 +730,7 @@ private fun McpCommonOptionsConfigure(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Icon(
-                        HugeIcons.Add01,
+                        OceanIcons.Add01,
                         contentDescription = stringResource(R.string.setting_mcp_page_add_header)
                     )
                     Spacer(Modifier.width(4.dp))
@@ -875,7 +863,7 @@ private fun McpToolCard(
                     modifier = Modifier.size(32.dp)
                 ) {
                     Icon(
-                        if (expanded) HugeIcons.ArrowUp01 else HugeIcons.ArrowDown01,
+                        if (expanded) OceanIcons.ArrowUp01 else OceanIcons.ArrowDown01,
                         contentDescription = null,
                         modifier = Modifier.size(16.dp)
                     )

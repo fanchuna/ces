@@ -40,8 +40,7 @@ import me.rerere.ai.provider.ProviderSetting
 import me.rerere.ai.provider.TextGenerationParams
 import me.rerere.ai.ui.UIMessage
 import me.rerere.ai.ui.UIMessagePart
-import me.rerere.hugeicons.HugeIcons
-import me.rerere.hugeicons.stroke.Connect
+import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.ai.ModelSelector
 import me.rerere.rikkahub.ui.theme.extendColors
@@ -57,7 +56,7 @@ fun ProviderConnectionTester(
     val scope = rememberCoroutineScope()
 
     IconButton(onClick = { showTestDialog = true }) {
-        Icon(HugeIcons.Connect, null)
+        Icon(OceanIcons.Connect, null)
     }
 
     if (showTestDialog) {
