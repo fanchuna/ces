@@ -39,9 +39,6 @@ import me.rerere.ai.core.ReasoningLevel
 import me.rerere.rikkahub.ui.icons.OceanIcons
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.ui.ToggleSurface
-import me.rerere.rikkahub.ui.components.ui.icons.ReasoningHigh
-import me.rerere.rikkahub.ui.components.ui.icons.ReasoningLow
-import me.rerere.rikkahub.ui.components.ui.icons.ReasoningMedium
 import kotlin.math.roundToInt
 
 private val levels = ReasoningLevel.entries
@@ -140,10 +137,10 @@ fun ReasoningPicker(
                     imageVector = when (reasoningLevel) {
                         ReasoningLevel.OFF -> OceanIcons.Brain02
                         ReasoningLevel.AUTO -> OceanIcons.Brain02
-                        ReasoningLevel.LOW -> ReasoningLow
-                        ReasoningLevel.MEDIUM -> ReasoningMedium
-                        ReasoningLevel.HIGH -> ReasoningHigh
-                        ReasoningLevel.XHIGH -> ReasoningHigh
+                        ReasoningLevel.LOW -> OceanIcons.Brain02
+                        ReasoningLevel.MEDIUM -> OceanIcons.Brain02
+                        ReasoningLevel.HIGH -> OceanIcons.Brain02
+                        ReasoningLevel.XHIGH -> OceanIcons.Brain02
                     },
                     contentDescription = null,
                     modifier = Modifier.size(32.dp),
@@ -269,10 +266,10 @@ private fun ReasoningIcon(level: ReasoningLevel) {
     when (level) {
         ReasoningLevel.OFF -> Icon(OceanIcons.Brain02, null)
         ReasoningLevel.AUTO -> Icon(OceanIcons.Brain02, null)
-        ReasoningLevel.LOW -> Icon(ReasoningLow, null)
-        ReasoningLevel.MEDIUM -> Icon(ReasoningMedium, null)
-        ReasoningLevel.HIGH -> Icon(ReasoningHigh, null)
-        ReasoningLevel.XHIGH -> Icon(ReasoningHigh, null)
+        ReasoningLevel.LOW -> Icon(OceanIcons.Brain02, null)
+        ReasoningLevel.MEDIUM -> Icon(OceanIcons.Brain02, null)
+        ReasoningLevel.HIGH -> Icon(OceanIcons.Brain02, null)
+        ReasoningLevel.XHIGH -> Icon(OceanIcons.Brain02, null)
     }
 }
 
