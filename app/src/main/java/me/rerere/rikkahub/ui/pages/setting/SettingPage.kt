@@ -87,7 +87,7 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                         .padding(horizontal = 8.dp)
                         .fillMaxWidth(),
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.96f)
                     )
                 ) {
                     Column(
@@ -97,12 +97,12 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                         Text(
                             text = "帆船 AI 助手",
                             style = MaterialTheme.typography.titleLargeEmphasized,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            color = MaterialTheme.colorScheme.onSurface,
                         )
                         Text(
                             text = "海蓝航行主题 · 多模型对话 · 本地数据管理",
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.72f),
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
                 }

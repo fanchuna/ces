@@ -94,6 +94,7 @@ import me.rerere.rikkahub.data.files.FileUtils
 import me.rerere.rikkahub.data.files.FilesManager
 import me.rerere.rikkahub.ui.components.ai.ModelSelector
 import me.rerere.rikkahub.ui.components.nav.BackButton
+import me.rerere.rikkahub.ui.theme.CustomColors
 import me.rerere.rikkahub.ui.components.ui.FormItem
 import me.rerere.rikkahub.ui.components.ui.ImagePreviewDialog
 import me.rerere.rikkahub.ui.components.ui.OutlinedNumberInput
@@ -143,12 +144,14 @@ fun ImageGenPage(
                             contentDescription = "New session"
                         )
                     }
-                }
+                },
+                colors = CustomColors.topBarColors,
             )
         },
         bottomBar = {
             BottomBar(pagerState, scope)
         },
+        containerColor = CustomColors.topBarColors.containerColor,
     ) { innerPadding ->
         HorizontalPager(
             state = pagerState,

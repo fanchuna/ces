@@ -55,6 +55,7 @@ import me.rerere.ai.provider.ModelType
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.components.ai.ModelSelector
 import me.rerere.rikkahub.ui.components.nav.BackButton
+import me.rerere.rikkahub.ui.theme.CustomColors
 import me.rerere.rikkahub.ui.context.LocalToaster
 import me.rerere.rikkahub.utils.getText
 import org.koin.androidx.compose.koinViewModel
@@ -97,7 +98,8 @@ fun TranslatorPage(vm: TranslatorVM = koinViewModel()) {
                         type = ModelType.CHAT,
                         onlyIcon = true,
                     )
-                }
+                },
+                colors = CustomColors.topBarColors,
             )
         },
         bottomBar = {
@@ -114,7 +116,8 @@ fun TranslatorPage(vm: TranslatorVM = koinViewModel()) {
                 },
                 targetLanguage = targetLanguage
             )
-        }
+        },
+        containerColor = CustomColors.topBarColors.containerColor,
     ) { paddingValues ->
         Column(
             modifier = Modifier

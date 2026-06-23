@@ -29,6 +29,7 @@ import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.ui.context.LocalNavController
+import me.rerere.rikkahub.ui.theme.CustomColors
 import me.rerere.rikkahub.utils.base64Encode
 import me.rerere.rikkahub.utils.navigateToChatPage
 import me.rerere.rikkahub.utils.plus
@@ -46,9 +47,11 @@ fun ShareHandlerPage(text: String, image: String?) {
             TopAppBar(
                 title = {
                     Text(stringResource(R.string.share_handler_page_title))
-                }
+                },
+                colors = CustomColors.topBarColors,
             )
-        }
+        },
+        containerColor = CustomColors.topBarColors.containerColor,
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
@@ -56,7 +59,7 @@ fun ShareHandlerPage(text: String, image: String?) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             item {
-                Card {
+                Card(colors = CustomColors.cardColorsOnSurfaceContainer) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -92,10 +95,12 @@ fun ShareHandlerPage(text: String, image: String?) {
                             )
                         }
                     },
-                    tonalElevation = 4.dp,
-                    shape = MaterialTheme.shapes.medium
+                    tonalElevation = 0.dp,
+                    shape = MaterialTheme.shapes.large,
+                    color = CustomColors.listItemColors.containerColor
                 ) {
                     ListItem(
+                        colors = CustomColors.listItemColors,
                         headlineContent = {
                             Text(
                                 text = assistant.name.ifEmpty {

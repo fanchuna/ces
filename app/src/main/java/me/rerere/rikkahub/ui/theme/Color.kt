@@ -174,16 +174,25 @@ object CustomColors {
 
     val topBarColors: TopAppBarColors
         @Composable get() = TopAppBarDefaults.topAppBarColors(
-            containerColor = colorScheme.surfaceContainerLow,
-            scrolledContainerColor = colorScheme.surfaceContainer,
+            containerColor = colorScheme.surfaceContainerLowest.copy(alpha = 0.96f),
+            scrolledContainerColor = colorScheme.surfaceContainerLowest,
+            titleContentColor = colorScheme.onSurface,
+            navigationIconContentColor = colorScheme.onSurface,
+            actionIconContentColor = colorScheme.onSurfaceVariant,
         )
 
     val cardColors: CardColors
-        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceContainerLow)
+        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceContainerLowest.copy(alpha = 0.94f))
 
     val cardColorsOnSurfaceContainer: CardColors
-        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceContainerLowest)
+        @Composable get() = CardDefaults.cardColors(containerColor = colorScheme.surfaceContainerLowest.copy(alpha = 0.96f))
 
     val listItemColors: ListItemColors
-        @Composable get() = ListItemDefaults.colors(containerColor = colorScheme.surfaceContainerLowest)
+        @Composable get() = ListItemDefaults.colors(
+            containerColor = colorScheme.surfaceContainerLowest.copy(alpha = 0.96f),
+            headlineColor = colorScheme.onSurface,
+            supportingColor = colorScheme.onSurfaceVariant,
+            leadingIconColor = colorScheme.onSurfaceVariant,
+            trailingIconColor = colorScheme.onSurfaceVariant,
+        )
 }

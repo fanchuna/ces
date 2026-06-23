@@ -158,8 +158,8 @@ object OceanIcons {
     val FullScreen: ImageVector get() = Icons.Rounded.Fullscreen
     val GitFork: ImageVector get() = Icons.Rounded.AccountTree
     val GlobalSearch: ImageVector get() = Icons.Rounded.TravelExplore
-    val Idea: ImageVector get() = Icons.Rounded.Lightbulb
-    val Idea01: ImageVector get() = Icons.Rounded.Lightbulb
+    val Idea: ImageVector get() = Icons.Rounded.Psychology
+    val Idea01: ImageVector get() = Icons.Rounded.Psychology
     val Image02: ImageVector get() = Icons.Rounded.Image
     val Image03: ImageVector get() = Icons.Rounded.PhotoLibrary
     val ImageUpload: ImageVector get() = Icons.Rounded.AddPhotoAlternate

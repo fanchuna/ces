@@ -138,8 +138,8 @@ fun ReasoningPicker(
                 )
                 Icon(
                     imageVector = when (reasoningLevel) {
-                        ReasoningLevel.OFF -> OceanIcons.Idea
-                        ReasoningLevel.AUTO -> OceanIcons.Idea01
+                        ReasoningLevel.OFF -> OceanIcons.Brain02
+                        ReasoningLevel.AUTO -> OceanIcons.Brain02
                         ReasoningLevel.LOW -> ReasoningLow
                         ReasoningLevel.MEDIUM -> ReasoningMedium
                         ReasoningLevel.HIGH -> ReasoningHigh
@@ -267,8 +267,8 @@ private fun ReasoningScale(
 @Composable
 private fun ReasoningIcon(level: ReasoningLevel) {
     when (level) {
-        ReasoningLevel.OFF -> Icon(OceanIcons.Idea, null)
-        ReasoningLevel.AUTO -> Icon(OceanIcons.Idea01, null)
+        ReasoningLevel.OFF -> Icon(OceanIcons.Brain02, null)
+        ReasoningLevel.AUTO -> Icon(OceanIcons.Brain02, null)
         ReasoningLevel.LOW -> Icon(ReasoningLow, null)
         ReasoningLevel.MEDIUM -> Icon(ReasoningMedium, null)
         ReasoningLevel.HIGH -> Icon(ReasoningHigh, null)

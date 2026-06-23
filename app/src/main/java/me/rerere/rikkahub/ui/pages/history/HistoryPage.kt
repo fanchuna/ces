@@ -47,6 +47,7 @@ import kotlinx.coroutines.launch
 import me.rerere.rikkahub.R
 import me.rerere.rikkahub.data.model.Conversation
 import me.rerere.rikkahub.ui.components.nav.BackButton
+import me.rerere.rikkahub.ui.theme.CustomColors
 import me.rerere.rikkahub.ui.context.LocalNavController
 import me.rerere.rikkahub.utils.navigateToChatPage
 import me.rerere.rikkahub.utils.plus
@@ -79,12 +80,14 @@ fun HistoryPage(vm: HistoryVM = koinViewModel()) {
                     ) {
                         Icon(OceanIcons.Delete01, contentDescription = stringResource(R.string.history_page_delete_all))
                     }
-                }
+                },
+                colors = CustomColors.topBarColors,
             )
         },
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
-        }
+        },
+        containerColor = CustomColors.topBarColors.containerColor,
     ) { contentPadding ->
         val snackMessageDeleted = stringResource(R.string.history_page_conversation_deleted)
         val snackMessageUndo = stringResource(R.string.history_page_undo)
@@ -214,8 +217,9 @@ private fun ConversationItem(
 ) {
     Surface(
         onClick = onClick,
-        tonalElevation = 2.dp,
-        shape = RoundedCornerShape(25),
+        tonalElevation = 0.dp,
+        shape = RoundedCornerShape(22.dp),
+        color = CustomColors.listItemColors.containerColor,
         modifier = modifier
     ) {
         ListItem(

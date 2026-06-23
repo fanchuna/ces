@@ -31,6 +31,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import me.rerere.rikkahub.ui.components.nav.BackButton
+import me.rerere.rikkahub.ui.theme.CustomColors
 import me.rerere.rikkahub.ui.components.webview.WebView
 import me.rerere.rikkahub.ui.components.webview.rememberWebViewState
 import me.rerere.rikkahub.ui.theme.JetbrainsMono
@@ -128,9 +129,11 @@ fun WebViewPage(url: String, content: String) {
                             )
                         }
                     }
-                }
+                },
+                colors = CustomColors.topBarColors,
             )
-        }
+        },
+        containerColor = CustomColors.topBarColors.containerColor,
     ) {
         WebView(
             state = state,
